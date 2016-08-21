@@ -1,7 +1,7 @@
 testing specs for recipes:
 name: string
 summary: text
-desciption: text
+description: text
 
 - name must be present
 - name must be between 5 characters and less than 50 characters
@@ -9,3 +9,13 @@ desciption: text
 - summary must be between 10 characters and less than 150 charaters
 - description must be present 
 - description must be between 20 and 500 characters
+
+testing specs for chefs:
+chefname: string
+email: string
+
+- chefname must be present
+- chefname must be between 3 and 4 characters
+- email must be present
+- email must be unique 
+- email must be valid 
