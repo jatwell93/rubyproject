@@ -57,6 +57,11 @@ div.jumbotron {
   background: linear-gradient(to left, #FF5F6D , #FFC371); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+// breadcrumb
+nav.breadcrumb {
+  padding: 2px 2px 0px 2px;
+}
+
 .left {
   text-align: left;
   letter-spacing: 0.5px;
@@ -71,12 +76,13 @@ div.jumbotron {
   margin: 25px 0 0 25px;
 }
 
-div.info{
-  margin: 5px 20px 5px 20px; 
-  border-radius: 18px;
-  border: 2px solid #73AD21;
-  padding: 5px 20px 5px 20px; 
-
+// gravatar 
+.chef_info_center {
+  margin-top: 20px;
+  overflow: hidden;
+}
+.gravatar {
+  border-radius: 100px;
 }
 
 // footer
@@ -181,4 +187,17 @@ float: none; max-width: 300px; margin: 0 auto;
 }
 .footer-distributed form button{ float: none;
 } }
+// new recipe page 
+.well {
+  background-color: rgba( 245,108,80, 0.2);
+}
 
+input, textarea, select, .uneditable-input {
+  border: 1px solid rgb(245,108,80);
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+input{
+  height: auto !important;
+}
