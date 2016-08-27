@@ -9,7 +9,8 @@
 <div class="container">
 
     <div class="col-md-8 col-lg-10 col-xlg-12">
-            <div class="col-md-4 pull-right center">
+            
+            <div class="col-md-4 pull-right">
         <%= gravatar_for @recipe.chef, size: 200 %>
         <p>
             <h5>Brought to you from: <%= @recipe.chef.chefname%></h5>
@@ -17,7 +18,7 @@
     </div>
         <h3><%= @recipe.summary %></h3>
         <div class="show_recipe">
-            <%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
+            <%= image_tag(@recipe.picture.url,class: "uploaded") if @recipe.picture? %>
            
         </div>
             <div class ="well">
@@ -26,6 +27,14 @@
                 </p>
                 <p>
                     <%= simple_format(@recipe.description) %>
+                    <div class="pull-right">
+                        <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+                            <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= @recipe.thumbs_up_total %>
+                        <% end %> &nbsp&nbsp&nbsp&nbsp
+                         <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+                            <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= @recipe.thumbs_down_total %>
+                        <% end %>
+                    </div>
                 </p>
             </div>
         <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-primary pull-right"%>
