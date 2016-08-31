@@ -8,12 +8,12 @@
 
 <% @recipes.each do |recipe| %>
 
-<%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+<%= will_paginate %>
     <div class="row">
         
         <div class="col-md-2">
             <section class="chef_info_center">
-                <%= gravatar_for recipe.chef, size: 100 %>
+                <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
                 <h5> Chef name: <%= recipe.chef.chefname %></h5>
             </section>
         </div>
@@ -43,4 +43,4 @@
 <% end %>
 </div>
 
-<%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+<%= will_paginate %>

@@ -10,8 +10,8 @@
 
     <div class="col-md-8 col-lg-10 col-xlg-12">
             
-            <div class="col-md-4 pull-right">
-        <%= gravatar_for @recipe.chef, size: 200 %>
+    <div class="col-md-4 pull-right">
+        <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
         <p>
             <h5>Brought to you from: <%= @recipe.chef.chefname%></h5>
         </p>
@@ -37,7 +37,9 @@
                     </div>
                 </p>
             </div>
+            <% if logged_in? and @recipe.chef == current_user %>
         <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-primary pull-right"%>
+            <% end %>
     </div>
 </div>
 
