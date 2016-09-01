@@ -1,3 +1,10 @@
+<div class="containter">
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
+  <a class="breadcrumb-item" <%= link_to 'Chef List/', chefs_path%></a>
+  <span class="breadcrumb-item active">Recipe</span>
+</nav>
+</div>
 <%= render 'shared/page_title', title:"Chef: " + @chef.chefname %>
 
 <div class ="row">
