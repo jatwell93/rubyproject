@@ -1,9 +1,9 @@
 <div class="containter">
 <nav class="breadcrumb">
   <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
-  <span class="breadcrumb-item active">Recipe List</span>
+  <span class="breadcrumb-item active">Ingredients List</span>
 </nav>
-<%= render 'shared/page_title', title: 'All Recipes'%>
+<%= render 'shared/page_title', title: "Recipes for: " + @ingredient.name %>
 
 <ul class="nav nav-tabs">
     <li class="active">
@@ -14,10 +14,8 @@
     </li>
 </ul>
 
-
-<% @recipes.each do |recipe| %>
-
-<%= will_paginate %>
+<%= will_paginate @recipes %>
+<% @ingredient.recipes.each do |recipe| %>
     <div class="row">
         
         <div class="col-md-2">
@@ -54,4 +52,4 @@
 <% end %>
 </div>
 
-<%= will_paginate %>
+<%= will_paginate @recipes%>
