@@ -82,6 +82,8 @@ nav.breadcrumb {
   margin: 25px 0 0 25px;
 }
 
+
+
 // gravatar 
 .chef_info_center {
   margin-top: 20px;
@@ -210,8 +212,9 @@ input{
 // form 
 span.picture {
   margin-top:10px;
-
-
+}
+.input_checkbox input {
+  width: auto !important;
 }
 .show_recipe {
   margin: 10px 10px;
