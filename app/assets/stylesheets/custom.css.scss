@@ -1,36 +1,50 @@
 $navbar-default-bg: #f56c50;
 $light-orange: #FF5F6D;
-
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-// body {
-//   padding-top: 90px;
-// }
+// Navigation
+.navbar-default {
+  margin-bottom: 0;
+}
 
 #logo {
   margin: 10px 10px;
   float: left;
   font-size: 1.5em;
   color: #fff;
-  text-transform: uppercase;
   padding-top: 9px;
   font-weight: bold;
 }
 
 .nav_item {
-  margin: 35px 0 0 25px;
+  margin: 35px 0 0 10px;
   float: left;
+  padding: 0;
 }
 
 .nav_ul_item {
   list-style-type: none;
-  margin: 35px 0 0 15px;
+  margin: 35px 0 0 10px;
   float: left;
+  padding: 0;
+}
+
+.input-group {
+ width: 30%;
+ margin: 35px 0 0 50px;
+}
+@media (max-width: 40em) {
+.input-group {
+display: none;
+}
+}
+span.input-group-btn{
+  width: 10% 
+}
+.form-control{
+  margin-left: 50px;
 }
 
 .center {
@@ -56,6 +70,28 @@ h2 {
   color: #777;
   
 }
+// parrallax
+.bird-box {
+  position: relative;
+  height: 700px;
+  background-image: url('./cooking.jpg');
+  background-size: 100% 100%;
+  background-position: top center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: hidden; 
+}
+
+.logo {
+  height: 100px;
+  width: 100%;
+  background-image: url('./A&K.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+}
 
 div.jumbotron {
   background: #FF5F6D; /* fallback for old browsers */
@@ -72,34 +108,53 @@ nav.breadcrumb {
   text-align: left;
   letter-spacing: 0.5px;
 }
- hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-.search {
-  float: right;
-  margin: 25px 0 0 25px;
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-
-
+// show recipes 
 // gravatar 
 .chef_info_center {
   margin-top: 20px;
   overflow: hidden;
 }
+.col-md-4 pull-right center{
+  width: 40%;
+}
 .gravatar {
   border-radius: 100px;
+  max-width: 300px;
+  width: 50%;
+}
+#show-recipe{
+  display: inline-block;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  background-image: url('./paper.jpg');
+  color: #434343;
+}
+#carousel-example{
+  min-height: 400px;
+}
+.item {
+  min-height: 400px;
+  height: 100%;
 }
 
 // footer
-.footer-distributed{ background-color:#f56c50;
-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12); box-sizing: border-box;
+.footer-distributed{ 
+background-color:#f56c50;
+box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12); 
+box-sizing: border-box;
 width: 100%;
 font: bold 16px;
 text-align: left;
-padding: 20px 30px 10px 30px; margin-top: 20px; overflow: hidden;
+padding: 20px 30px 10px 30px;  
+overflow: hidden;
 }
 /* Footer left */ .footer-distributed .footer-left{
 float: left; }
@@ -197,7 +252,8 @@ float: none; max-width: 300px; margin: 0 auto;
 } }
 // new recipe page 
 .well {
-  background-color: rgba( 245,108,80, 0.2);
+  background-color: rgba( 245,108,80, 0.1);
+
 }
 
 input, textarea, select, .uneditable-input {
@@ -223,3 +279,12 @@ span.picture {
     width: 60%;
     height: 60%;
 }
+#food-image {
+  width: 85%;
+  height: 85%;
+  border-radius: 50px;
+}
+// #user-image {
+//   max-width: 200px;
+//   border: solid 1px blue;
+// }

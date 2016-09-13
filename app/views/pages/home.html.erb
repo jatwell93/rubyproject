@@ -1,12 +1,12 @@
+
 <div class="center jumbotron">
   <h1>Welcome to A & K Labs Recipes</h1>
-  
   <h2>This is the home page for our recipe blog</h2>
-  
   <%= link_to "Sign up now!", register_path, class: "btn btn-lg btn-success"%>
 </div>
-  <div id="wraper" class="container-fluid">
-   <div class="row">
+
+<div id="wraper" class="container-fluid">
+  <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <h3 class="midrow">
         View recipes as a Guest User
@@ -16,7 +16,7 @@
       </h2>
       <p><%= link_to "Browse Recipe Listings", recipes_path, class:"btn btn-small btn-warning"%></p>
     </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <h3 class="midrow">
         Sign into your account
       </h3>
@@ -32,12 +32,13 @@
     </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
       <h3 class="midrow">
-        View recipes as a Guest User
+        Checkout our store
       </h3>
       <h2 class="left">
-        Browse and view recipes as a Guest then Sign up later
+        <p>Have a look through our supplement store and checkout our great products.</p>
+        <small><p>(10% of all the profits from this store go to charities around the world)</p></small>
       </h2>
-      <p><%= link_to "Browse Recipe Listings", "", class:"btn btn-small btn-warning"%></p>
+      <p><%= link_to "A&K Supplements", "http://www.aandklabs.com/", class:"btn btn-small btn-warning"%></p>
     </div>
   </div>
 </div>
