@@ -1,4 +1,4 @@
-<div class="containter">
+<div class="container">
 <nav class="breadcrumb">
   <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
   <a class="breadcrumb-item" <%= link_to 'Chef List/', chefs_path%></a>
@@ -15,14 +15,14 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4 col-md-offset-4 center">
+    <div class="container">
         <h3><em>Recipes:</em></h3>
         <%= will_paginate @recipes %>
     </div>
 </div>
 <% @recipes.each do |recipe| %>
     <div class="row">
-        <div class="col-lg-6 well col-lg-offest-3">
+        <div class="container well">
                  <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
                  <p><%= recipe.summary %></p>
                  <p>

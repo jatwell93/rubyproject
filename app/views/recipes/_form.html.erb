@@ -3,13 +3,23 @@
     <div class="well col-md-8 col-md-offset-2">
         <%= form_for(@recipe, html: { multipart: true }) do |f| %>
             <%= f.label :name %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, placeholder: 'Whats your masterpiece called?' %>
             
             <%= f.label :summary %>
-            <%= f.text_field :summary %>
+            <%= f.text_field :summary, placeholder: 'Short summary of the dish' %>
            
             <%= f.label :description %>
-            <%= f.text_area :description, rows:10  %>
+            <%= f.text_area :description, rows:10, 
+            placeholder: 
+            'Example:
+Ingredients 
+1) 1/4 cup sugar
+2) 1/2 cup flour..
+                            
+Method
+i.e place sugar in and flour in a bowl...
+                            
+Extra notes, i.e serving, feeds etc.'  %>
             
             
             <strong>Styles: </strong>

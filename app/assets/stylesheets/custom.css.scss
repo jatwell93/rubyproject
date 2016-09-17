@@ -30,22 +30,26 @@ $light-orange: #FF5F6D;
   float: left;
   padding: 0;
 }
-
-.input-group {
- width: 30%;
- margin: 35px 0 0 50px;
+.search{
+  float: right;
+  max-width: 300px;
+  margin-top: -75px;
 }
-@media (max-width: 40em) {
+.input-group {
+ width: 100%;
+
+}
+@media (max-width: 980px) {
 .input-group {
 display: none;
 }
 }
-span.input-group-btn{
-  width: 10% 
-}
-.form-control{
-  margin-left: 50px;
-}
+// span.input-group-btn{
+//   width: 10% 
+// }
+// .form-control{
+//   margin-left: 50px;
+// }
 
 .center {
   text-align: center;
@@ -137,8 +141,10 @@ hr {
   background-image: url('./paper.jpg');
   color: #434343;
 }
-#carousel-example{
+.carousel-img{
   min-height: 400px;
+  height: 100px;
+  width: 100%;
 }
 .item {
   min-height: 400px;
@@ -276,8 +282,8 @@ span.picture {
   margin: 10px 10px;
 }
 .uploaded {
-    width: 60%;
-    height: 60%;
+  width: 60%;
+  height: 60%;
 }
 #food-image {
   width: 85%;
