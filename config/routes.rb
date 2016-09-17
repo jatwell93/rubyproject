@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
     
-  resources :reviews
   root "pages#home"
     
   get "/home" => "pages#home"
