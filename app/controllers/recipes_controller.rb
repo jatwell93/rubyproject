@@ -1,88 +1,107 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:edit, :update, :show, :like]
-    before_action :require_user, except: [:show, :index, :like]
-    before_action :require_user_like, only:[:like]
-    before_action :require_same_user, only:[:edit, :update]
-    before_action :admin_user, only: :destroy 
+  before_action :set_recipe, only: [:edit, :update, :show, :like, :review]
+  before_action :require_user, except: [:show, :index, :like]
+  before_action :require_user_like, only: [:like]
+  before_action :require_same_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
+  
+  def index
+    @recipes = Recipe.paginate(page: params[:page], per_page: 4)
+  end
+  
+  def show
     
-    def index
-        @recipes = Recipe.paginate(page: params[:page], per_page: 5)
-    end
-    def show
-        
-    end
+  end
+  
+  def new
+    @recipe = Recipe.new
+  end
+  
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.chef = current_user
     
-    def new
-        @recipe = Recipe.new
+    if @recipe.save
+      flash[:success] = "Your recipe was created successfully!"
+      redirect_to recipes_path
+      
+    else
+      render :new
     end
-    def create
-        @recipe = Recipe.new(recipe_params)
-        @recipe.chef = current_user
-        
-        if @recipe.save 
-            flash[:success] = "Your recipe was created succesfully!"
-            redirect_to recipes_path
-        else
-            render :new 
-        end
-    end
+  end
+  
+  def edit
     
-    def edit
-           
+  end
+  
+  def update
+    if @recipe.update(recipe_params)
+      flash[:success] = "Your recipe was update success"
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
     end
-    
-    def update 
-        if @recipe.update(recipe_params)
-           flash[:success] = "Your recipe was updated successfully!" 
-           redirect_to recipe_path(@recipe)
-        else 
-            render :edit
-        end
+  end
+  
+  def like 
+    like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
+    if like.valid?
+      flash[:success] = "Your selection was successful"
+      redirect_to :back
+    else
+      flash[:danger] = "You can only like/dislike a recipe once"
+      redirect_to :back
     end
-    
-    def like
-       like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
-       if like.valid?
-        flash[:success]= "Your selection was successfully recorded"
-        redirect_to :back
-       else
-        flash[:warning] = "You can only like/dislike a recipe once"
-        redirect_to :back
-       end
+  end
+  
+  def destroy
+    Recipe.find(params[:id]).destroy
+    flash[:success] = "Recipe Deleted"
+    redirect_to recipes_path
+  end
+  
+  def review
+    review = Review.create(body: params[:body], chef: current_user, recipe: @recipe)
+    if review.valid?
+      flash[:success] = "Thank you for reviewing this recipe"
+    else
+      flash[:danger] = "Review failed to post"
     end
-    
-    def destroy
-       Recipe.find(params[:id]).destroy
-       flash[:success] = "Recipe Deleted"
-       redirect_to recipes_path
-    end
-    
-    private 
+    redirect_to :back
+  end
+  
+  def deletereview
+    Review.find(params[:revid]).destroy
+    flash[:success] = "Review deleted"
+    redirect_to :back
+  end
+  
+  private
     
     def recipe_params
-        params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredient_ids: [])
+      params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredient_ids: [])
     end
     
     def set_recipe
-        @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.find(params[:id])
     end
     
     def require_same_user
-        if current_user != @recipe.chef and !current_user.admin?
-            flash[:danger] = "You can only edit your own recipes"
-            redirect_to recipes_path
-        end
+      if current_user != @recipe.chef and !current_user.admin?
+        flash[:danger] = "You can only edit your own recipes"
+        redirect_to recipes_path
+      end
     end
     
     def require_user_like
-        if !logged_in?
-          flash[:danger] = "You must be logged in to perform that aciton"
-          redirect_to :back
-        end
+      if !logged_in?
+        flash[:danger] = "You must be logged in to perform that action"
+        redirect_to :back
+      end
     end
     
-    def admin_user 
-       redirect_to recipes_path unless current_user.admin?
+    def admin_user
+      redirect_to recipes_path unless current_user.admin?
     end
-    
+  
 end

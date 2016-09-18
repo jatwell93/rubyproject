@@ -55,9 +55,11 @@ ActiveRecord::Schema.define(version: 20160917042234) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "body"
+    t.integer  "chef_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "styles", force: :cascade do |t|
