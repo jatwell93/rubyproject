@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   
   resources :recipes do
+    collection do
+      get 'search'
+    end
     member do
       post 'like'
       post 'review'

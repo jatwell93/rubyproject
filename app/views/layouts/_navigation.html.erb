@@ -77,15 +77,24 @@
           </ul>
         <% else %>
         <div class="nav_item">
-          <%= link_to login_path, class: "btn btn-default btn-success" do %>
+          <%= link_to login_path, class: "btn btn-default btn-primary" do %>
             <i class="fa fa-sign-in" aria-hidden="true"></i>
                                 Login
+          <% end %>
+        </div>
+        <div class="nav_item">
+          <%= link_to register_path, class: "btn btn-default btn-success" do %>
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                Signup
             <% end %>
           <% end %>
         </div>
         
-<div class="search">
-  <%= form_tag chefs_path, :method => 'get', class: 'input-group'  do %>
+
+
+    </div><!-- /.navbar-collase -->
+    <div class="search">
+  <%= form_tag search_recipes_path, :method => 'get', class: 'input-group'  do %>
     <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for Recipes' %>
     <span class="input-group-btn">
       <%= button_tag(type: "submit", class: "btn btn-default btn-success") do %>
@@ -94,7 +103,5 @@
     </span>
   <% end %>
 </div>        
-
-    </div><!-- /.navbar-collase -->
   </div><!-- /.contaner-fluid -->
 </nav>

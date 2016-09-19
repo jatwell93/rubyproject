@@ -37,11 +37,27 @@ body {
 .search{
   float: right;
   max-width: 300px;
-  margin-top: -75px;
+  margin-top: -30px;
 }
 .input-group {
  width: 100%;
 
+}
+@media (min-width: 768px){
+.navbar-collapse.collapse {
+    display: block !important;
+    height: 50px !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+}
+@media (min-width: 768px){
+.navbar-collapse.collapse {
+    display: block !important;
+    // height: relative !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
 }
 @media (max-width: 980px) {
 .input-group {

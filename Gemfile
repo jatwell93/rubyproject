@@ -31,6 +31,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'bcrypt', '~> 3.1.7'
 gem 'fog', '~> 1.38.0'
 gem 'net-ssh', '~> 3.2'
+gem 'searchkick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
