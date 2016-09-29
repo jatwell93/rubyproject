@@ -6,6 +6,12 @@ class Recipe < ActiveRecord::Base
     has_many :recipe_ingredients, dependent: :destroy
     has_many :ingredients, through: :recipe_ingredients
     has_many :reviews 
+    has_many :recipe_calories
+    has_many :calories, through: :recipe_calories
+    has_many :recipe_preptimes
+    has_many :preptimes, through: :recipe_preptimes
+    has_many :recipe_feeds
+    has_many :feeds, through: :recipe_feeds
     searchkick
     validates :chef_id, presence: true
     validates :name, presence: true, length: { minimum: 5, maximum: 100}

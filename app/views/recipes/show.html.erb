@@ -47,6 +47,7 @@
           <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right"%>
         <% end %>
      <% if logged_in? %>
+     
         <h3><br/>Reviews</h3>
         <% if @recipe.reviews.any? %>
           <% @recipe.reviews.each do |c| %>
@@ -79,7 +80,21 @@
       <% else %>
         <%= link_to "Login", login_path %> or <%= link_to "register", register_path %> to see reviews
       <% end %>
+        
   </div>
 </div>
+  <div class="jumbotron">
+  <div class="container">
+    <h1>Join the discussion</h1>
+    <p>Click the button below to start a new thread:</p>
+    <p>
+      <%= link_to 'Add new topic', new_comment_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
+</div>
+<%# @comments.inspect.to_yaml%>
+<%= comments_tree_for Comment.all %>
+<%# render @comments %>
+<div class="test"></div>
 
 <h5><%= link_to "Return to Recipes Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>

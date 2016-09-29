@@ -1,0 +1,13 @@
+<%= render 'shared/page_title', title: 'Create a New Feed'%>
+
+<%= render 'shared/errors', obj: @feed %>
+<div class="row">
+    <div class="well col-md-8 col-md-offset-2">
+        <%= form_for @feed do |f| %>
+            <%= f.label :feeds %>
+            <%= number_field(:feed, :people, in: 1..15, step: 1) %>
+
+             <%= f.submit 'Create Feeds', class: "btn btn-success" %>
+        <% end %>
+    </div>
+</div>

@@ -23,17 +23,18 @@ Extra notes, i.e serving, feeds etc.'  %>
             
             
             <strong>Styles: </strong>
-            <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
-                <% cb.label(class: "checkbox-inline input_checkbox"){cb.check_box(class: "checkbox") + cb.text} %>
-            <% end %>
-            <br>
+            <%= f.collection_select :style_ids, Style.all, :id, :name %>
             <br>
             <strong>Ingredients: </strong>
-            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cbi| %>
-                <% cbi.label(class: "checkbox-inline input_checkbox"){cbi.check_box(class: "checkbox") + cbi.text} %>
-            <% end %>
+            <%= f.collection_select :ingredient_ids, Ingredient.all, :id, :name %>
             <br>
+            <strong>Feeds: </strong>
+            <%= f.collection_select :feed_ids, Feed.all, :id, :people %>
             <br>
+            <strong>Preptime: </strong>
+            <%= f.collection_select :preptime_ids, Preptime.all, :id, :time %>
+            <br>
+            <strong>Upload image: </strong>
             <span class="picture">
                 <%= f.file_field :picture, accept: 'image/jpeg,image/gif,imgage/png'%>
             </span>
