@@ -22,6 +22,8 @@ gem 'net-ssh', '~> 3.2'
 gem 'searchkick'
 gem 'closure_tree'
 gem 'simple_form'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
+
 
 group :development, :test do
   gem 'byebug'

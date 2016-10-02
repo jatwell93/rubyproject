@@ -14,8 +14,8 @@
     </li>
 </ul>
 
-<%= will_paginate @recipes %>
-<% @ingredient.recipes.each do |recipe| %>
+
+ <% @recipe.ingredients.each do |ingredient| %>
     <div class="row">
         
         <div class="col-md-2">
@@ -51,5 +51,3 @@
 
 <% end %>
 </div>
-
-<%= will_paginate @recipes%>

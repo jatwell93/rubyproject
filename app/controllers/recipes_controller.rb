@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
   
   def index
-    @recipes = Recipe.paginate(page: params[:page], per_page: 4)
+    @recipes = Recipe.paginate(page: params[:page], per_page: 5)
   end
   
   def show
@@ -24,6 +24,8 @@ class RecipesController < ApplicationController
   
   def new
     @recipe = Recipe.new
+    @recipe.ingredients.build
+    @recipe.directions.build
   end
   
   def create
@@ -87,7 +89,7 @@ class RecipesController < ApplicationController
   private
     
     def recipe_params
-      params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredient_ids: [], feed_ids: [], calorie_ids: [], preptime_ids: [])
+      params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy], feed_ids: [], calorie_ids: [], preptime_ids: [])
     end
     
     def set_recipe

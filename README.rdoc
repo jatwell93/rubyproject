@@ -8,3 +8,6 @@ Next steps:
 -build forum
 -build online facebook style chat
 -build a user home page and a fabvourite feature
+
+
+(sudo service elasticsearch start)

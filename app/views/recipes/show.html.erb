@@ -21,11 +21,24 @@
       <%= image_tag(@recipe.picture.url, id: "food-image") if @recipe.picture? %>
     </div>
     <div id="show-recipe" class="well">
+     <h3>Ingredients</h3>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li>
+          <%= ingredient.name %>
+        </li>
+      <% end %>
+    </ul>
+    <h3>Directions</h3>
+    <ol>
+      <% @recipe.directions.each do |direction| %>
+        <li>
+          <%= direction.step %>
+        </li>
+      <% end %>
+    </ol>
       <% if @recipe.styles.any? %>
         <p>Styles: <%= render @recipe.styles %></p>
-      <% end %>
-      <% if @recipe.ingredients.any? %>
-        <p>Ingredients: <%= render @recipe.ingredients %></p>
       <% end %>
       <% if @recipe.feeds.any? %>
         <p>Feeds: <%= render @recipe.feeds %></p>
@@ -35,7 +48,7 @@
       <% end %>
 
       <p>
-        <strong>Steps:</strong>
+        <strong>Notes:</strong>
       </p>
       <%= simple_format(@recipe.description) %>
       <div class="pull-right">

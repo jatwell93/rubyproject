@@ -50,14 +50,6 @@
                             <% Ingredient.all.each do |ingredient| %>
                               <li id="ingredients"><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
                             <% end %>
-                <% if logged_in? %>
-                  <li class="divider"></li>
-                    <li>
-                      <%= link_to(new_ingredient_path) do %>
-                        New Ingredient
-                      <% end %>
-                  </li>
-                <% end %>
                   </li>
                     </ul>
                       <li class="divider"></li>

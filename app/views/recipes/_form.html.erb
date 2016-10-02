@@ -7,53 +7,62 @@
             
             <%= f.label :summary %>
             <%= f.text_field :summary, placeholder: 'Short summary of the dish' %>
-           
-            <%= f.label :description %>
+            
+            <%= f.label :Ingredient %>
+              <%= f.fields_for :ingredients do |ingredient| %>
+                <%= render 'ingredient_fields', f: ingredient %>
+              <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Ingredient', f, :ingredients, class: "pull-right d-inline-block btn btn-primary add-button" %>
+          </div>
+            </br>
+            </br>
+           <%= f.label :Directions %>
+              <%= f.fields_for :directions do |direction| %>
+                <%= render 'direction_fields', f: direction %>
+              <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Step', f, :directions, class: "pull-right d-inline-block btn btn-primary add-button" %>
+          </div>
+            </br>
+            </br>
+            <%= f.label :Notes %>
             <%= f.text_area :description, rows:10, 
             placeholder: 
-            'Example:
-Ingredients 
-1) 1/4 cup sugar
-2) 1/2 cup flour..
-                            
-Method
-i.e place sugar in and flour in a bowl...
-                            
-Extra notes, i.e serving, feeds etc.'  %>
-            
-            
+            'Example: any notes you want to add'  %>
+              </br>
+            </br>
             <strong>Styles: </strong>
              <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
              <% end %>
             <br>
-            <strong>Ingredients: </strong>
-             <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
-                <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-             <% end %>
-            <br>
-
+ <br>
             <strong>Feeds: </strong>
            <%= f.collection_check_boxes :feed_ids, Feed.all, :id, :people do |cb| %>
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
              <% end %>
             <br>
+             <br>
             <strong>Preptime: </strong>
            <%= f.collection_check_boxes :preptime_ids, Preptime.all, :id, :time do |cb| %>
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
              <% end %>
             <br>
+             <br>
             <strong>calories: </strong>
 
             <br>
+             <br>
+           
             <strong>Upload image: </strong>
             <span class="picture">
                 <%= f.file_field :picture, accept: 'image/jpeg,image/gif,imgage/png'%>
             </span>
-            
+             <br>
             <%= f.submit(@recipe.new_record? ? 'Create Recipe' : 'Edit Recipe', class: "btn btn-success")%>
         <% end %>
-    </div>
+ </div>   
 </div>
 
 <script type="text/javascript">

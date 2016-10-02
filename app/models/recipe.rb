@@ -3,8 +3,8 @@ class Recipe < ActiveRecord::Base
     has_many :likes, dependent: :destroy 
     has_many :recipe_styles, dependent: :destroy
     has_many :styles, through: :recipe_styles
-    has_many :recipe_ingredients, dependent: :destroy
-    has_many :ingredients, through: :recipe_ingredients
+    has_many :ingredients
+    has_many :directions
     has_many :reviews 
     has_many :recipe_calories
     has_many :calories, through: :recipe_calories
@@ -13,6 +13,13 @@ class Recipe < ActiveRecord::Base
     has_many :recipe_feeds
     has_many :feeds, through: :recipe_feeds
     searchkick
+    accepts_nested_attributes_for :ingredients,
+  															reject_if: proc { |attributes| attributes['name'].blank? },
+  															allow_destroy: true
+ 	accepts_nested_attributes_for :directions,
+  															reject_if: proc { |attributes| attributes['step'].blank? },
+  															allow_destroy: true
+
     validates :chef_id, presence: true
     validates :name, presence: true, length: { minimum: 5, maximum: 100}
     validates :summary, presence: true, length: { minimum: 10, maximum: 150}
