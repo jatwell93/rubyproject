@@ -14,10 +14,10 @@
     </li>
 </ul>
 
-
+<%= will_paginate %>
 <% @recipes.each do |recipe| %>
 
-<%= will_paginate %>
+
     <div class="row">
         
         <div class="col-md-2">
@@ -36,6 +36,13 @@
              <% if recipe.ingredients.any? %>
              <p>Ingredients: <%= render recipe.ingredients %></p>
              <% end %>
+             <% if recipe.feeds.any? %>
+             <p>Feeds: <%= render recipe.feeds %></p>
+             <% end %>
+             <% if recipe.preptimes.any? %>
+             <p>Preptime: <%= render recipe.preptimes %></p>
+             <% end %>
+             
              <p>
                  <span class='quiet'><small>Created: <%= time_ago_in_words(recipe.created_at)%> ago</small></span><br>
                  <span class='quiet'><small>Last edited: <%= time_ago_in_words(recipe.updated_at)%> ago</small></span>

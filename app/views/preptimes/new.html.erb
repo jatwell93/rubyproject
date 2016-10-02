@@ -4,8 +4,8 @@
 <div class="row">
     <div class="well col-md-8 col-md-offset-2">
         <%= form_for @preptime do |f| %>
-            <%= f.label :preptime %>
-            <%= number_field(:preptime, :time, in: 1..180, step: 10) %>
+            <%= f.label :name %>
+            <%= f.text_field :time %>
 
              <%= f.submit 'Create Preptime', class: "btn btn-success" %>
         <% end %>

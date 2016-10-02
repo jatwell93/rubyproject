@@ -1,21 +1,10 @@
-testing specs for recipes:
-name: string
-summary: text
-description: text
-
-- name must be present
-- name must be between 5 characters and less than 50 characters
-- summary must be present
-- summary must be between 10 characters and less than 150 charaters
-- description must be present 
-- description must be between 20 and 500 characters
-
-testing specs for chefs:
-chefname: string
-email: string
-
-- chefname must be present
-- chefname must be between 3 and 4 characters
-- email must be present
-- email must be unique 
-- email must be valid 
+most of the form and recipe show is working at a MVP level. Calories is still not working. I may redo this under a different name, as i beleive the ie
+is causing issue in ruby. 
+Next steps: 
+-Follow video and create a directions, and ingredients part of the form. May first need to remove the ingredient MVC that exits now. 
+-come back to the calories part
+-move onto ruby on rails workout app. 
+-move onto youtube workout app
+-build forum
+-build online facebook style chat
+-build a user home page and a fabvourite feature

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160926060855) do
 
   create_table "calories", force: :cascade do |t|
-    t.integer "amount"
+    t.string "amount"
   end
 
   create_table "chefs", force: :cascade do |t|
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160926060855) do
   end
 
   create_table "feeds", force: :cascade do |t|
-    t.integer "people"
+    t.string "people"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160926060855) do
   end
 
   create_table "preptimes", force: :cascade do |t|
-    t.integer "time"
+    t.string "time"
   end
 
   create_table "recipe_calories", force: :cascade do |t|

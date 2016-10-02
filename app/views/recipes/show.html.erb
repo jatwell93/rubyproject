@@ -27,6 +27,13 @@
       <% if @recipe.ingredients.any? %>
         <p>Ingredients: <%= render @recipe.ingredients %></p>
       <% end %>
+      <% if @recipe.feeds.any? %>
+        <p>Feeds: <%= render @recipe.feeds %></p>
+      <% end %>
+      <% if @recipe.preptimes.any? %>
+        <p>Preptime: <%= render @recipe.preptimes %></p>
+      <% end %>
+
       <p>
         <strong>Steps:</strong>
       </p>
@@ -43,7 +50,7 @@
         <% if logged_in? and (@recipe.chef == current_user || current_user.admin?) %>
           <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
         <% end %> 
-        <% if logged_in? and current_user.admin? %>
+        <% if logged_in? and (@recipe.chef == current_user || current_user.admin?) %>
           <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right"%>
         <% end %>
      <% if logged_in? %>
