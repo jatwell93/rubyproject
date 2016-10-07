@@ -23,6 +23,7 @@ gem 'searchkick'
 gem 'closure_tree'
 gem 'simple_form'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
+gem 'devise'
 
 
 group :development, :test do

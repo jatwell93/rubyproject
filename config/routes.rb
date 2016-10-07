@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  get 'dashboard/index'
+
   root 'pages#home'
 
   get '/home', to: 'pages#home'
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
   resources :preptimes, only: [:new, :create, :show]
   resources :styles, only: [:new, :create, :show]
   resources :ingredients, only: [:new, :create, :show]
+  resources :dashboard, only: [:index, :search]
   
   get 'comments/index'
   resources :comments, only: [:index, :create]

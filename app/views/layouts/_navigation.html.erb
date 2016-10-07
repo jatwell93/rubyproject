@@ -11,7 +11,7 @@
       </button>
       <div id="logo">
         <%= link_to root_path, class: "btn btn-default btn-success", id: "logo" do %>
-                                myRecipes
+                                myTrainer
           <i class="fa fa-cutlery" aria-hidden="true"></i>
         <% end %>
        
@@ -115,6 +115,20 @@
             </ul>
         </ul> 
         <!--ends style button-->
+        <!-- Workouts button -->
+        <div class="btn-group">
+        <ul class="nav_ul_item">
+          <li class="dropdown"><%= link_to '#', class: "btn btn-default btn-success dropdown-toggle", "data-toggle" => "dropdown" do %>
+              Workouts <b class="caret"></b>
+                <% end %>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Dashboard", dashboard_index_path %></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+        </div
         <% if logged_in? %>
           <ul class="nav_ul_item">
             <li class="dropdown"><%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
