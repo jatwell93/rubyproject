@@ -1,7 +1,7 @@
 most of the form and recipe show is working at a MVP level. Calories is still not working. I may redo this under a different name, as i beleive the ie
 is causing issue in ruby. 
 Next steps: 
--Follow video and create a directions, and ingredients part of the form. May first need to remove the ingredient MVC that exits now. 
+
 -come back to the calories part
 -move onto ruby on rails workout app. 
 -move onto youtube workout app
