@@ -9,5 +9,8 @@ Next steps:
 -build online facebook style chat
 -build a user home page and a fabvourite feature
 
-
+-switching to devise (chef - user)
+-first create workout app with viable user 
+-change the schema and restart data base
+-work your way from the top to the very bottom changing ever instance over 
 (sudo service elasticsearch start)
