@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:edit, :update, :show, :like, :review]
-  before_action :require_user, except: [:show, :index, :like, :search]
-  before_action :require_user_like, only: [:like]
+  before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   
@@ -30,7 +29,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = current_user
+    @recipe.user = current_user
     
     if @recipe.save
       flash[:success] = "Your recipe was created successfully!"
@@ -54,7 +53,7 @@ class RecipesController < ApplicationController
   end
   
   def like 
-    like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
+    like = Like.create(like: params[:like], user: current_user, recipe: @recipe)
     if like.valid?
       flash[:success] = "Your selection was successful"
       redirect_to :back
@@ -71,7 +70,7 @@ class RecipesController < ApplicationController
   end
   
   def review
-    review = Review.create(body: params[:body], chef: current_user, recipe: @recipe)
+    review = Review.create(body: params[:body], user: current_user, recipe: @recipe)
     if review.valid?
       flash[:success] = "Thank you for reviewing this recipe"
     else
@@ -97,18 +96,12 @@ class RecipesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @recipe.chef and !current_user.admin?
+      if current_user != @recipe.user and !current_user.admin?
         flash[:danger] = "You can only edit your own recipes"
         redirect_to recipes_path
       end
     end
-    
-    def require_user_like
-      if !logged_in?
-        flash[:danger] = "You must be logged in to perform that action"
-        redirect_to :back
-      end
-    end
+
     
     def admin_user
       redirect_to recipes_path unless current_user.admin?

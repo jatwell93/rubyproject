@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  get 'dashboard/index'
+  devise_for :users, :controllers => {registrations: "registrations"}
 
   root 'pages#home'
-
+  get 'dashboard/index'
   get '/home', to: 'pages#home'
   get '/about', to: 'pages#about'
   get '/faq', to: 'pages#faq'
@@ -20,13 +19,17 @@ Rails.application.routes.draw do
       delete 'review', to: "recipes#deletereview"
     end
   end
+    
+    resources :users do #might be relatable to comment
+    resources :exercises 
+  end
   
-  resources :chefs, except: [:new, :destroy]
+  # resources :chefs, except: [:new, :destroy]
   
-  get '/register', to: 'chefs#new'
-  get '/login', to: 'logins#new'
-  post '/login', to: 'logins#create'
-  get '/logout', to: 'logins#destroy'
+  # get '/register', to: 'chefs#new'
+  # get '/login', to: 'logins#new'
+  # post '/login', to: 'logins#create'
+  # get '/logout', to: 'logins#destroy'
   
   resources :calories, only: [:new, :create, :show]
   resources :feeds, only: [:new, :create, :show]

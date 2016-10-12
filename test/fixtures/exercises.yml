@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  duration_in_min: 1
+  workout: MyText
+  workout_date: 2016-10-10
+  user_id: 
+
+two:
+  duration_in_min: 1
+  workout: MyText
+  workout_date: 2016-10-10
+  user_id: 

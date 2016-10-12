@@ -132,25 +132,25 @@
         <% if logged_in? %>
           <ul class="nav_ul_item">
             <li class="dropdown"><%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
-              <%= current_user.chefname %> <b class="caret"></b>
+              <%= current_user.username %> <b class="caret"></b>
               <% end %>
               <ul class="dropdown-menu">
-                <li><%= link_to "View Profile", chef_path(current_user) %> </li>
-                <li><%= link_to "Edit Profile", edit_chef_path(current_user) %> </li>
+                <li><%= link_to "View Profile", user_path(current_user) %> </li>
+                <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %> </li>
                 <li class="divider"></li>
-                <li><%= link_to "Logout", logout_path %></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
           </ul>
         <% else %>
         <div class="nav_item">
-          <%= link_to login_path, class: "btn btn-default btn-primary" do %>
+          <%= link_to new_user_session_path, class: "btn btn-default btn-primary" do %>
             <i class="fa fa-sign-in" aria-hidden="true"></i>
                                 Login
           <% end %>
         </div>
         <div class="nav_item">
-          <%= link_to register_path, class: "btn btn-default btn-success" do %>
+          <%= link_to new_user_registration_path, class: "btn btn-default btn-success" do %>
             <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 Signup
             <% end %>

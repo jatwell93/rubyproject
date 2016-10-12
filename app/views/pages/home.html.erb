@@ -2,7 +2,7 @@
 <div class="center jumbotron">
   <h1>Welcome to A & K Labs Recipes</h1>
   <h2>This is the home page for our recipe blog</h2>
-  <%= link_to "Sign up now!", register_path, class: "btn btn-lg btn-success"%>
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-success"%>
 </div>
 
 <div id="wraper" class="container-fluid">
@@ -28,7 +28,7 @@
           <li>Update account</li>
         </ul>
       </h2>
-      <p><%= link_to "Sign in", login_path, class:"btn btn-small btn-warning"%></p>
+      <p><%= link_to "Sign in", new_user_session_path, class:"btn btn-small btn-warning"%></p>
     </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
       <h3 class="midrow">
