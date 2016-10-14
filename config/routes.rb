@@ -19,7 +19,13 @@ Rails.application.routes.draw do
       delete 'review', to: "recipes#deletereview"
     end
   end
-    
+  
+  resource :dashboard, only: [:index] do
+    collection do
+      post :search, to: 'dashboard#search'
+    end
+  end
+  
     resources :users do #might be relatable to comment
     resources :exercises 
   end
