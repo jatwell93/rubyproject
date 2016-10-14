@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
    
    def show
    @ingredient = Ingredient.find(params[:id])
-    @ingredient = Ingredient.all
+    @ingredients = Ingredient.all
    end
    
    def new

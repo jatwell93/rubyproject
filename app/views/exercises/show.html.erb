@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-md-10 col-md-offset-1">
 <div>
-<h2 class="show-header">Showing <%= "#{@exercise.user.full_name}'s Workout Details" %></h2>
+<h2 class="show-header">Showing <%= "#{@exercise.user.username}'s Workout Details" %></h2>
 </div>
     <div class="col-xs-12 col-md-10 well member">
         <div class="col-xs-4">
@@ -27,6 +27,6 @@
         </div>
     </div>
     <div class="col-xs-12 col-md-10 member">
-        <%= link_to "Back", user_exercises_path(current_user) %>
+        <%= link_to "Back", user_exercises_path(current_user), class: "btn btn-default" %>
     </div>
 </div>
