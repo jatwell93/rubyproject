@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010073306) do
+ActiveRecord::Schema.define(version: 20161014233325) do
 
   create_table "calories", force: :cascade do |t|
     t.integer "amount"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20161010073306) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    
   end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
@@ -67,6 +66,16 @@ ActiveRecord::Schema.define(version: 20161010073306) do
   create_table "feeds", force: :cascade do |t|
     t.integer "people"
   end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -138,21 +147,21 @@ ActiveRecord::Schema.define(version: 20161010073306) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

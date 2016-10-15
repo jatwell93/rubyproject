@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
+//= require jquery-ui/datepicker
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require raphael.min
@@ -19,3 +19,4 @@
 // require turbolinks
 //= require_tree .
 //= require cocoon
+

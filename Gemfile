@@ -26,6 +26,7 @@ gem 'simple_form'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'devise'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'bootstrap-datepicker-rails'
 
 
 

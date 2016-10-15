@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
     
     def index 
       @exercises = current_user.exercises.all
-   
+      @friends = current_user.friends
     end
     
     def new
@@ -60,4 +60,3 @@ class ExercisesController < ApplicationController
         @exercise = current_user.exercises.find(params[:id])
       end
 end
-  
