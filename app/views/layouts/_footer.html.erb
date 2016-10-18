@@ -6,9 +6,8 @@
     <%= link_to "Home", root_path %>
     <a href="#">Blog</a>
     <a href="http://www.aandklabs.com/">Supplement Store</a> 
-    <a href="#">About</a> 
-    
-    <a href="#">FAQ</a>
+    <%= link_to "About", about_path %>
+    <%= link_to "FAQ's", faq_path %>
 </p>
 
     <div class="footer-icons">
@@ -20,13 +19,5 @@
         <a href="#"><i class="fa fa-instagram"></i></a>
     </div> 
 <p class="footer-company-name">A & K LABS &copy; 2016</p> 
-</div>
-<div class="footer-right"> 
-    <p>Contact Us</p>
-    <form action="mailto:support@aandklabs.com" method="post" enctype="text/plain">
-        <input type="text" name="email" placeholder="Email" /> 
-        <textarea name="message" placeholder="Message"></textarea> 
-        <button class="btn btn-success btn-lg">Send</button>
-    </form>
 </div>
 </footer>

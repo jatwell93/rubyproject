@@ -16,7 +16,11 @@
 
 <div class="row">
     <div class="container">
-        <h3><em>Recipes you've created:</em></h3>
+        <% if @user == current_user %>
+        <h3><em><%= "Your Recipes" %></em></h3>
+        <% else %>
+        <h3><em><%= "Recipes from: " + @user.username %></em></h3>
+        <% end %>
         <%= will_paginate @recipes %>
     </div>
 </div>
@@ -39,4 +43,5 @@
             </div>
         </div>
     </div>
+    
 <% end %>

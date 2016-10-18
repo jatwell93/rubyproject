@@ -1,6 +1,6 @@
 <header role="banner">
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid sloppy-fix">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
                 data-target="#bs-example-navbar-collapse-1">
@@ -8,7 +8,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Athletes Den", root_path, class: "navbar-brand" %>
+      <div id="logo">
+        <%= link_to root_path, class: "btn btn-default btn-success", id: "logo" do %>
+          myTrainer <i class="fa fa-cutlery" aria-hidden="true"></i>
+        <% end %>
+      </div>
       </div>
       <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" >
         <ul class="nav navbar-nav" >
@@ -16,20 +20,114 @@
             <span class="sr-only">(current)</span>
           </li>
         </ul>
-        <%= form_tag(search_dashboard_path, class: "navbar-form navbar-left", role: "search") do %>
+        <%= form_tag(search_dashboard_path, class: "navbar-form", role: "search", id:"search") do %>
           <div class="form-group">
-            <%= text_field_tag :search_name, nil, placeholder: "Search for Friends", class: "form-control" %>
+            <%= text_field_tag :search_name, nil, placeholder: "Search for friends", class: "form-control" %>
           </div>
-          <%= submit_tag "Search", class: "btn btn-default" %>
+          <%= submit_tag "Search", class: "btn btn-default", id: "search-button" %>
         <%end%>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to "My Lounge", user_exercises_path(current_user)%></li>
+            <li class="dropdown"><%= link_to '#', "data-toggle" => "dropdown" do %>
+            Recipes <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Search by</li>
+            <li class="dropdown-submenu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styles</a>
+              <ul class="dropdown-menu">
+                <% Style.all.each do |style| %>
+                  <li id="styles"><%= link_to style.name, style_path(style) %></li>
+                <% end %>
+                <% if logged_in? %>
+                  <li class="divider"></li>
+                    <li>
+                      <%= link_to(new_style_path) do %>
+                      New Style
+                      <% end %>
+                    </li>
+                <% end %>
+            </li>
+              </ul>
+              <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingredients</a>
+                <ul class="dropdown-menu">
+                  <% Ingredient.all.each do |ingredient| %>
+                    <li id="ingredients"><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+                  <% end %>
+              </li>
+                </ul>
+                  <li class="divider"></li>
+                  <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calories</a>
+                    <ul class="dropdown-menu">
+                      <% Calorie.all.each do |calorie| %>
+                        <li id="calories"><%= link_to calorie.amount, calory_path(calorie) %></li>
+                      <% end %>
+                <% if logged_in? %>
+                  <li class="divider"></li>
+                    <li>
+                      <%= link_to(new_calory_path) do %>
+                        New Calorie
+                      <% end %>
+                    </li>
+                <% end %>
+                  </li>
+                    </ul>
+                      <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Feeds</a>
+                          <ul class="dropdown-menu">
+                            <% Feed.all.each do |feed| %>
+                              <li id="Feeds"><%= link_to feed.people, feed_path(feed) %></li>
+                            <% end %>
+                <% if logged_in? %>
+                  <li class="divider"></li>
+                    <li>
+                      <%= link_to(new_feed_path) do %>
+                        New Feeds
+                      <% end %>
+                    </li>
+                <% end %>
+                        </li>
+                          </ul>
+                      <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Preptime</a>
+                          <ul class="dropdown-menu">
+                            <% Preptime.all.each do |preptime| %>
+                              <li id="preptimes"><%= link_to preptime.time, preptime_path(preptime) %></li>
+                            <% end %>
+                <% if logged_in? %>
+                  <li class="divider"></li>
+                    <li>
+                      <%= link_to(new_preptime_path) do %>
+                        New preptime
+                      <% end %>
+                    </li>
+                <% end %>
+                        </li>
+                          </ul>
+                      <% if logged_in? %>
+                        <li class="divider"></li>
+                          <li class="dropdown-header">Create</li>
+                            <li>
+                              <%= link_to(new_recipe_path) do %>
+                                New Recipe
+                              <% end %>
+                            </li>
+                      <% end %>
+        </ul> 
+        <li class="dropdown"><%= link_to '#', "data-toggle" => "dropdown" do %>
+            <%="#{current_user.username}"%> <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <li><%= link_to "Edit Account", edit_user_registration_path %></li>
-            <div class="navbar-right">
-              <p class="navbar-text">Signed in as <%="#{current_user.first_name}"%></p>
-            </div>
+            <li><%= link_to "Your Recipes", user_path(current_user) %></li>
+            <li><%= link_to "Your Workouts", user_exercises_path(current_user) %></li>
+          </ul>
           <%else%>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
             <li><%= link_to "Sign In", new_user_session_path %></li>
