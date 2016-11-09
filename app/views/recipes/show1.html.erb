@@ -7,33 +7,30 @@
 </div>  
   
   <%= render 'shared/page_title', title: @recipe.name %>
-  
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-2 pull-right center" id="user-image">
+      <%= link_to gravatar_for(@recipe.user, size: 200), user_path(@recipe.user) %>
+      <p>
+        <h5>Brought to you by: <%= @recipe.user.username %></h5>
+      </p>
+    </div>
+    <div class="col-md-3">
+      </br>
+      <h4><i>You may also like: </i></h4>
+      <hr>
+        <% @random_recipe.each do |recipe| %>
+          <div class="row show-img">
+            <div class="image_wrapper hidden-xs-down"><%=image_tag recipe.picture %></div>
+            <%= link_to recipe.name, recipe %></td>
+            <%= truncate(recipe.description, length: 150)%> <small><%=link_to 'click to see more', recipe_path(recipe)%></small></td>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-md-8">
       <h3><%= @recipe.summary %></h3>
       <div class="show_recipe">
         <%= image_tag(@recipe.picture.url, id: "food-image") if @recipe.picture? %>
       </div>
-       <div class = "row hidden-sm-down">
-         <div class = "col-sm-4 hidden-sm-down">
-            <a href = "#" class = "thumbnail">
-               <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/BendigoShamrockHotel.JPG/220px-BendigoShamrockHotel.JPG" alt = "Generic placeholder thumbnail">
-            </a>
-         </div>
-       
-         <div class = "col-sm-4">
-            <a href = "#" class = "thumbnail">
-               <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/BendigoShamrockHotel.JPG/220px-BendigoShamrockHotel.JPG" alt = "Generic placeholder thumbnail">
-            </a>
-         </div>
-       
-         <div class = "col-sm-4">
-            <a href = "#" class = "thumbnail">
-               <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/BendigoShamrockHotel.JPG/220px-BendigoShamrockHotel.JPG" alt = "Generic placeholder thumbnail">
-            </a>
-         </div>
-      </div>
-      
       <div id="show-recipe" class="well">
         <h3>Ingredients</h3>
         <ul>
@@ -73,7 +70,6 @@
             <% end %>
           </div>
       </div>
-      
           <% if logged_in? and (@recipe.user == current_user || current_user.admin?) %>
             <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
           <% end %> 
@@ -83,19 +79,15 @@
           <div class="social-share-button">
           <%= social_share_button_tag("My Site") %>
           </div>
-    </div>
-    <div class="col-md-5 pull-right">
-      <%= link_to gravatar_for(@recipe.user, size: 200), user_path(@recipe.user) %>
-      <p>
-        <h5>Brought to you by: <%= @recipe.user.username %></h5>
-      </p>
-      </br>
-      <h3><br/>Reviews</h3>
+       
+          <% if logged_in? %>
+       
+          <h3><br/>Reviews</h3>
           <% if @recipe.reviews.any? %>
             <% @recipe.reviews.each do |c| %>
             
               <div class="well">
-                <div class="col-md-2 pull-right">
+                <div class="col-md-2 pull-left">
                   <%= link_to gravatar_for(c.user, size: 100), user_path(c.user) %>
                 <strong><%= c.user.username.downcase.capitalize %> </strong>
                 </div>
@@ -118,16 +110,28 @@
                 <%= submit_tag "Submit Review", class: "btn btn-primary" %> <br/><br/>
             </div>
               <% end %>
-      <h4><i>You may also like: </i></h4>
-      <hr>
-        <% @random_recipe.each do |recipe| %>
-          <div class="row show-img">
-            <div class="image_wrapper hidden-xs-down"><%=image_tag recipe.picture %></div>
-            <%= link_to recipe.name, recipe %>
-            <%= truncate(recipe.description, length: 150)%> <small><%=link_to 'click to see more', recipe_path(recipe)%></small>
-          </div>
+          
+        <% else %>
+          <%= link_to "Login",  new_user_session_path %> or <%= link_to "register", new_user_registration_path %> to see reviews
         <% end %>
+          
     </div>
+    </div>
+  
+  
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Join the discussion</h1>
+        <p>Click the button below to start a new thread:</p>
+        <p>
+          <%= link_to 'Add new topic', new_comment_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+    </div>
+  <%# @comments.inspect.to_yaml%>
+  <%= comments_tree_for Comment.all %>
+  <%# render @comments %>
+  <div class="test"></div>
+
 
 <h5><%= link_to "Return to Recipes Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>
-</div>

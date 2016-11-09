@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
   end
   
   def show
-    
+    @random_recipe = Recipe.where.not(id: @recipe).order("RANDOM()").first(3)
   end
   
   def new

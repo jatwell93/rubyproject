@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014233325) do
+ActiveRecord::Schema.define(version: 20161018094001) do
 
   create_table "calories", force: :cascade do |t|
     t.integer "amount"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 20161014233325) do
     t.datetime "updated_at"
   end
 
+  create_table "movements", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "movements", ["exercise_id"], name: "index_movements_on_exercise_id"
+
   create_table "preptimes", force: :cascade do |t|
     t.integer "time"
   end
@@ -133,6 +142,15 @@ ActiveRecord::Schema.define(version: 20161014233325) do
     t.string   "picture"
   end
 
+  create_table "reps", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "reps", ["exercise_id"], name: "index_reps_on_exercise_id"
+
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -166,5 +184,23 @@ ActiveRecord::Schema.define(version: 20161014233325) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weights", force: :cascade do |t|
+    t.integer  "kilogram"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "weights", ["exercise_id"], name: "index_weights_on_exercise_id"
+
+  create_table "zets", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "zets", ["exercise_id"], name: "index_zets_on_exercise_id"
 
 end

@@ -3,6 +3,12 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@mixin box-shadow {
+	-webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	box-shadow: rgba(0, 0, 0, 0.09) -3px 3px 2px;
+}
 // Navigation
 .navbar-inverse {
   margin-bottom: 0;
@@ -166,14 +172,16 @@ hr {
   width: 50%;
 }
 #show-recipe{
-  display: inline-block;
   border: none;
   border-radius: 30px;
   font-family: 'Pacifico', cursive;
   font-size: 24px;
   background-image: url('./paper.jpg');
   color: #434343;
+  padding-bottom: 35px;
 }
+
+// carou
 .carousel-img{
   min-height: 400px;
   height: 100px;
@@ -331,4 +339,29 @@ span.picture {
   padding: 15px 15px 15px 30px;
   margin-bottom: 30px;
 }
-
+#workout-details {
+  display: block!important;
+  padding-top: 30px;
+  border: 1px solid black;
+}
+.show-img {
+	background: white;
+	border-radius: 5px;
+	margin: 5px 5px 40px 5px;
+	@include box-shadow;
+	.image_wrapper {
+		max-width: 100px;
+		border-radius: 5px 5px 0 0;
+		overflow: hidden;
+	}
+	img {
+		width: 100%;
+		-webkit-transition: all .3s ease-out;
+	  -moz-transition: all .3s ease-out;
+	  -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+		&:hover {
+			transform: scale(1.075);
+		}
+	}
+}

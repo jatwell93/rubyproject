@@ -25,7 +25,7 @@ class ExercisesController < ApplicationController
     end
     
     def show
-      
+      @exercises = current_user.exercises.all
     end
     
     def edit
@@ -53,7 +53,7 @@ class ExercisesController < ApplicationController
     private
       
       def exercise_params
-        params.require(:exercise).permit(:duration_in_min, :workout, :workout_date, :user_id)
+        params.require(:exercise).permit(:duration_in_min, :workout, :workout_date, :user_id, movements_attributes: [:id, :name, :_destroy], reps_attributes: [:id, :amount, :_destroy], zets_attributes: [:id, :quantity, :_destroy], weights_attributes: [:id, :kilogram, :_destroy],)
       end
       
       def set_exercise

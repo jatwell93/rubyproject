@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'homes/show'
+
   devise_for :users, :controllers => {registrations: "registrations"}
 
   root 'pages#home'
@@ -16,8 +18,8 @@ Rails.application.routes.draw do
       post 'like'
       post 'review'
       post 'comment' #not sure about this line
-      delete 'review', to: "recipes#deletereview"
     end
+    resources :reviews, except: [:show, :index]
   end
   
   resource :dashboard, only: [:index] do

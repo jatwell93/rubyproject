@@ -12,6 +12,9 @@
     <div class="row">
       <% @athletes.each do |athlete| %>
         <div class="col-md-10 well member">
+          <div class="col-md-2 pull-left">
+            <%= link_to gravatar_for(current_user, size: 100), user_path(current_user) %>
+          </div>
           <%= athlete.full_name %>
           <% if current_user %>
             <%= link_to "Follow", friendships_path(friend_id: athlete.id), method: :post,

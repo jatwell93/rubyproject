@@ -16,7 +16,9 @@
 //= require bootstrap-sprockets
 //= require raphael.min
 //= require morris
+//= require social-share-button
 // require turbolinks
 //= require_tree .
 //= require cocoon
+
 
