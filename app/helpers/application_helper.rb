@@ -6,8 +6,13 @@ module ApplicationHelper
         gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
         image_tag(gravatar_url, alt: user.first_name, class: "gravatar")
     end
+ 
+  def active_page(active_page)
+    @active == active_page ? "active" : ""
+  end
+
     
-  def devise_error_mesages!
+  def devise_error_messages!
     return '' if resource.errors.empty?
     messages = resource.errors.full_messages.map {
       |msg| content_tag(:li, msg)}.join

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018094001) do
+ActiveRecord::Schema.define(version: 20161115081729) do
 
   create_table "calories", force: :cascade do |t|
     t.integer "amount"
@@ -94,14 +94,72 @@ ActiveRecord::Schema.define(version: 20161018094001) do
     t.datetime "updated_at"
   end
 
+  create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
+    t.integer "unsubscriber_id"
+    t.string  "unsubscriber_type"
+    t.integer "conversation_id"
+  end
+
+  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
+  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
+
+  create_table "mailboxer_conversations", force: :cascade do |t|
+    t.string   "subject",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "mailboxer_notifications", force: :cascade do |t|
+    t.string   "type"
+    t.text     "body"
+    t.string   "subject",              default: ""
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "conversation_id"
+    t.boolean  "draft",                default: false
+    t.string   "notification_code"
+    t.integer  "notified_object_id"
+    t.string   "notified_object_type"
+    t.string   "attachment"
+    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                           null: false
+    t.boolean  "global",               default: false
+    t.datetime "expires"
+  end
+
+  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
+  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
+  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type"
+
+  create_table "mailboxer_receipts", force: :cascade do |t|
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.integer  "notification_id",                            null: false
+    t.boolean  "is_read",                    default: false
+    t.boolean  "trashed",                    default: false
+    t.boolean  "deleted",                    default: false
+    t.string   "mailbox_type",    limit: 25
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "is_delivered",               default: false
+    t.string   "delivery_method"
+    t.string   "message_id"
+  end
+
+  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
   create_table "movements", force: :cascade do |t|
     t.string   "name"
     t.integer  "exercise_id"
+    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "movements", ["exercise_id"], name: "index_movements_on_exercise_id"
+  add_index "movements", ["workout_id"], name: "index_movements_on_workout_id"
 
   create_table "preptimes", force: :cascade do |t|
     t.integer "time"
@@ -145,11 +203,13 @@ ActiveRecord::Schema.define(version: 20161018094001) do
   create_table "reps", force: :cascade do |t|
     t.integer  "amount"
     t.integer  "exercise_id"
+    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "reps", ["exercise_id"], name: "index_reps_on_exercise_id"
+  add_index "reps", ["workout_id"], name: "index_reps_on_workout_id"
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
@@ -157,6 +217,7 @@ ActiveRecord::Schema.define(version: 20161018094001) do
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "workout_id"
   end
 
   create_table "styles", force: :cascade do |t|
@@ -187,20 +248,34 @@ ActiveRecord::Schema.define(version: 20161018094001) do
 
   create_table "weights", force: :cascade do |t|
     t.integer  "kilogram"
+    t.integer  "workout_id"
     t.integer  "exercise_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "weights", ["exercise_id"], name: "index_weights_on_exercise_id"
+  add_index "weights", ["workout_id"], name: "index_weights_on_workout_id"
+
+  create_table "workouts", force: :cascade do |t|
+    t.string   "name"
+    t.text     "summary"
+    t.integer  "user_id"
+    t.string   "attachment"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "duration_in_min"
+  end
 
   create_table "zets", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "exercise_id"
+    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "zets", ["exercise_id"], name: "index_zets_on_exercise_id"
+  add_index "zets", ["workout_id"], name: "index_zets_on_workout_id"
 
 end

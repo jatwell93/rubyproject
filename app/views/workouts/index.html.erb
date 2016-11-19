@@ -1,0 +1,63 @@
+<div class="containter">
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
+  <span class="breadcrumb-item active">Workout Plans List</span>
+</nav>
+<%= render 'shared/page_title', title: 'All Workout Plans'%>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <%= link_to "Workout", workouts_path %>
+    </li>
+    <li>
+        <%= link_to "Users", users_path %>
+    </li>
+</ul>
+
+<%= will_paginate %>
+<% @workouts.each do |workout| %>
+  <div class="row">
+        <div class="col-md-2">
+            <section class="chef_info_center">
+                <%= link_to gravatar_for(workout.user, size: 100), user_path(workout.user) %>
+                <h5> User name: <%= workout.user.username %></h5>
+            </section>
+        </div>
+        <div class="col-lg-6 well">
+             <h4><%= link_to workout.name, workout_path(workout) %></h4>
+             <p><%= truncate(workout.summary, length: 350) %><%= link_to 'click to see workout', workout_path(workout)%></p>
+             <% if workout.attachment? %>
+               <p><%= link_to "Download Workout", workout.attachment_url %></p>
+             <% end %>
+             <% if workout.movements.any? %>
+               <p>Movements: <%= render workout.movements %></p>
+             <% end %>
+             <p>
+                <span class='quiet'><small>Created: <%= time_ago_in_words(workout.created_at)%> ago</small></span><br>
+                <span class='quiet'><small>Last edited: <%= time_ago_in_words(workout.updated_at)%> ago</small></span>
+             </p>
+        </div>
+        <!--need to chnage this so its not looping through all athletes, just the current athlete-->
+        <div class="container">
+          <div class="row">
+              <% @athletes.each do |athlete| %>
+                <div class="col-md-10 well member">
+                  <div class="col-md-2 pull-left">
+                    <%= link_to gravatar_for(current_user, size: 100), user_path(current_user) %>
+                  </div>
+                  <%= athlete.full_name %>
+                  <% if current_user %>
+                    <%= link_to "Follow", friendships_path(friend_id: athlete.id), method: :post,
+                        class: "btn btn-primary pull-right" unless current_user.follows_or_same?(athlete) %>
+                  <%end%>
+                </div>
+              <% end %>
+          </div>
+        </div>
+    </div>
+    <hr>
+
+<% end %>
+</div>
+
+<%= will_paginate %>

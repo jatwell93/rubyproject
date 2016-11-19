@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui/datepicker
 //= require jquery_ujs
+//= require chosen-jquery
 //= require bootstrap-sprockets
 //= require raphael.min
 //= require morris

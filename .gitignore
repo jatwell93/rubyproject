@@ -18,3 +18,5 @@
 
 # Ignore all cloud 9 specific files
 .c9/
+# Ignore application configuration
+/config/application.yml

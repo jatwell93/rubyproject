@@ -3,8 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  acts_as_messageable
  
   has_many :exercises
+  has_many :workouts
   has_many :recipes 
   has_many :likes
   has_many :reviews 
@@ -17,6 +20,14 @@ class User < ActiveRecord::Base
   
   def full_name
     "#{first_name} #{last_name}"
+  end
+  
+  def mailboxer_username
+    self.name
+  end
+
+  def mailboxer_email(object)
+    self.email
   end
   
   def self.search_by_name(name)

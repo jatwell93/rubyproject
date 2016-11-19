@@ -14,13 +14,13 @@
         <div class="col-xs-12 col-sm-6">
           <strong>Exercise:</strong>
           </br>
-          <ul>
+          <ol>
             <% @exercise.movements.each do |movement| %>
-            <ol>
+            <li>
               <%= movement.name %>
-            </ol>
+            </li>
             <%end%>
-          </ul>
+          </ol>
           <strong>Weight:</strong>
           </br>
           <ul>
