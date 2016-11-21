@@ -76,4 +76,23 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+    # General Settings
+  config.app_domain = 'https://new2-atwellj.c9users.io/'
+
+  # Email
+  config.action_mailer.delivery_method = :smtp
+    # heroku config:set APP_DOMAIN=myapp.herokuapp.com how to set it up better
+    # config.action_mailer.default_url_options = { :host => ENV['APP_DOMAIN'] }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: config.app_domain }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com', 
+    port: '587',
+    enable_starttls_auto: true,
+    user_name: ENV['gmail_username'],
+    password: ENV['gmail_password'],
+    authentication: :plain,
+    domain: 'somedomain.com'
+  }
 end

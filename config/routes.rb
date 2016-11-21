@@ -13,8 +13,10 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show, :index]
   end
 
-  devise_for :users,  :controllers => {registrations: "registrations"}
-
+  devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  # match '/auth/:provider/callback', to: 'sessions#create', via: 'get'
+  # match '/auth/failure', to: redirect('/'), via: 'get'
   #'other' routes
   root 'pages#home'
   get 'dashboard/index'
