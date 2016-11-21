@@ -3,12 +3,12 @@ is causing issue in ruby.
 Next steps: 
 
 -come back to the calories part
--move onto ruby on rails workout app. 
--move onto youtube workout app
 -build forum
 -build online facebook style chat
 -build a user home page and a fabvourite feature
 -add like feature for workouts 
 -add rating system for a user to rate how they feel on the workout
-
+-fix random workout
+-configure figaro gem 
+-configure AWS
 sudo service elasticsearch start

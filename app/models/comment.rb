@@ -1,7 +1,3 @@
 class Comment < ActiveRecord::Base
-  acts_as_tree order: 'created_at DESC'
-
-  def to_digraph_label
-    title
-  end
+has_many :comments, -> { order('created_at DESC') } ,{as: :commentable, dependent: :destroy}
 end

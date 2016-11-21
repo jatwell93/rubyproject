@@ -1,26 +1,29 @@
 class CommentsController < ApplicationController
-  def index
-    @comments = Comment.hash_tree
-  end
+before_action :find_commentable
 
-  def new
-    @comment = Comment.new(parent_id: params[:parent_id])
-  end
-
-  def create
-
-    if params[:comment][:parent_id].to_i > 0
-      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      @comment = parent.children.build(comment_params)
-    else
-      @comment = Comment.new(comment_params)
+    def new
+      @comment = Comment.new
     end
 
-  end
+    def create
+      @comment = @commentable.comments.new comment_params
 
-  private
+      if @comment.save
+        redirect_to :back, notice: 'Your comment was successfully posted!'
+      else
+        redirect_to :back, notice: "Your comment wasn't posted!"
+      end
+    end
 
-  def comment_params
-    params.require(:comment).permit(:title, :body, :author)
-  end
+    private
+
+    def comment_params
+      params.require(:comment).permit(:body)
+    end
+
+    def find_commentable
+      @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+      @commentable = Recipe.find_by_id(params[:recipe_id]) if params[:recpe_id]
+    end
+
 end

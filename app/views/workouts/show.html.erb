@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-md-12 workout-show-bg"> 
 <div class="containter">
   <nav class="breadcrumb">
     <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
@@ -7,12 +9,12 @@
 </div>  
   
   <%= render 'shared/page_title', title: @workout.name %>
-  
+ 
   <div class="row col-md-7">
     <div>
-      <h3><%= @workout.summary %></h3>
+      <p> <%= simple_format(@workout.summary) %></h3>
       <% if @workout.attachment? %>
-        <p><%= link_to "Download Workout", @workout.attachment_url %></p>
+        <p class="workout-summary"><%= link_to "Download Workout", @workout.attachment_url %></p>
       <% end %>
       <div class="well">
         <div class="row">
@@ -28,33 +30,33 @@
             </ol>
             <strong>Weight:</strong>
             </br>
-            <ul>
+            <ol>
               <% @workout.weights.each do |weight| %>
-              <ol>
+              <li>
                 <%= weight.kilogram %>
-              </ol>
+              </li>
               <%end%>
-            </ul>
+            </ol>
           </div>
           <div class="col-xs-12 col-sm-6">
             <strong>Reps:</strong>
             </br>
-            <ul>
+            <ol>
               <% @workout.reps.each do |rep| %>
-              <ol>
+              <li>
                 <%= rep.amount %>
-              </ol>
+              </li>
               <%end%>
-            </ul>
+            </ol>
             <strong>Sets:</strong>
             </br>
-            <ul>
+            <ol>
               <% @workout.zets.each do |zet| %>
-              <ol>
+              <li>
                 <%= zet.quantity %>
-              </ol>
+              </li>
               <%end%>
-            </ul>
+            </ol>
           </div>
         </div>
       </div>
@@ -105,14 +107,15 @@
               <% end %>
       <h4><i>You may also like: </i></h4>
       <hr>
-        <% @random_workout.each do |recipe| %>
+        <% @random_workout.each do |workout| %>
           <div class="row show-img">
           
             <h4><%= link_to @workout.name, @workout %></h4>
             <%= truncate(@workout.summary, length: 200)%> <small><%=link_to 'click to see more', workout_path(@workout)%></small>
           </div>
         <% end %>
-    </div>
-
+        </div>
 <h5><%= link_to "Return to Workout Plan Listing", workouts_path, class: "btn btn-warning btn-small" %></h5>
+</div>
+    </div>
 </div>

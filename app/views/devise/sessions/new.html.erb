@@ -1,44 +1,55 @@
-<h2 class="text-center">Log in</h2>
-
 <div class="row">
-  <div class="col-md-12">
-    <%= form_for(resource, as: resource_name,:html => {class: 'form-horizontal', role: 'form'},
+  <div class="col-md-12 login-bg">
+    <%= form_for(resource, as: resource_name,:html => {class: 'form-new form-horizontal', role: 'form'},
       url: session_path(resource_name)) do |f| %>
       <div class="form-group">
-        <div class="control-label col-md-3">
-          <%= f.label :email %>
-        </div>
-        <div class="col-md-9">
+        <h2 class="text-center">Log in</h2>
+          
+        <div class="col-md-offset-1 col-md-10">
           <%= f.email_field :email, class: "form-control", autofocus: true %>
         </div>
       </div>
 
       <div class="form-group">
-        <div class="control-label col-md-3">
-          <%= f.label :password %><br />
-        </div>
-        <div class="col-md-9">
-          <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "username" %>
         </div>
       </div>
 
       <div class="form-group">
         <% if devise_mapping.rememberable? -%>
-          <div class="col-md-offset-3 col-md-9">
+          <div class="col-md-offset-1 col-md-10">
+            Remember me?
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            
           </div>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <div class="col-md-offset-3 col-md-9">
-          <%= f.submit "Log in" %>
+      <div class=" form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.submit "Log in", class:"btn btn-success" %>
         </div>
+        <h5 class="h9" >Or use your social login?</h5>
+
+        <div class="col-md-offset-1 col-md-10">
+        <%- if devise_mapping.omniauthable? %>
+          <div class="social">
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <p class="text-center tw"><%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %></p>
+            <% end -%>
+          </div>
+        <% end -%>
+      </div>
       </div>
     <% end %>
-    <div class="col-md-offset-3 col-md-9">
-      <%= render "devise/shared/links" %>
-    </div>
+
   </div>
 </div>
+<script>
+  $(document).ready(function(e){
+     $('h5').on('click',function(){
+        $('.social').stop().slideToggle();
+     });
+  })
+</script>

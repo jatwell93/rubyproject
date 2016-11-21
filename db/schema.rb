@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120115910) do
+ActiveRecord::Schema.define(version: 20161121110742) do
 
   create_table "calories", force: :cascade do |t|
     t.integer "amount"
@@ -35,12 +35,11 @@ ActiveRecord::Schema.define(version: 20161120115910) do
   add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "title"
-    t.string   "author"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "parent_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "directions", force: :cascade do |t|

@@ -8,16 +8,13 @@ Rails.application.routes.draw do
     member do
       post 'like'
       post 'review'
-      post 'comment' #not sure about this line
     end
     resources :reviews, except: [:show, :index]
   end
 
   devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  # match '/auth/:provider/callback', to: 'sessions#create', via: 'get'
-  # match '/auth/failure', to: redirect('/'), via: 'get'
-  #'other' routes
+  
   root 'pages#home'
   get 'dashboard/index'
   get '/home', to: 'pages#home'
@@ -26,13 +23,13 @@ Rails.application.routes.draw do
 
   #recipe routes
   resources :recipes do
+    resources :comments
     collection do
       get 'search'
     end
     member do
       post 'like'
       post 'review'
-      post 'comment' #not sure about this line
     end
     resources :reviews, except: [:show, :index]
   end
@@ -61,16 +58,8 @@ Rails.application.routes.draw do
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
   # conversations
-  resources :conversations do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
+resources :comments do
+    resources :comments
   end
-  
-  get 'comments/index'
-  resources :comments, only: [:index, :create]
-  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
 end
 
