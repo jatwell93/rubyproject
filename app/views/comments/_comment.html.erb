@@ -1,14 +1,13 @@
-<li>
-  <%= comment.body %> -
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
-
+<div class="well">
+  <blockquote>
+    <p><%= comment.body %></p>
+    <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+  </blockquote>
   <%= form_for [comment, Comment.new] do |f| %>
       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
+      <%= f.submit "Reply", class: "btn btn-primary"  %>
       <% end %>
-
   <ul>
       <%= render partial: 'comments/comment', collection: comment.comments %>
   </ul>
-
-</li>
+</div>
