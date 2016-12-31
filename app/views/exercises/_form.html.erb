@@ -15,6 +15,12 @@
         <% end %>
         <div class="form-group">
           <div class="control-label col-md-2">
+            <%= f.label :rating, "RPE (rate of perceived exertion)" %>
+          </div>
+          <div class="col-md-10">
+            <%= f.number_field :rating, within: 1..10, class: "form-control" %>
+          </div>
+          <div class="control-label col-md-2">
             <%= f.label :duration_in_min, "Duration (min)" %>
           </div>
           <div class="col-md-10">
@@ -92,3 +98,35 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+$('#exercise_workout_date').datepicker({ dateFormat: 'yy-mm-dd' });
+
+new Morris.Line({
+// ID of the element in which to draw the chart.!
+element: 'chart',
+// Chart data records -- each entry in this array corresponds to a point on!
+// the chart.!
+data: $('#chart').data('workouts'),
+// The name of the data record attribute that contains x-values. xkey: 'workout_date',!
+// A list of names of data record attributes that contain y-values. ykeys: ['duration_in_min'],!
+// Labels for the ykeys -- will be displayed when you hover over the // chart.!
+xkey: 'workout_date',
+ykeys: ['duration_in_min'],
+labels: ['Duration (min)'],
+xLabels: "day",
+xLabelAngle: 60,
+xLabelFormat: function (x) {
+date_string = x.getFullYear() + "/" + parseInt(x.getMonth() + 1) + "/" + x.getDate();
+return date_string; 
+},
+yLabelFormat: function(y) { return y + ' min'; } 
+});
+});
+</script>
+<script>
+  $('#star-rating').raty({
+    path: 'https://s3.amazonaws.com/rutbustin1/stars/',
+    scoreName: 'exercise[rating]'
+  });
+</script>

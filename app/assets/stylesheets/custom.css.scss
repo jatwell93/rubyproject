@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "social-share-button";
 @mixin box-shadow {
   -webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
   -moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
@@ -34,15 +35,9 @@ body {
   margin-top: -11px;
 }
 
-@media (min-width: 768px) {
-  .navbar-form {
-    display: inline-block !important;
-  }
-}
-
 .sloppy-fix {
   margin-bottom: -16px;
-}
+}//nav
 
 .dropdown-submenu {
   position: relative;
@@ -92,11 +87,7 @@ body {
   border-radius: 6px 0 6px 6px;
 }
 
-@media (max-width: 980px) {
-  .input-group {
-    display: none;
-  }
-}
+
 
 .center {
   text-align: center;
@@ -146,6 +137,17 @@ h2 {
   top: 50%;
   margin-top: -50px;
 }
+// parrallax2 
+.bird-box2 {
+  position: relative;
+  height: 700px;
+  background-image: url('https://i.ytimg.com/vi/m2hm9aqS844/maxresdefault.jpg');
+  background-size: 100% 100%;
+  background-position: top center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 
 div.jumbotron {
   background: #FF5F6D;
@@ -193,7 +195,7 @@ nav.breadcrumb {
   padding-bottom: 35px;
 }
 
-// carou
+// carousel
 .carousel-img {
   min-height: 400px;
   height: 100px;
@@ -205,6 +207,220 @@ nav.breadcrumb {
   height: 100%;
 }
 
+
+// new recipe page 
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid rgba(200,200,200,0.3);
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+// form 
+span.picture {
+  margin-top: 10px;
+}
+
+.input_checkbox input {
+  width: auto !important;
+}
+
+.show_recipe {
+  margin: 10px 10px;
+}
+
+.uploaded {
+  width: 60%;
+  height: 60%;
+}
+
+#food-image {
+  width: 85%;
+  height: 85%;
+  border-radius: 50px;
+}
+.btn-warning {
+  margin-bottom: 10px;
+}
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-alert,
+#error_explanation {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+#error_explanation {
+  padding: 15px 15px 15px 30px;
+  margin-bottom: 30px;
+}
+
+#workout-details {
+  display: block!important;
+  padding-top: 30px;
+  border: 1px solid black;
+}
+
+.show-img {
+  background: white;
+  border-radius: 5px;
+  margin: 5px 5px 40px 5px;
+  @include box-shadow;
+  .image_wrapper {
+    max-width: 100px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+  }
+  img {
+    width: 100%;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    &:hover {
+      transform: scale(1.075);
+    }
+  }
+}
+
+// mailbox 
+.spacer {
+  margin-top: 20px;
+}
+
+// other
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+// new session form
+.form-new {
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  padding-top: 30px;
+  width: 350px;
+  margin: 100px auto;
+  box-shadow: 15px 15px 0px rgba(0, 0, 0, .2);
+}
+
+.login {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.login-bg {
+  margin-top: -50px;
+  margin-bottom: -50px;
+  background: #43cea2;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #43cea2, #185a9d);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #43cea2, #185a9d);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.signup-bg {
+  background: #DCE35B; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #DCE35B , #45B649); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #DCE35B , #45B649); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+.form-actions {
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+.tw {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 0;
+  background: #00b8ff;
+  box-shadow: 0px 3px 0px #008dc3;
+  font-size: 1.2em;
+  color: #fff;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, .1);
+}
+
+.social {
+  display: none;
+}
+
+.h9 {
+  text-align: center;
+  padding: 20px;
+  padding-top: 35px;
+  color: #777;
+  cursor: pointer;
+}
+
+p.workout-summary {
+  color: white;
+}
+
+// comments
+blockquote {
+  font-size: 1em;
+}
+.talk-bubble {
+  border-radius: 0 50px 50px 50px;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, .2);
+}
+.direction {
+  padding-right: 0!important;
+}
+hr.style-three {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 2px 0px;
+}
+div.workout-well {
+  padding: 0 40px 30px 40px;
+}
+
+.edit, .delete {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 // footer
 .footer-distributed {
   background-color: #101010;
@@ -345,195 +561,19 @@ nav.breadcrumb {
   }
 }
 
-// new recipe page 
-input,
-textarea,
-select,
-.uneditable-input {
-  border: 1px solid rgb(245, 108, 80);
-  border-radius: 5px;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
-}
-
-// form 
-span.picture {
-  margin-top: 10px;
-}
-
-.input_checkbox input {
-  width: auto !important;
-}
-
-.show_recipe {
-  margin: 10px 10px;
-}
-
-.uploaded {
-  width: 60%;
-  height: 60%;
-}
-
-#food-image {
-  width: 85%;
-  height: 85%;
-  border-radius: 50px;
-}
-
-.alert-error {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
-  text-align: left;
-}
-
-.alert-alert,
-#error_explanation {
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  color: #a94442;
-  text-align: left;
-}
-
-.alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-  text-align: left;
-}
-
-.alert-notice {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-  text-align: left;
-}
-
-#error_explanation {
-  padding: 15px 15px 15px 30px;
-  margin-bottom: 30px;
-}
-
-#workout-details {
-  display: block!important;
-  padding-top: 30px;
-  border: 1px solid black;
-}
-
-.show-img {
-  background: white;
-  border-radius: 5px;
-  margin: 5px 5px 40px 5px;
-  @include box-shadow;
-  .image_wrapper {
-    max-width: 100px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-  }
-  img {
-    width: 100%;
-    -webkit-transition: all .3s ease-out;
-    -moz-transition: all .3s ease-out;
-    -o-transition: all .3s ease-out;
-    transition: all .3s ease-out;
-    &:hover {
-      transform: scale(1.075);
-    }
+// media queries 
+@media (max-width: 800px) {
+  ol {
+    text-align: center;
   }
 }
-
-// mailbox 
-.spacer {
-  margin-top: 20px;
+@media (max-width: 980px) {
+  .input-group {
+    display: none;
+  }
 }
-
-// other
-hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-
-// new session form
-.form-new {
-  background: #fff;
-  border-radius: 6px;
-  padding: 20px;
-  padding-top: 30px;
-  width: 300px;
-  margin: 100px auto;
-  box-shadow: 15px 15px 0px rgba(0, 0, 0, .2);
-}
-
-.login {
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: 700;
-  color: #ccc;
-  margin-bottom: 24px;
-}
-
-.login-bg {
-  margin-top: -50px;
-  margin-bottom: -50px;
-  background: #43cea2;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #43cea2, #185a9d);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #43cea2, #185a9d);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.form-actions {
-  margin: 0;
-  background-color: transparent;
-  text-align: center;
-}
-
-.tw {
-  position: relative;
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 0;
-  background: #00b8ff;
-  box-shadow: 0px 3px 0px #008dc3;
-  font-size: 1.2em;
-  color: #fff;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, .1);
-}
-
-.social {
-  display: none;
-}
-
-.h9 {
-  text-align: center;
-  padding: 20px;
-  padding-top: 35px;
-  color: #777;
-  cursor: pointer;
-}
-
-// show workouts
-.workout-show-bg {
-  background: #bdc3c7;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #bdc3c7, #2c3e50);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #bdc3c7, #2c3e50);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-p.workout-summary {
-  color: white;
-}
-
-// comments
-blockquote {
-  font-size: 1em;
+@media (min-width: 768px) {
+  .navbar-form {
+    display: inline-block !important;
+  }
 }

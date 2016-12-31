@@ -35,8 +35,8 @@ gem 'devise'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'bootstrap-datepicker-rails'
 gem 'social-share-button', '~> 0.1.6'
-
-
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
+gem 'ranked-model'
 
 group :development, :test do
   gem 'byebug'

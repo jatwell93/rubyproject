@@ -1,0 +1,1 @@
+json.partial! "bodyweights/bodyweight", bodyweight: @bodyweight

@@ -13,6 +13,14 @@ before_action :find_commentable
       render :new
     end
   end
+  
+  def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
     private
 
@@ -23,6 +31,7 @@ before_action :find_commentable
     def find_commentable
       @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
       @commentable = Recipe.find_by_id(params[:recipe_id]) if params[:recipe_id]
+      @commentable = Workout.find_by_id(params[:workout_id]) if params[:workout_id]
     end
 
 end
