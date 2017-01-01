@@ -16,9 +16,8 @@ class User < ActiveRecord::Base
   has_many  :likes
   has_many  :reviews 
   has_many  :friendships
-  has_many  :bodyweights
   has_many  :friends, through: :friendships, class_name: "User"
-  has_many  :identities, dependent: :destroy
+  has_many :identities, dependent: :destroy
     
   self.per_page = 10
   
@@ -71,6 +70,45 @@ class User < ActiveRecord::Base
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 
+  # def self.from_omniauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.provider = auth.provider 
+  #     user.uid      = auth.uid
+  #     user.username = auth.info.nickname
+  #     user.save
+  #   end
+  # end
+  
+  # def self.new_with_session(params, session)
+  #   if session["devise.user_attributes"]
+  #     new(session["devise.user_attributes"], without_protection: true) do |user|
+  #       user.attributes = params
+  #       user.valid?
+  #     end
+  #   else
+  #     super
+  #   end
+  # end
+  
+  # def password_required?
+  #   super && provider.blank?
+  # end
+  
+  # def update_with_password(params, *options)
+  #   if encrypted_password.blank?
+  #     update_attributes(params, *options)
+  #   else
+  #     super
+  #   end
+  # end
+
+  # def create
+  #       user = User.from_omniauth(env["omniauth.auth"])
+  #       session[:user_id] = user.id 
+  #       session[:user_name] = user.name
+
+  #     redirect_to root_path
+  # end
 
   def full_name
     "#{first_name} #{last_name}"

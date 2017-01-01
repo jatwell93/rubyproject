@@ -1,21 +1,19 @@
 <div class="col-md-8 col-xs-12">
     <% unless @exercises.empty?  %>
       <h1>Listing Workouts</h1>
-      <table class="table table-hover table-responsive">
-        <thead class="thead-inverse">
+      <table class="table table-striped table-responsive">
+        <thead>
           <tr>
             <th>Duration</th>
-            <th>Difficulty/RPE</th>
             <th>Workout Details</th>
             <th>Activity Date</th>
-            <th colspan="2"></th>
+            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% @exercises.each do |exercise| %>
           <tr>
             <td><%= exercise.duration_in_min %></td>
-            <td><%= exercise.rating %></td>
             <td><%= truncate(exercise.workout, length: 100) %></td>
             <td><%= exercise.workout_date %></td>
             <td><%= link_to "Show", [current_user, exercise] %></td>
@@ -58,31 +56,3 @@
   </table>
   <% end %>
 </div>
-<script>
-  $(document).ready(function() {
-  $('#exercise_workout_date').datepicker({ dateFormat: 'yy-mm-dd' });
-  
-  new Morris.Line({
-  // ID of the element in which to draw the chart.!
-  element: 'chart',
-  // Chart data records -- each entry in this array corresponds to a point on!
-  // the chart.!
-  data: $('#chart').data('workouts'),
-  // The name of the data record attribute that contains x-values. xkey: 'workout_date',!
-  // A list of names of data record attributes that contain y-values. ykeys: ['duration_in_min'],!
-  // Labels for the ykeys -- will be displayed when you hover over the // chart.!
-  xkey: 'workout_date',
-  ykeys: ['duration_in_min', 'rating'],
-  labels: ['Duration (min)', 'Rate of perceived exertion (RPE)'],
-  xLabels: "day",
-  xLabelAngle: 60,
-  lineColors:['gray','red'],
-  xLabelFormat: function (x) {
-  date_string = x.getFullYear() + "/" + parseInt(x.getMonth() + 1) + "/" + x.getDate();
-  return date_string; 
-  },
-  yLabelFormat: function(y) { return y + ' '; }
-  });
-  });
-  
-</script>

@@ -7,8 +7,6 @@ class Workout < ActiveRecord::Base
   has_many :zets
   has_many :weights  
   has_many :reviews
-  has_many :likes
-  has_many :comments, as: :commentable
   
   accepts_nested_attributes_for :movements,
   															reject_if: proc { |attributes| attributes['name'].blank? },
@@ -29,12 +27,4 @@ class Workout < ActiveRecord::Base
   validates :reps, presence: true
   validates :zets, presence: true
   validates :weights, presence: true
-  
-    def thumbs_up_total
-       self.likes.where(like: true).size 
-    end
-    
-    def thumbs_down_total
-        self.likes.where(like: false).size
-    end
 end

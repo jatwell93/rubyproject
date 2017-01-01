@@ -1,67 +1,76 @@
+<h2 class="text-center">Sign up</h2>
+
 <div class="row">
-  <div class="col-md-12 signup-bg">
-<%= form_for(resource, as: resource_name,:html => {class: 'form-new form-horizontal', role: 'form'},
+  <div class="col-md-12">
+<%= form_for(resource, as: resource_name,:html => {class: 'form-horizontal', role: 'form'},
     url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-    <h2 class="text-center">Sign up</h2>
+
     <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.text_field :username, class: "form-control", autofocus: true, placeholder: "*Username" %>
-        </div>
+      <div class="control-label col-md-3">
+        <%= f.label :username %>
       </div>
+      <div class="col-md-9">
+        <%= f.text_field :username, class: "form-control", autofocus: true %>
+      </div>
+    </div>
     
     <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.text_field :first_name, class: "form-control", autofocus: true, placeholder: "First name" %>
-        </div>
+      <div class="control-label col-md-3">
+        <%= f.label :first_name %>
+      </div>
+      <div class="col-md-9">
+        <%= f.text_field :first_name, class: "form-control", autofocus: true %>
+      </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.text_field :last_name, class: "form-control", autofocus: true, placeholder: "Last name" %>
-        </div>
+      <div class="control-label col-md-3">
+        <%= f.label :last_name %>
+      </div>
+      <div class="col-md-9">
+        <%= f.text_field :last_name, class: "form-control", autofocus: true %>
+      </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.email_field :email, class: "form-control", autofocus: true, placeholder:"*example@example.com" %>
-        </div>
+      <div class="control-label col-md-3">
+        <%= f.label :email %>
+      </div>
+      <div class="col-md-9">
+        <%= f.email_field :email, class: "form-control", autofocus: true %>
+      </div>
     </div>
       <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
+        <div class="control-label col-md-3">
+          <%= f.label :password %>
+        </div>
+        <div class="col-md-9">
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder:"*Minimum 6 characters" %>
+          <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
         </div>
       </div>
   
       <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder:"*Confirm password" %>
+        <div class="control-label col-md-3">
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class="col-md-9">
+          <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
         </div>
       </div>
-      <div class=" form-group">
-        <div class="col-md-offset-1 col-md-10">
-          <%= f.submit "Sign up", class:"btn btn-success" %>
-        </div>
-              <h5 class="h9" >Or use your social login?</h5>
-
-        <div class="col-md-offset-1 col-md-10">
-        <%- if devise_mapping.omniauthable? %>
-          <div class="social">
-            <%- resource_class.omniauth_providers.each do |provider| %>
-              <p class="text-center tw"><%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %></p>
-            <% end -%>
-          </div>
-        <% end -%>
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <%= f.submit "Sign up" %>
+      </div>
     </div>
     <% end %>
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
 </div>
-<script>
-  $(document).ready(function(e){
-     $('h5').on('click',function(){
-        $('.social').stop().slideToggle();
-     });
-  })
-</script>

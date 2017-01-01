@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  
   #workout routes
   resources :workouts do
-    resources :comments
     collection do
       get 'search'
     end
@@ -13,12 +11,10 @@ Rails.application.routes.draw do
     end
     resources :reviews, except: [:show, :index]
   end
-  
-  # users rotues
+
   devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   
-  #page routes
   root 'pages#home'
   get 'dashboard/index'
   get '/home', to: 'pages#home'
@@ -45,10 +41,9 @@ Rails.application.routes.draw do
     end
   end
     resources :users do #might be relatable to comment
-      resources :exercises 
-      resources :bodyweights
+    resources :exercises 
   end
-  #resources
+  
   resources :calories, only: [:new, :create, :show]
   resources :feeds, only: [:new, :create, :show]
   resources :preptimes, only: [:new, :create, :show]
@@ -62,17 +57,9 @@ Rails.application.routes.draw do
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
-    # conversations
-  resources :conversations do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
+  # conversations
+resources :comments do
+    resources :comments
   end
-  #commen
-  resources :comments do
-      resources :comments
-    end
-  end
+end
 

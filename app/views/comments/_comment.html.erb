@@ -1,13 +1,11 @@
-<div class="well talk-bubble">
+<div class="well">
   <blockquote>
-    <div class="arrow bottom right"></div>
     <p><%= comment.body %></p>
     <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
-    <p><%= link_to 'Delete', @comment, method: :delete, data: { confirm: "Are you sure?" } %></p>
   </blockquote>
   <%= form_for [comment, Comment.new] do |f| %>
       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply", class: "btn btn-primary"  %><br/>
+      <%= f.submit "Reply", class: "btn btn-primary"  %>
       <% end %>
   <ul>
       <%= render partial: 'comments/comment', collection: comment.comments %>

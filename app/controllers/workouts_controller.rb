@@ -5,6 +5,7 @@ class WorkoutsController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def index
+   
     @athletes = User.paginate(:page => params[:page])
     @workouts = Workout.paginate(page: params[:page], per_page: 5)
   end
@@ -78,17 +79,6 @@ class WorkoutsController < ApplicationController
     Review.find(params[:revid]).destroy
     flash[:success] = "Review deleted"
     redirect_to :back
-  end
-  
-  def like 
-    like = Like.create(like: params[:like], user: current_user, workout: @workout)
-    if like.valid?
-      flash[:success] = "Your selection was successful"
-      redirect_to :back
-    else
-      flash[:danger] = "You can only like/dislike a recipe once"
-      redirect_to :back
-    end
   end
   
   private

@@ -4,22 +4,11 @@ Next steps:
 
 -come back to the calories part
 -build forum
--build favourite feature
--add a meal plan feature
+-build online facebook style chat
+-build a user home page and a fabvourite feature
+-add like feature for workouts 
+-add rating system for a user to rate how they feel on the workout
+-fix random workout
 -configure figaro gem 
 -configure AWS
--add delete to comments and fix the show action 
--fix workout show page to only show user who posted, along with a button to add them as a friend and message them
--complete phone notes
--fix imagemagik
--add dropdown box for workouts (probably need react)
--fix facebook login (no application?!)
--refactor and speed up
--deploy
--add image avatar to mailbox
--add font awesomes to icons
--change to 'birthday' social share icons
--add BMI calculation into bodyweights
--change to link back to previous page
-
 sudo service elasticsearch start

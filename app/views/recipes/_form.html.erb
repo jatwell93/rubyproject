@@ -7,8 +7,7 @@
             
             <%= f.label :summary %>
             <%= f.text_field :summary, placeholder: 'Short summary of the dish' %>
-        
-            <div class="col-md-6 direction">
+            
             <%= f.label :Ingredient %>
               <%= f.fields_for :ingredients do |ingredient| %>
                 <%= render 'ingredient_fields', f: ingredient %>
@@ -17,12 +16,7 @@
             <%= link_to_add_association 'Add Ingredient', f, :ingredients, class: "pull-right d-inline-block btn btn-primary add-button" %>
           </div>
             </br>
-            </br>              
-           
-        </div>
-        
-            <div class="col-md-6 direction">
-              
+            </br>
            <%= f.label :Directions %>
               <%= f.fields_for :directions do |direction| %>
                 <%= render 'direction_fields', f: direction %>
@@ -32,8 +26,6 @@
           </div>
             </br>
             </br>
-            </div>
-                
             <%= f.label :Notes %>
             <%= f.text_area :description, rows:10, 
             placeholder: 
@@ -45,7 +37,7 @@
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
              <% end %>
             <br>
-            <br>
+ <br>
             <strong>Feeds: </strong>
            <%= f.collection_check_boxes :feed_ids, Feed.all, :id, :people do |cb| %>
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
@@ -58,7 +50,7 @@
              <% end %>
             <br>
              <br>
-            <strong>Calories: </strong>
+            <strong>calories: </strong>
 
             <br>
              <br>

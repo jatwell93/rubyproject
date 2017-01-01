@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
-    @user = current_user
   end
   
   def show
@@ -59,7 +58,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "#{current_user.username} " + 'you can only like/dislike once per item.'
+      flash[:danger] = "You can only like/dislike a recipe once"
       redirect_to :back
     end
   end
