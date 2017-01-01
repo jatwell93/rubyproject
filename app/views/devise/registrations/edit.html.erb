@@ -1,44 +1,107 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-    <div class="form-group">
-      <div class="control-label col-md-3">
-        <%= f.label :username %>
+<h2class="text-center">Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="col-md-12 signup-bg">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+              <%= f.text_field :username, class: "form-control", autofocus: true, placeholder: "*Username" %>
+            </div>
+          </div>
+      <div class="form-group">
+          <div class="col-md-offset-1 col-md-10">
+            <%= f.email_field :email, class: "form-control", autofocus: true, placeholder:"*example@example.com" %>
+          </div>
       </div>
-      <div class="col-md-9">
-        <%= f.text_field :username, class: "form-control", autofocus: true %>
-      </div>
-    </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  
+        <div class="form-group">
+          <div class="col-md-offset-1 col-md-10">
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder:"leave blank if you dont want to change it" %>
+          </div>
+        </div>
+  
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.label :current_password %> <br />
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+  
+  <h3>Cancel my account</h3>
+  
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  
+  <%= link_to "Back", :back %>
+</div>
+<div class="row">
+  <div class="col-md-12 signup-bg">
+<%= form_for(resource, as: resource_name,:html => {class: 'form-new form-horizontal', role: 'form'},
+    url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+    <h2 class="text-center">Edit account</h2>
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.text_field :username, class: "form-control", autofocus: true, placeholder: "*Username" %>
+        </div>
+      </div>
+    
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.text_field :first_name, class: "form-control", autofocus: true, placeholder: "First name" %>
+        </div>
+    </div>
 
-<h3>Cancel my account</h3>
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.text_field :last_name, class: "form-control", autofocus: true, placeholder: "Last name" %>
+        </div>
+    </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.email_field :email, class: "form-control", autofocus: true, placeholder:"*example@example.com" %>
+        </div>
+    </div>
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder:"*Minimum 6 characters" %>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder:"*Confirm password" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-10"><i>(we need your current password to confirm your changes)</i>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control", autocomplete: "off", placeholder:"Current password to confirm your changes" %>
+        </div>
+      </div>
+      <div class=" form-group">
+        <div class="col-md-offset-1 col-md-10">
+          <%= f.submit "Update", class:"btn btn-success" %>
+        </div>
+        <div class="col-md-offset-1 col-md-10">
+          <h3>Cancel my account</h3>
+          <i>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></i>
+        </div>
+        <br>
+    </div>
+    <% end %>
+</div>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121110742) do
+ActiveRecord::Schema.define(version: 20161226012149) do
+
+  create_table "bodyweights", force: :cascade do |t|
+    t.integer  "body_weight"
+    t.integer  "height"
+    t.integer  "bmi"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bodyweights", ["user_id"], name: "index_bodyweights_on_user_id"
 
   create_table "calories", force: :cascade do |t|
     t.integer "amount"
@@ -40,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161121110742) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "user_id"
   end
 
   create_table "directions", force: :cascade do |t|
@@ -58,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161121110742) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "rating"
   end
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
@@ -101,6 +114,7 @@ ActiveRecord::Schema.define(version: 20161121110742) do
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "workout_id"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
@@ -276,6 +290,7 @@ ActiveRecord::Schema.define(version: 20161121110742) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "duration_in_min"
+    t.integer  "rating"
   end
 
   create_table "zets", force: :cascade do |t|

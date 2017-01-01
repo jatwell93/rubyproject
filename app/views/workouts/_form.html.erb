@@ -1,13 +1,13 @@
 <div class="well">
   <div class='row'>
     <div class='col-md-12'>
-      <%= form_for(@workout, html: { multipart: true }) do |f| %>
-        <% if @workout.errors.any? %>
+      <%= form_for([current_user, @bodyweight], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <% if @bodyweight.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@workout.errors.count, "error") %>
+            <h2><%= pluralize(@bodyweight.errors.count, "error") %>
               prohibited this exercise from being saved: </h2>
             <ul>
-              <% @workout.errors.full_messages.each do |message| %>
+              <% @bodyweight.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>
@@ -15,71 +15,21 @@
         <% end %>
         <div class="form-group">
           <div class="control-label col-md-2">
-            <%= f.label :name, "Workout name" %><br>
+            <%= f.label :body_weight, "Bodyweight" %>
           </div>
           <div class="col-md-10">
-            <%= f.text_field :name, class: "form-control" %>
+            <%= f.number_field :bodyweight, within: 1..2000, class: "form-control" %>
           </div>
-        </div>
-        <div class="form-group">
           <div class="control-label col-md-2">
-            <%= f.label :summary, "Summary", placeholder: "Who's this for? what experience level? Athletes or Bodybuilders etc"  %>
+            <%= f.label :height, "Height" %>
+          </div>
+          <div class="control-label col-md-2">
+            <%= f.label :date, "Date" %>
           </div>
           <div class="col-md-10">
-            <%= f.text_area :summary, class: "form-control", rows: 10%>
+            <%= f.text_field :date, class: "form-control", id: "exercise_workout_date" %>
           </div>
         </div>
-      <div class="clearfix">
-        <div class="col-lg-3 col-md-6">
-        <%= f.label :Movement %>
-          <%= f.fields_for :movements do |movement| %>
-            <%= render 'movement_fields', f: movement %>
-        <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Add movement', f, :movements, class: "pull-right d-inline-block btn btn-primary add-button" %>
-              </br>
-              </br>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-             <%= f.label :Reps %>
-                <%= f.fields_for :reps do |rep| %>
-                  <%= render 'rep_fields', f: rep %>
-                <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Add Reps', f, :reps, class: "pull-right d-inline-block btn btn-primary add-button" %>
-            </br>
-            </br>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-        <%= f.label :Sets %>
-                <%= f.fields_for :zets do |zet| %>
-                  <%= render 'zet_fields', f: zet %>
-                <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Add Set', f, :zets, class: "pull-right d-inline-block btn btn-primary add-button" %>
-            </div>
-              </br>
-              </br>
-        </div>
-        <div class="col-lg-3 col-md-6">
-             <%= f.label :Weights %>
-                <%= f.fields_for :weights do |weight| %>
-                  <%= render 'weight_fields', f: weight %>
-                <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Add weight', f, :weights, class: "pull-right d-inline-block btn btn-primary add-button" %>
-            </div>
-              </br>
-              </br> 
-        </div>
-        <strong>Upload image: </strong>
-            <span class="picture">
-                <%= f.file_field :attachment %>
-            </span>
-      </div>
-
         <div class="form-group">
           <div class="col-md-offset-2 col-md-10">
             <%= f.submit class: "btn btn-success btn-lg" %>
@@ -88,4 +38,3 @@
       <% end %>
     </div>
   </div>
-</div>

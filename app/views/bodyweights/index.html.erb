@@ -1,0 +1,88 @@
+<div class="col-md-8 col-xs-12">
+    <% unless @bodyweights.empty?  %>
+      <h1>Listing Bodyweight tracking</h1>
+      <table class="table table-hover table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Bodyweight</th>
+            <th>Height</th>
+            <th>BMI</th>
+            <th>Date</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bodyweights.each do |bodyweight| %>
+          <tr>
+            <td><%= bodyweight.body_weight %></td>
+            <td><%= bodyweight.height %></td>
+            <td><%= bodyweight.body_weight/(bodyweight.height*100)*bodyweight.height %></td>
+            <td><%= bodyweight.created_at %></td>
+            <td><%= link_to "Show", [current_user, bodyweight] %></td>
+            <td><%= link_to "Edit", [:edit, current_user, bodyweight] %></td>
+            <td><%= link_to "Destroy", [current_user, bodyweight], method: :delete, data: {confirm: "Are you sure?"} %></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <br>
+    <%else%>
+      <div class="alert alert-danger message-font text-center">
+        No Bodyweight yet
+      </div>
+    <%end%>
+    <hr>
+    <%= link_to "New Bodyweight", new_user_bodyweight_path(current_user), class: "btn btn-primary link" %>
+    <%= content_tag :div, "", id: 'chart', data: {workouts: @bodyweights}, class: "chart" %>
+</div>
+<div class="col-md-4 col-xs-12">
+  <h1 class="text-center">My Friends</h1>
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <div class="col-md-offset-3 col-md-6 friend-name">
+          <td> <%= link_to gravatar_for(current_user, size: 100), user_path(current_user) %></td>
+          <td class="pull-left"><%= link_to friend.full_name, friendship_path(current_user.current_friendship(friend)) %></td>
+        </div>
+        <div class="col-md-3">
+          <div class="btn-unfollow">
+            <td><%= link_to "Unfollow", friendship_path(current_user.current_friendship(friend)), method: :delete,
+           data: {confirm: "Are you sure?"}, class: "btn btn-primary link pull-right" %></td>
+          </div>
+        </div>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function() {
+  $('#bodyweight_workout_date').datepicker({ dateFormat: 'yy-mm-dd' });
+  
+  new Morris.Line({
+  // ID of the element in which to draw the chart.!
+  element: 'chart',
+  // Chart data records -- each entry in this array corresponds to a point on!
+  // the chart.!
+  data: $('#chart').data('workouts'),
+  // The name of the data record attribute that contains x-values. xkey: 'workout_date',!
+  // A list of names of data record attributes that contain y-values. ykeys: ['duration_in_min'],!
+  // Labels for the ykeys -- will be displayed when you hover over the // chart.!
+  xkey: 'created_at',
+  ykeys: ['body_weight'],
+  labels: ['Bodyweight'],
+  xLabels: "day",
+  xLabelAngle: 60,
+  lineColors:['red'],
+  xLabelFormat: function (x) {
+  date_string = x.getFullYear() + "/" + parseInt(x.getMonth() + 1) + "/" + x.getDate();
+  return date_string; 
+  },
+  yLabelFormat: function(y) { return y + ' '; }
+  });
+  });
+  
+</script>

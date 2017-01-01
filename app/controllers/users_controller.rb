@@ -9,7 +9,14 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     @recipes = @user.recipes.paginate(page: params[:page], per_page: 3)
-    # authorize! :read, @user
+    @workouts = @user.workouts.paginate(page: params[:page], per_page: 3)
+    @workout = Workout.find(params[:id])
+    @random_workout = Workout.where.not(id: @workout).order("RANDOM()").first(3)
+    @exercise = current_user.exercises.find(params[:id])
+    @exercises = current_user.exercises.all
+    @bodyweight = current_user.bodyweights.find(params[:id])
+    @bodyweights = current_user.bodyweights.all
+    @friends = current_user.friends
   end
 
   # GET /users/:id/edit
@@ -23,7 +30,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
-        format.html { redirect_to @user, notice: 'Your profile was successfully updated.' }
+        format.html { redirect_to @user, notice: "#{current_user.username}" + 'your profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -47,6 +54,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def like 
+    like = Like.create(like: params[:like], user: current_user, workout: @workout)
+    if like.valid?
+      flash[:success] = "Your selection was successful"
+      redirect_to :back
+    else
+      flash[:danger] = "#{current_user.username}" + 'you can only like/dislike once per item.'
+      redirect_to :back
+    end
+  end
   # DELETE /users/:id.:format
   def destroy
     # authorize! :delete, @user
