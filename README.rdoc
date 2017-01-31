@@ -6,12 +6,11 @@ Next steps:
 -build forum
 -build favourite feature
 -add a meal plan feature
--configure figaro gem 
--configure AWS
 -add delete to comments and fix the show action 
 -fix workout show page to only show user who posted, along with a button to add them as a friend and message them
 -complete phone notes
 -fix imagemagik
+-hide omni auth keys 
 -add dropdown box for workouts (probably need react)
 -fix facebook login (no application?!)
 -refactor and speed up

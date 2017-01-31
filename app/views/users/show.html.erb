@@ -59,12 +59,12 @@
 <% @workouts.each do |workout| %>
     <div class="row">
         <div class="container well">
-                 <h4><%= link_to workout.name, workout_path(workout) %></h4>
-                 <p><%= workout.summary %></p>
-                 <p>
-                     <span class='quiet'><small>Created: <%= time_ago_in_words(workout.created_at)%> ago</small></span><br>
-                     <span class='quiet'><small>Last edited: <%= time_ago_in_words(workout.updated_at)%> ago</small></span>
-                 </p>
+           <h4><%= link_to workout.name, workout_path(workout) %></h4>
+           <p><%= workout.summary %></p>
+           <p>
+               <span class='quiet'><small>Created: <%= time_ago_in_words(workout.created_at)%> ago</small></span><br>
+               <span class='quiet'><small>Last edited: <%= time_ago_in_words(workout.updated_at)%> ago</small></span>
+           </p>
             <div class="pull-right">
                 <%= link_to like_workout_path(workout, like: true), method: :post do %>
                     <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= workout.thumbs_up_total %>
