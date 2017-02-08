@@ -20,5 +20,44 @@ Next steps:
 -change to 'birthday' social share icons
 -add BMI calculation into bodyweights
 -change to link back to previous page
+-add redcarpet and friendly_id
 
 sudo service elasticsearch start
+
+<div class= "row">
+    <div class="container">
+        <% unless @bodyweights.empty?  %>
+      <h1>Listing Bodyweight</h1>
+      <table class="table table-hover table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Bodyweight</th>
+            <th>Height</th>
+            <th>BMI</th>
+            <th>Date</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bodyweights.each do |bodyweight| %>
+          <tr>
+            <td><%= bodyweight.body_weight %></td>
+            <td><%= bodyweight.height %></td>
+            <td><%= bodyweight.body_weight/(bodyweight.height*100)*bodyweight.height %></td>
+            <td><%= bodyweight.created_at %></td>
+            <td><%= link_to "Show", [current_user, bodyweight] %></td>
+            <td><%= link_to "Edit", [:edit, current_user, bodyweight] %></td>
+            <td><%= link_to "Destroy", [current_user, bodyweight], method: :delete, data: {confirm: "Are you sure?"} %></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <br>
+    <%else%>
+      <div class="alert alert-danger message-font text-center">
+        No Bodyweight yet
+      </div>
+    <%end%>
+    <%= link_to "New Bodyweight", new_user_bodyweight_path(current_user), class: "btn btn-primary link" %>
+    <%= content_tag :div, "", id: 'bwchart', data: {workouts: @bodyweights}, class: "bwchart" %>
+</div>

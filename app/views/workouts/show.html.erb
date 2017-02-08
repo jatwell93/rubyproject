@@ -60,7 +60,7 @@
         </div>
           <% if logged_in? and (@workout.user == current_user || current_user.admin?) %>
             <%= link_to "Edit this Workout", edit_workout_path(@workout), class: "btn btn-success pull-right edit" %>
-          <% end %> 
+          <% end %> &nbsp&nbsp
           <% if logged_in? and (@workout.user == current_user || current_user.admin?) %>
             <%= link_to "[Delete Workout]", @workout, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
           <% end %>
@@ -71,6 +71,13 @@
         <p>
           <h5>Brought to you by: <%= @workout.user.username %></h5>
         </p>
+          <% @athletes.each do |athlete| %>
+              <% if current_user %>
+                <%= link_to "Follow", friendships_path(friend_id: athlete.id), method: :post,
+                    class: "btn btn-primary" unless current_user.follows_or_same?(athlete) %>
+              <%end%>
+          <% end %>
+
         </br>
         <h3><br/>Reviews</h3>
             <% if @workout.reviews.any? %>
@@ -80,7 +87,7 @@
                   <div class="col-md-2 pull-right">
                     <%= link_to gravatar_for(c.user, size: 100), user_path(c.user) %>
                   <strong><%= c.user.username.downcase.capitalize %> </strong>
-                  </div>
+                </div>
                     <p> <%= c.body %> </p>
                     <i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i>
                     
@@ -113,26 +120,8 @@
   <div class="jumbotron">
     <h1 class="display-3">Join the conversation!</h1>
     <p class="lead">Comment below and join the conversation taking place about this Workout</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+
     </p>
   </div>
-  <a href="javascript:toggleDiv('myContent');" class="btn btn-lg btn-info">Hide/Show comments...</a>
-  </br>
-  <div class="container well" id="myContent">
-    <h3>Comments</h3>
-    
-    <%= form_for [@workout, Comment.new] do |f| %>
-    <%= f.text_area :body, placeholder: "Add a comment" %><br/>
-    <%= f.submit "Add Comment", class:"btn btn-success" %>
-    <% end %>
-    
-    <ul>
-      <%= render(partial: 'comments/comment', collection: @workout.comments) %>
-    </ul>
-  </div>  
+  <%= render 'disquis' %>
 </div>
-<script type="text/javascript">
-function toggleDiv(divId) {
-   $("#"+divId).toggle();
-}
-</script>

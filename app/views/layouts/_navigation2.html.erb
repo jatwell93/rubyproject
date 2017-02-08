@@ -10,7 +10,7 @@
         </button>
         <div id="logo">
           <%= link_to root_path, class: "btn btn-default btn-success", id: "logo" do %>
-            myTrainer <i class="fa fa-cutlery" aria-hidden="true"></i>
+            FitnessLab <i class="fa fa-cutlery" aria-hidden="true"></i>
           <% end %>
         </div>
       </div>
@@ -58,23 +58,6 @@
                   <% end %>
               </li>
                 </ul>
-                  <li class="divider"></li>
-                  <li class="dropdown-submenu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calories</a>
-                    <ul class="dropdown-menu">
-                      <% Calorie.all.each do |calorie| %>
-                        <li id="calories"><%= link_to calorie.amount, calory_path(calorie) %></li>
-                      <% end %>
-                <% if logged_in? %>
-                  <li class="divider"></li>
-                    <li>
-                      <%= link_to(new_calory_path) do %>
-                        New Calorie
-                      <% end %>
-                    </li>
-                <% end %>
-                  </li>
-                    </ul>
                       <li class="divider"></li>
                         <li class="dropdown-submenu">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Feeds</a>
@@ -130,7 +113,6 @@
             <li><%= link_to "Workout plans", workouts_path %></li>
             <li><%= link_to "New Workout plan", new_workout_path %></li>
             <li><%= link_to "Dashboard", dashboard_index_path(current_user) %></li>
-            <li><%= link_to "Extra", "#" %></li>
           </ul>
         <li class="dropdown"><%= link_to '#', "data-toggle" => "dropdown" do %>
             <%="#{current_user.username}"%> <b class="caret"></b>

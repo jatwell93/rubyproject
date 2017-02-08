@@ -1,7 +1,7 @@
 
 <div class="center jumbotron">
-  <h1>Welcome to A & K Labs Recipes</h1>
-  <h2>This is the home page for our recipe blog</h2>
+  <h1>Welcome to Fitness Lab</h1>
+  <h2>This is the here you can track workouts, create recipes to share along with your workout plans</h2>
   <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-success"%>
 </div>
 
@@ -9,10 +9,10 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <h3 class="midrow">
-        View recipes as a Guest User
+        View recipes and workouts as a Guest User
       </h3>
       <h2 class="left">
-        Browse and view recipes as a Guest then Sign up later
+        Browse and view recipes and workouts as a Guest then Sign up later
       </h2>
       <p><%= link_to "Browse Recipe Listings", recipes_path, class:"btn btn-small btn-warning"%></p>
     </div>
@@ -23,9 +23,9 @@
       <h2 class="left">
         <ul>
           <li>Add new Recipes</li>
-          <li>Update Recipes</li>
+          <li>Add new Workout plans</li>
           <li>Add reviews</li>
-          <li>Update account</li>
+          <li>Track Workouts</li>
         </ul>
       </h2>
       <p><%= link_to "Sign in", new_user_session_path, class:"btn btn-small btn-warning"%></p>
@@ -35,7 +35,7 @@
         Checkout our store
       </h3>
       <h2 class="left">
-        <p>Have a look through our supplement store and checkout our great products.</p>
+        <p>While you're here we'd love you to have a look through our supplement store and checkout our great products.</p>
         <small><p>(10% of all the profits from this store go to charities around the world)</p></small>
       </h2>
       <p><%= link_to "A&K Supplements", "http://www.aandklabs.com/", class:"btn btn-small btn-warning"%></p>

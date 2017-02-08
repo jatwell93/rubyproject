@@ -38,24 +38,7 @@
                 <span class='quiet'><small>Last edited: <%= time_ago_in_words(workout.updated_at)%> ago</small></span>
              </p>
         </div>
-        <!--need to chnage this so its not looping through all athletes, just the current athlete-->
-        
-        <div class="container">
-          <div class="row">
-              <% @athletes.each do |athlete| %>
-                <div class="col-md-10 well member">
-                  <div class="col-md-2 pull-left">
-                    <%= link_to gravatar_for(current_user, size: 100), user_path(current_user) %>
-                  </div>
-                  <%= athlete.full_name %>
-                  <% if current_user %>
-                    <%= link_to "Follow", friendships_path(friend_id: athlete.id), method: :post,
-                        class: "btn btn-primary pull-right" unless current_user.follows_or_same?(athlete) %>
-                  <%end%>
-                </div>
-              <% end %>
-          </div>
-        </div>
+
     </div>
     <hr>
 

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   
   #workout routes
   resources :workouts do
-    resources :comments
     collection do
       get 'search'
     end
@@ -27,7 +26,6 @@ Rails.application.routes.draw do
 
   #recipe routes
   resources :recipes do
-    resources :comments
     collection do
       get 'search'
     end
@@ -70,9 +68,5 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
-  #commen
-  resources :comments do
-      resources :comments
-    end
-  end
+end
 

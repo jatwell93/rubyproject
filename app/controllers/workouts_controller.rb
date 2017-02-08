@@ -5,12 +5,12 @@ class WorkoutsController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def index
-    @athletes = User.paginate(:page => params[:page])
     @workouts = Workout.paginate(page: params[:page], per_page: 5)
   end
   
   def show
     @random_workout = Workout.where.not(id: @workout).order("RANDOM()").first(3)
+    @athletes = User.paginate(:page => params[:page])
   end
   
   def new
@@ -108,7 +108,6 @@ class WorkoutsController < ApplicationController
       end
     end
 
-    
     def admin_user
       redirect_to workouts_path unless current_user.admin?
     end

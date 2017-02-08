@@ -14,8 +14,6 @@ class UsersController < ApplicationController
     @random_workout = Workout.where.not(id: @workout).order("RANDOM()").first(3)
     @exercise = current_user.exercises.find(params[:id])
     @exercises = current_user.exercises.all
-    @bodyweight = current_user.bodyweights.find(params[:id])
-    @bodyweights = current_user.bodyweights.all
     @friends = current_user.friends
   end
 

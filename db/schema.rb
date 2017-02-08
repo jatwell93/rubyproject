@@ -11,48 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226012149) do
-
-  create_table "bodyweights", force: :cascade do |t|
-    t.integer  "body_weight"
-    t.integer  "height"
-    t.integer  "bmi"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "bodyweights", ["user_id"], name: "index_bodyweights_on_user_id"
-
-  create_table "calories", force: :cascade do |t|
-    t.integer "amount"
-  end
-
-  create_table "chefs", force: :cascade do |t|
-    t.string   "chefname"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest"
-  end
-
-  create_table "comment_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_udx", unique: true
-  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx"
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "user_id"
-  end
+ActiveRecord::Schema.define(version: 20170131100359) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
