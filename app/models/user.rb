@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  devise :omniauthable, :omniauth_providers => [:facebook, :twitter, :linkedin]       
+  devise :omniauthable, :omniauth_providers => [:facebook, :twitter]       
   
   acts_as_messageable
  
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           first_name: auth.extra.raw_info.name,
-          username: auth.info.nickname || auth.uid,
+          username: auth.extra.raw_info.name || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )

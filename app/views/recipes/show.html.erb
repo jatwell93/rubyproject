@@ -49,10 +49,11 @@
 			Reviews</h3><%if @recipe.reviews.any? %><%@recipe.reviews.each do |c| %>
 			<div class="well">
 				<div class="col-md-2 pull-right">
-					<%= link_to gravatar_for(c.user, size: 100), user_path(c.user) %><strong><%= c.user.username.downcase.capitalize %></strong>
+					<strong>User: <%= c.user.username.downcase.capitalize %></strong>
 				</div>
-				<p><%= c.body %></p><i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i> <%if c.user == current_user %> <%= link_to "Delete Review", review_recipe_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %> <%end %>
+				<p><%= c.body %></p><i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i> <%if c.user == current_user %> <%= link_to "Delete", review_recipe_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %> <%end %>
 			</div><%end %><%else %>
+			
 			<h5>Be the first to post a review!</h5><%end %>
 			<div class="form-group">
 				<%= form_tag(review_recipe_path, :method=>'post') do %><%= text_area_tag "body", nil, size:"5x5",  class:"form-control" %><%= submit_tag "Submit Review", class: "btn btn-primary" %><br>
@@ -70,7 +71,6 @@
 	</div>
 	<div class="jumbotron">
 		<h1 class="display-3">Join the conversation!</h1>
-		<p class="lead">Comment below and join the conversation taking place about this Recipe</p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-		<p></p>
+		<p class="text-center">Comment below and join the conversation taking place about this Recipe</p>
 	</div><%= render 'disquis' %>
 	<h5><%= link_to "Return to Recipes Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>

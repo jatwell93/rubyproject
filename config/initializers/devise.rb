@@ -247,9 +247,9 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :twitter, 'OE4wGonWRoMhkVTSXerY5C5kJ', 'pcDVCiDLqQw4oBi2PpgMjYi7HNJaffcM5z0PcsB4cRtr7tglcd'
-  config.omniauth :facebook, "1329421113735160", "4679555c3bc488cc8e8f50faa741c4db", callback_url: "https://new2-atwellj.c9users.io/users/auth/facebook/callback"
-  config.omniauth :linked_in, "KEY", "SECRET"
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['SECRET']
+  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["SECRET1"], callback_url: "https://cloned-atwellj.c9users.io/users/auth/facebook/callback"
+  # config.omniauth :linked_in, "KEY", "SECRET"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

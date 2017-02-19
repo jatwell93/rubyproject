@@ -1,26 +1,29 @@
-most of the form and recipe show is working at a MVP level. Calories is still not working. I may redo this under a different name, as i beleive the ie
-is causing issue in ruby. 
-Next steps: 
 
+to do first:
+-add ol to workout page (ask)
+-fix font and general tidy of styling
+-go through every page and double check and every file 
+-fix review part ofworkouts 
+
+Beta:
+-work on styling for ipads
+-make home page more appealing (images of what you can do under text)
 -come back to the calories part
+-fix delete posts
 -build forum
 -build favourite feature
 -add a meal plan feature
--add delete to comments and fix the show action 
 -fix workout show page to only show user who posted, along with a button to add them as a friend and message them
 -complete phone notes
--fix imagemagik
--hide omni auth keys 
 -add dropdown box for workouts (probably need react)
--fix facebook login (no application?!)
 -refactor and speed up
--deploy
 -add image avatar to mailbox
 -add font awesomes to icons
 -change to 'birthday' social share icons
--add BMI calculation into bodyweights
+-add measurements again
 -change to link back to previous page
 -add redcarpet and friendly_id
+-fix delete recipe
 
 sudo service elasticsearch start
 
