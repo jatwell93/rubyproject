@@ -30,7 +30,7 @@
           </div>
         </div>
       <div class="clearfix">
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-4 col-md-6">
         <%= f.label :Movement %>
           <%= f.fields_for :movements do |movement| %>
             <%= render 'movement_fields', f: movement %>
@@ -41,7 +41,7 @@
               </br>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-4 col-md-6">
              <%= f.label :Reps %>
                 <%= f.fields_for :reps do |rep| %>
                   <%= render 'rep_fields', f: rep %>
@@ -52,7 +52,7 @@
             </br>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-4 col-md-6">
         <%= f.label :Sets %>
                 <%= f.fields_for :zets do |zet| %>
                   <%= render 'zet_fields', f: zet %>
@@ -63,21 +63,12 @@
               </br>
               </br>
         </div>
-        <div class="col-lg-3 col-md-6">
-             <%= f.label :Weights %>
-                <%= f.fields_for :weights do |weight| %>
-                  <%= render 'weight_fields', f: weight %>
-                <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Add weight', f, :weights, class: "pull-right d-inline-block btn btn-primary add-button" %>
-            </div>
-              </br>
-              </br> 
-        </div>
+        <div>
         <strong>Upload spreadsheet: </strong>
             <span class="picture">
                 <%= f.file_field :attachment %>
             </span>
+        </div>
       </div>
 
         <div class="form-group">

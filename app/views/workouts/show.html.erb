@@ -17,25 +17,19 @@
        
        <div class = "panel-body">
             <p class="text-center"> <%= simple_format(@workout.summary) %></p>
-          <ul class = "list-group col-xs-12 col-sm-6">
+          <ul class = "list-group col-xs-12 col-sm-4">
             <h4 class="list-group-item active">Exerices</h4>
             <% @workout.movements.each do |movement| %> 
               <li class = "list-group-item "><%= movement.name %></li>
             <%end%>
           </ul>
-          <ul class = "list-group col-xs-12 col-sm-6">
-            <h4 class="list-group-item active">Weights</h4>
-            <% @workout.weights.each do |movement| %> 
-              <li class = "list-group-item"><%= movement.kilogram %></li>
-            <%end%>
-          </ul>
-          <ul class = "list-group col-xs-12 col-sm-6">
+          <ul class = "list-group col-xs-12 col-sm-4">
             <h4 class="list-group-item active">Sets</h4>
             <% @workout.zets.each do |movement| %> 
               <li class = "list-group-item"><%= movement.quantity %></li>
             <%end%>
           </ul>
-          <ul class = "list-group col-xs-12 col-sm-6">
+          <ul class = "list-group col-xs-12 col-sm-4">
             <h4 class="list-group-item active">Repetitions</h4>
             <% @workout.reps.each do |movement| %> 
               <li class = "list-group-item"><%= movement.amount %></li>
@@ -71,14 +65,10 @@
         <p>
           <h5>Brought to you by: <%= @workout.user.username %></h5>
         </p>
-          <% @athletes.each do |athlete| %>
-              <% if current_user %>
-                <%= link_to "Follow", friendships_path(friend_id: athlete.id), method: :post,
-                    class: "btn btn-primary" unless current_user.follows_or_same?(athlete) %>
-              <%end%>
-          <% end %>
-
+        <hr>
         </br>
+      </div>
+      <div class="container reviews">
         <h3><br/>Reviews</h3>
             <% if @workout.reviews.any? %>
               <% @workout.reviews.each do |c| %>
@@ -113,10 +103,10 @@
               <%= truncate(workout.summary, length: 150)%> <small><%=link_to 'click to see more', workout_path(workout)%></small>
             </div>
         <% end %>
-    </div>
   </div>
   <div class="jumbotron">
     <h1 class="display-3">Join the conversation!</h1>
     <p class="lead">Comment below and join the conversation taking place about this Workout</p>
   </div>
   <%= render 'disquis' %>
+</div>
