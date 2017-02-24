@@ -24,6 +24,7 @@ Beta:
 -change to link back to previous page
 -add redcarpet and friendly_id
 -fix delete recipe
+-add confirmaions in devise then add promo html markup to the mailer
 
 sudo service elasticsearch start
 
