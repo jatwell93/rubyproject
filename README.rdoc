@@ -4,6 +4,7 @@ to do first:
 -fix font and general tidy of styling
 -go through every page and double check and every file 
 -fix add link to associaiton 
+-fix facebook login by changing details in facebook app homepage 
 
 Beta:
 -work on styling for ipads

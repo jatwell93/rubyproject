@@ -29,14 +29,14 @@
         </div>
       <div class="clearfix">
         <div class="col-lg-3 col-md-6">
-          <ol>
+        
           <%= f.label :Movement %>
                 <%= f.fields_for :movements do |movement| %>
-                  <li><%= render 'movement_fields', f: movement %></li>
+                  <%= render 'movement_fields', f: movement %>
                 <% end %>
             <div class="links">
               <%= link_to_add_association 'Add movement', f, :movements, class: "pull-right d-inline-block btn btn-primary add-button" %>
-          </ol>
+          
               </br>
               </br>
             </div>
