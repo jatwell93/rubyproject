@@ -502,3 +502,14 @@ p.workout-summary {
 .reviews {
     padding-top:100px;
 }
+.fields {
+  reset-counter: idx;
+}
+
+.field {
+  counter-increment: idx;
+}
+
+.field:before {
+  content: "" counter(idx) ":";
+}

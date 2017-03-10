@@ -1,6 +1,5 @@
 
 to do first:
--add ol to workout page (ask)
 -fix font and general tidy of styling
 -go through every page and double check and every file 
 -fix add link to associaiton 

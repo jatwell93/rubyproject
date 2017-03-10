@@ -20,6 +20,8 @@
           <div class="col-md-10">
             <%= f.number_field :rating, within: 1..10, class: "form-control" %>
           </div>
+        </div>
+        <div class="form-group">
           <div class="control-label col-md-2">
             <%= f.label :duration_in_min, "Duration (min)" %>
           </div>
@@ -29,48 +31,54 @@
         </div>
       <div class="clearfix">
         <div class="col-lg-3 col-md-6">
-        
-          <%= f.label :Movement %>
-                <%= f.fields_for :movements do |movement| %>
-                  <%= render 'movement_fields', f: movement %>
+          <ol>
+            <%= f.label :Movements %>
+                <%= f.fields_for :movements do |m| %>
+                  <li><%= render 'movement_fields', f: m %></li>
                 <% end %>
             <div class="links">
-              <%= link_to_add_association 'Add movement', f, :movements, class: "pull-right d-inline-block btn btn-primary add-button" %>
-          
-              </br>
-              </br>
+              <%= link_to_add_association 'Add Movement', f, :movements, class: "pull-right d-inline-block btn btn-primary add-button" %>
             </div>
+          </ol>
+              </br>
+              </br>
         </div>
         <div class="col-lg-3 col-md-6">
+          <ol>
              <%= f.label :Reps %>
                 <%= f.fields_for :reps do |rep| %>
-                  <%= render 'rep_fields', f: rep %>
+                  <li><%= render 'rep_fields', f: rep %></li>
                 <% end %>
             <div class="links">
               <%= link_to_add_association 'Add Reps', f, :reps, class: "pull-right d-inline-block btn btn-primary add-button" %>
-            </br>
-            </br>
             </div>
+          </ol>
+              </br>
+              </br> 
         </div>
         <div class="col-lg-3 col-md-6">
-        <%= f.label :Sets %>
+          <ol>
+            <%= f.label :Sets %>
                 <%= f.fields_for :zets do |zet| %>
-                  <%= render 'zet_fields', f: zet %>
+                  <li><%= render 'zet_fields', f: zet %></li>
                 <% end %>
             <div class="links">
               <%= link_to_add_association 'Add Set', f, :zets, class: "pull-right d-inline-block btn btn-primary add-button" %>
             </div>
+          </ol>
               </br>
               </br>
         </div>
         <div class="col-lg-3 col-md-6">
+          <ol>
              <%= f.label :Weights %>
                 <%= f.fields_for :weights do |weight| %>
-                  <%= render 'weight_fields', f: weight %>
+                  <li><%= render 'weight_fields', f: weight %></li>
                 <% end %>
             <div class="links">
               <%= link_to_add_association 'Add weight', f, :weights, class: "pull-right d-inline-block btn btn-primary add-button" %>
             </div>
+          </ol>
               </br>
               </br> 
         </div>
