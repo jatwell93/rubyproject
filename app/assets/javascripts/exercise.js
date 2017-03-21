@@ -22,4 +22,4 @@ return date_string;
 yLabelFormat: function(y) { return y + ' min'; } 
 });
 });
-$('#links').html('<li>foo</li>');
+$('#list').html('<li>foo</li>');
