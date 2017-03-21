@@ -13260,6 +13260,26 @@ p.workout-summary {
   height: 24px;
   width: 24px;
 }
+
+/* line 502, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.reviews {
+  padding-top: 100px;
+}
+
+/* line 505, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.fields {
+  reset-counter: idx;
+}
+
+/* line 509, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.field {
+  counter-increment: idx;
+}
+
+/* line 513, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.field:before {
+  content: "" counter(idx) ":";
+}
 /*!
  * jQuery UI CSS Framework 1.11.4
  * http://jqueryui.com
