@@ -20,7 +20,8 @@
 //= require morris
 //= require social-share-button
 //= require html.sortable
-// require turbolinks
-// require_tree .
 //= require cocoon
+//= require turbolinks
+//= require_tree .
+
 
