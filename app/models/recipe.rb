@@ -13,7 +13,7 @@ class Recipe < ActiveRecord::Base
     has_many    :preptimes, through: :recipe_preptimes
     has_many    :recipe_feeds
     has_many    :feeds, through: :recipe_feeds
-    searchkick
+    # searchkick
     accepts_nested_attributes_for :ingredients,
   															reject_if: proc { |attributes| attributes['name'].blank? },
   															allow_destroy: true

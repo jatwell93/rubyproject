@@ -11,16 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui/datepicker
-//= require jquery_ujs
-//= require jquery.raty.min
-//= require chosen-jquery
-//= require bootstrap-sprockets
-//= require raphael.min
-//= require morris
-//= require social-share-button
-//= require html.sortable
-// require turbolinks
-// require_tree .
 //= require cocoon
+//= require recipe.js
+//= require turbolinks
+
+
 

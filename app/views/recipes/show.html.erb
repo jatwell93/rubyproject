@@ -26,24 +26,34 @@
 				<ol>
 					<%@recipe.directions.each do |direction| %>
 					<li><%= direction.step %></li><%end %>
-				</ol><%if @recipe.styles.any? %>
-				<p>Styles: <%= render @recipe.styles %></p><%end %><%if @recipe.feeds.any? %>
-				<p>Feeds: <%= render @recipe.feeds %></p><%end %><%if @recipe.preptimes.any? %>
-				<p>Preptime: <%= render @recipe.preptimes %></p><%end %>
+				</ol>
+				<%if @recipe.styles.any? %>
+					<p>Styles: <%= render @recipe.styles %></p>
+				<%end %>
+				<%if @recipe.feeds.any? %>
+					<p>Feeds: <%= render @recipe.feeds %></p>
+				<%end %>
+				<%if @recipe.preptimes.any? %>
+					<p>Preptime: <%= render @recipe.preptimes %></p>
+				<%end %>
 				<p><strong>Notes:</strong></p><%= simple_format(@recipe.description) %>
 				<div class="pull-right">
 					<%= link_to like_recipe_path(@recipe, like: true), method: :post do %><i aria-hidden="true" class="fa fa-thumbs-o-up"></i> &nbsp; <%= @recipe.thumbs_up_total %> <%end %> &nbsp;&nbsp;&nbsp;&nbsp; <%= link_to like_recipe_path(@recipe, like: false), method: :post do %> <i aria-hidden="true" class="fa fa-thumbs-o-down"></i> &nbsp; <%= @recipe.thumbs_down_total %> <%end %>
 				</div>
-			</div><%if logged_in? and (@recipe.user == current_user || current_user.admin?) %><%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right edit" %><%end %><%if logged_in? and (@recipe.user == current_user || current_user.admin?) %><%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%><%end %>
+			</div>
+				<%if logged_in? and is_owner? %>
+					<%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right edit" %>
+				<%end %>
+				<%if logged_in? and (is_owner?) %>
+					<%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
+				<%end %>
 			<div class="social-share-button">
 				Share this! <%= social_share_button_tag(@recipe.name) %>
 			</div>
 		</div>
 		
 		<div class="col-md-5 pull-right">
-			<%= link_to gravatar_for(@recipe.user, size: 200), user_path(@recipe.user) %>
-			<p></p>
-			<h5>Brought to you by: <%= @recipe.user.username %></h5>
+			<%= render partial: 'gravatar_section', locals: {user: @user} %>
 			<p></p><br>
 			<h3><br>
 			Reviews</h3><%if @recipe.reviews.any? %><%@recipe.reviews.each do |c| %>

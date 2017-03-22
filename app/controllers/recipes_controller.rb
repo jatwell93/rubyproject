@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  include RecipesHelper
   before_action :set_user
   before_action :set_recipe, only: [:edit, :update, :show, :like, :review]
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
@@ -24,17 +25,12 @@ class RecipesController < ApplicationController
   end
   
   def new
-    #@recipe = @user.recipes.build
-    # @recipe = Recipes.build
     @recipe = Recipe.new
-    
     @recipe.ingredients.build
     @recipe.directions.build
   end
   
   def create
-    # @recipe = Recipe.new(recipe_params)
-    # @recipe.user = set_user
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
@@ -106,8 +102,8 @@ class RecipesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @recipe.user and !current_user.admin?
-        flash[:danger] = "You can only edit your own recipes"
+      if not is_owner? then
+          flash[:danger] = "You can only edit your own recipes"
         redirect_to recipes_path
       end
     end

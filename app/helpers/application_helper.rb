@@ -1,11 +1,11 @@
 module ApplicationHelper
-    
-    def gravatar_for(user, options = { size: 80})
-        gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-        size = options[:size]
-        gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-        image_tag(gravatar_url, alt: user.first_name, class: "gravatar")
-    end
+  
+  def gravatar_for(user, options = { size: 80})
+      gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+      size = options[:size]
+      gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+      image_tag(gravatar_url, alt: user.first_name, class: "gravatar")
+  end
  
   def active_page(active_page)
     @active == active_page ? "active" : ""

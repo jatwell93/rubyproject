@@ -22,8 +22,7 @@
         
         <div class="col-md-2">
             <section class="chef_info_center">
-                <%= link_to gravatar_for(recipe.user, size: 100), user_path(recipe.user) %>
-                <h5> Chef name: <%= recipe.user.username %></h5>
+               <%= render partial: 'gravatar_section', locals: {user: @user} %>
             </section>
         </div>
         
