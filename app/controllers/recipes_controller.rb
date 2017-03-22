@@ -25,17 +25,12 @@ class RecipesController < ApplicationController
   end
   
   def new
-    #@recipe = @user.recipes.build
-    # @recipe = Recipes.build
     @recipe = Recipe.new
-    
     @recipe.ingredients.build
     @recipe.directions.build
   end
   
   def create
-    # @recipe = Recipe.new(recipe_params)
-    # @recipe.user = set_user
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
@@ -107,9 +102,7 @@ class RecipesController < ApplicationController
     end
     
     def require_same_user
-      #if current_user != @recipe.user and !current_user.admin?
-      #if current_user.id != @recipe.chef_id then
-      if not is_owner then
+      if not is_owner? then
           flash[:danger] = "You can only edit your own recipes"
         redirect_to recipes_path
       end

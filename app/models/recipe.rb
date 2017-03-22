@@ -1,12 +1,5 @@
 class Recipe < ActiveRecord::Base
     belongs_to  :user
-    
-    # has_one     :user
-    # has_one     :user, through: :user_recipes
-    # has_many    :user_recipes
-    # # has_many    :users, through: :user_recipes
-    # has_many    :users, through: :user_recipes, as: :chef_id
-    
     has_many    :likes, dependent: :destroy 
     has_many    :recipe_styles, dependent: :destroy
     has_many    :styles, through: :recipe_styles
@@ -28,12 +21,12 @@ class Recipe < ActiveRecord::Base
   															reject_if: proc { |attributes| attributes['step'].blank? },
   															allow_destroy: true
 
-    # validates :directions, presence: true
-    # validates :ingredients, presence: true
-    # # validates :user_id, presence: true
-    # validates :name, presence: true, length: { minimum: 5, maximum: 100}
-    # validates :summary, presence: true, length: { minimum: 10, maximum: 150}
-    # validates :description, presence: true, length: { minimum: 5, maximum: 1000}
+    validates :directions, presence: true
+    validates :ingredients, presence: true
+    # validates :user_id, presence: true
+    validates :name, presence: true, length: { minimum: 5, maximum: 100}
+    validates :summary, presence: true, length: { minimum: 10, maximum: 150}
+    validates :description, presence: true, length: { minimum: 5, maximum: 1000}
     mount_uploader :picture, PictureUploader
     validate :picture_size 
     

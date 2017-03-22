@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   has_many  :exercises
   has_many  :workouts
   has_many  :user_recipes
-  # has_many  :recipes, through: :user_recipes
-  # has_many  :recipes, through: :user_recipes, :foreign_key => 'chef_id'
   has_many  :recipes, :foreign_key => 'chef_id'
   has_many  :likes
   has_many  :reviews 
