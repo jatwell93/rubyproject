@@ -16,7 +16,7 @@ class Recipe < ActiveRecord::Base
     has_many    :preptimes, through: :recipe_preptimes
     has_many    :recipe_feeds
     has_many    :feeds, through: :recipe_feeds
-    searchkick
+    # searchkick
     accepts_nested_attributes_for :ingredients,
   															reject_if: proc { |attributes| attributes['name'].blank? },
   															allow_destroy: true
@@ -24,12 +24,12 @@ class Recipe < ActiveRecord::Base
   															reject_if: proc { |attributes| attributes['step'].blank? },
   															allow_destroy: true
 
-    validates :directions, presence: true
-    validates :ingredients, presence: true
-    # validates :user_id, presence: true
-    validates :name, presence: true, length: { minimum: 5, maximum: 100}
-    validates :summary, presence: true, length: { minimum: 10, maximum: 150}
-    validates :description, presence: true, length: { minimum: 5, maximum: 1000}
+    # validates :directions, presence: true
+    # validates :ingredients, presence: true
+    # # validates :user_id, presence: true
+    # validates :name, presence: true, length: { minimum: 5, maximum: 100}
+    # validates :summary, presence: true, length: { minimum: 10, maximum: 150}
+    # validates :description, presence: true, length: { minimum: 5, maximum: 1000}
     mount_uploader :picture, PictureUploader
     validate :picture_size 
     
