@@ -1,7 +1,11 @@
 class Recipe < ActiveRecord::Base
-    # belongs_to  :user
-    has_one     :user_recipe
-    has_one     :user, through: :user_recipes
+    belongs_to  :user
+    
+    # has_one     :user
+    # has_one     :user, through: :user_recipes
+    # has_many    :user_recipes
+    # # has_many    :users, through: :user_recipes
+    # has_many    :users, through: :user_recipes, as: :chef_id
     
     has_many    :likes, dependent: :destroy 
     has_many    :recipe_styles, dependent: :destroy
