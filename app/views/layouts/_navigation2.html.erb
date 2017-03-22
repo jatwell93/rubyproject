@@ -115,7 +115,7 @@
             <li><%= link_to "Dashboard", dashboard_index_path(current_user) %></li>
           </ul>
         <li class="dropdown"><%= link_to '#', "data-toggle" => "dropdown" do %>
-            <%="#{current_user.username}"%> <b class="caret"></b>
+            <%="#{current_user.id}"%> <b class="caret"></b>
           <% end %>
           <ul class="dropdown-menu">
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

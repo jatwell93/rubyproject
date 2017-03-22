@@ -19,7 +19,7 @@ class WorkoutsController < ApplicationController
   
   def create
     @workout = Workout.new(workout_params)
-    @workout.user = current_user
+    @workout.user_id = current_user.id
     
     if @workout.save
       flash[:success] = "Your workout was created successfully!"

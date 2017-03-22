@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131100359) do
+ActiveRecord::Schema.define(version: 20170322115423) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170131100359) do
 
   create_table "likes", force: :cascade do |t|
     t.boolean  "like"
-    t.integer  "user_id"
+    t.integer  "chef_id"
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -135,13 +135,13 @@ ActiveRecord::Schema.define(version: 20170131100359) do
   create_table "movements", force: :cascade do |t|
     t.string   "name"
     t.integer  "exercise_id"
-    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "workouts_id"
   end
 
   add_index "movements", ["exercise_id"], name: "index_movements_on_exercise_id"
-  add_index "movements", ["workout_id"], name: "index_movements_on_workout_id"
+  add_index "movements", ["workouts_id"], name: "index_movements_on_workouts_id"
 
   create_table "preptimes", force: :cascade do |t|
     t.integer "time"
@@ -178,24 +178,24 @@ ActiveRecord::Schema.define(version: 20170131100359) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "chef_id"
     t.string   "picture"
   end
 
   create_table "reps", force: :cascade do |t|
     t.integer  "amount"
     t.integer  "exercise_id"
-    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "workouts_id"
   end
 
   add_index "reps", ["exercise_id"], name: "index_reps_on_exercise_id"
-  add_index "reps", ["workout_id"], name: "index_reps_on_workout_id"
+  add_index "reps", ["workouts_id"], name: "index_reps_on_workouts_id"
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
-    t.integer  "user_id"
+    t.integer  "chef_id"
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -206,23 +206,31 @@ ActiveRecord::Schema.define(version: 20170131100359) do
     t.string "name"
   end
 
+  create_table "user_recipes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_recipes", ["recipe_id"], name: "index_user_recipes_on_recipe_id"
+  add_index "user_recipes", ["user_id"], name: "index_user_recipes_on_user_id"
+
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
   end
@@ -232,14 +240,14 @@ ActiveRecord::Schema.define(version: 20170131100359) do
 
   create_table "weights", force: :cascade do |t|
     t.integer  "kilogram"
-    t.integer  "workout_id"
     t.integer  "exercise_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "workouts_id"
   end
 
   add_index "weights", ["exercise_id"], name: "index_weights_on_exercise_id"
-  add_index "weights", ["workout_id"], name: "index_weights_on_workout_id"
+  add_index "weights", ["workouts_id"], name: "index_weights_on_workouts_id"
 
   create_table "workouts", force: :cascade do |t|
     t.string   "name"
@@ -249,18 +257,21 @@ ActiveRecord::Schema.define(version: 20170131100359) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "duration_in_min"
+    t.integer  "zets_id"
     t.integer  "rating"
   end
+
+  add_index "workouts", ["zets_id"], name: "index_workouts_on_zets_id"
 
   create_table "zets", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "exercise_id"
-    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "workouts_id"
   end
 
   add_index "zets", ["exercise_id"], name: "index_zets_on_exercise_id"
-  add_index "zets", ["workout_id"], name: "index_zets_on_workout_id"
+  add_index "zets", ["workouts_id"], name: "index_zets_on_workouts_id"
 
 end

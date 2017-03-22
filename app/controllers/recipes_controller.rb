@@ -1,8 +1,10 @@
 class RecipesController < ApplicationController
+  before_action :set_user
   before_action :set_recipe, only: [:edit, :update, :show, :like, :review]
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
+  
   
   def search
     if params[:search].present?
@@ -15,7 +17,6 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
-    @user = current_user
   end
   
   def show
@@ -23,15 +24,19 @@ class RecipesController < ApplicationController
   end
   
   def new
+    #@recipe = @user.recipes.build
+    # @recipe = Recipes.build
     @recipe = Recipe.new
+    
     @recipe.ingredients.build
     @recipe.directions.build
   end
   
   def create
+    # @recipe = Recipe.new(recipe_params)
+    # @recipe.user = set_user
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
-    
+
     if @recipe.save
       flash[:success] = "Your recipe was created successfully!"
       redirect_to recipes_path
@@ -54,12 +59,12 @@ class RecipesController < ApplicationController
   end
   
   def like 
-    like = Like.create(like: params[:like], user: current_user, recipe: @recipe)
+    like = Like.create(like: params[:like], user: @user, recipe: @recipe)
     if like.valid?
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "#{current_user.username} " + 'you can only like/dislike once per item.'
+      flash[:danger] = "#{@user} " + 'you can only like/dislike once per item.'
       redirect_to :back
     end
   end
@@ -71,7 +76,7 @@ class RecipesController < ApplicationController
   end
   
   def review
-    review = Review.create(body: params[:body], user: current_user, recipe: @recipe)
+    review = Review.create(body: params[:body], user: @user, recipe: @recipe)
     if review.valid?
       flash[:success] = "Thank you for reviewing this recipe"
     else
@@ -87,6 +92,10 @@ class RecipesController < ApplicationController
   end
   
   private
+    def set_user
+      @user = User.find(current_user.id)
+    end
+    
     
     def recipe_params
       params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy], feed_ids: [], calorie_ids: [], preptime_ids: [])
