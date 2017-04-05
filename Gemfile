@@ -34,8 +34,10 @@ gem 'cocoon'
 gem 'devise'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'social-share-button', '~> 0.1.6'
-gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 gem 'ranked-model'
+gem 'bootstrap-datepicker-rails'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
 group :development, :test do
   gem 'byebug'

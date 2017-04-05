@@ -22,4 +22,3 @@ return date_string;
 yLabelFormat: function(y) { return y + ' min'; } 
 });
 });
-$('#list').html('<li>foo</li>');
