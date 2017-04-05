@@ -44,7 +44,7 @@ Javascript trouble shooting stuff ...
 to do first:
 -Fix like action
 -fix delete posts
--fix font and general tidy of styling
+-add images to homepage stored on aws 
 -go through every page and double check and every file 
 -fix facebook login by changing details in facebook app homepage 
 -fix workout show on users homepage 

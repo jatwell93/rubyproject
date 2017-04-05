@@ -175,14 +175,19 @@ nav.breadcrumb {
     padding: 30px;
 }
 // carousel
+.carousel {
+    background-color: black;
+}
 .carousel-img {
-    min-height: 300px;
+    max-height: 400px;
     height: 100px;
-    width: 100%;
 }
 .item {
     min-height: 300px;
     height: 100%;
+}
+.carousel-inner img {
+  margin: auto;
 }
 // new recipe page 
 input,
@@ -494,22 +499,7 @@ p.workout-summary {
         display: inline-block !important;
     }
 }
-.social-share-button .ssb-icon {
-  background-size: 24px 24px;
-  height: 24px;
-  width: 24px;
-}
+
 .reviews {
     padding-top:100px;
-}
-.fields {
-  reset-counter: idx;
-}
-
-.field {
-  counter-increment: idx;
-}
-
-.field:before {
-  content: "" counter(idx) ":";
 }
