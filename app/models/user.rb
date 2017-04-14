@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   self.per_page = 10
   
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates_uniqueness_of :username
   
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

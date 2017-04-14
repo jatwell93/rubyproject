@@ -42,15 +42,18 @@ Javascript trouble shooting stuff ...
 
 
 to do first:
--Fix like action
--fix delete posts
--add images to homepage stored on aws 
--go through every page and double check and every file 
--fix facebook login by changing details in facebook app homepage 
--fix workout show on users homepage 
--make username unique 
--
+- Fix like action
+- fix delete posts 
+- add images parralax image to aws 
+- go through every page and double check and every file 
+- fix facebook login by changing details in facebook app homepage 
+- fix workout show on users homepage
+- fix signout action 
+- remove ingredients from navigation 
+
 Beta:
+-add percentages to workout plans
+-add way of limiting access to new styles etc
 -work on styling for ipads
 -make home page more appealing (images of what you can do under text)
 -come back to the calories part
@@ -59,7 +62,7 @@ Beta:
 -add a meal plan feature
 -fix workout show page to only show user who posted, along with a button to add them as a friend and message them
 -complete phone notes
--add dropdown box for workouts (probably need react)
+-add dropdown box for workouts
 -refactor and speed up
 -add image avatar to mailbox
 -add font awesomes to icons
@@ -67,7 +70,6 @@ Beta:
 -add measurements again
 -change to link back to previous page
 -add redcarpet and friendly_id
--fix delete recipe
 -add confirmaions in devise then add promo html markup to the mailer
 
 ---

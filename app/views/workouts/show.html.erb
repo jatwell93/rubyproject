@@ -54,8 +54,7 @@
         </div>
           <% if logged_in? and (@workout.user == current_user || current_user.admin?) %>
             <%= link_to "Edit this Workout", edit_workout_path(@workout), class: "btn btn-success pull-right edit" %>
-          <% end %> &nbsp&nbsp
-          <% if logged_in? and (@workout.user == current_user || current_user.admin?) %>
+           &nbsp&nbsp
             <%= link_to "[Delete Workout]", @workout, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
           <% end %>
       </div>

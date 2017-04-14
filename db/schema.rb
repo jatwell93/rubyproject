@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322115423) do
+ActiveRecord::Schema.define(version: 20170413232840) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -178,9 +178,11 @@ ActiveRecord::Schema.define(version: 20170322115423) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "picture"
+    t.integer  "user_id"
   end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "reps", force: :cascade do |t|
     t.integer  "amount"

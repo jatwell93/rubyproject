@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:edit, :update, :show, :like, :review]
+  before_action :set_workout, only: [:edit, :update, :show, :like, :review, :destroy]
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
@@ -60,8 +60,8 @@ class WorkoutsController < ApplicationController
   
   def destroy
     Workout.find(params[:id]).destroy
-    flash[:success] = "Workout Deleted"
-    redirect_to workouts_path
+    flash[:success] = "Workout was deleted."
+    redirect_to workout_url
   end
   
   def review

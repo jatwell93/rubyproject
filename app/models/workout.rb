@@ -28,7 +28,6 @@ class Workout < ActiveRecord::Base
   validates :movements, presence: true
   validates :reps, presence: true
   validates :zets, presence: true
-  validates :weights, presence: true
   
     def thumbs_up_total
        self.likes.where(like: true).size 
