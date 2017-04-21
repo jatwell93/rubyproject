@@ -8,6 +8,8 @@
     -moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
     box-shadow: rgba(0, 0, 0, 0.09) -3px 3px 2px;
 }
+$size: 24px;
+
 body {
     font-family: 'Doppio One', sans-serif;
     padding-top: 100px;
@@ -502,4 +504,12 @@ p.workout-summary {
 
 .reviews {
     padding-top:100px;
+}
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

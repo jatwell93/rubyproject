@@ -42,14 +42,12 @@ Javascript trouble shooting stuff ...
 
 
 to do first:
-- Fix like action
 - fix delete posts 
 - add images parralax image to aws 
 - go through every page and double check and every file 
 - fix facebook login by changing details in facebook app homepage 
 - fix workout show on users homepage
 - fix signout action 
-- remove ingredients from navigation 
 
 Beta:
 -add percentages to workout plans

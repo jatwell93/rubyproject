@@ -86,7 +86,7 @@ class WorkoutsController < ApplicationController
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "You can only like/dislike a recipe once"
+      flash[:danger] = "#{current_user.username} " + 'you can only like/dislike once per item.'
       redirect_to :back
     end
   end

@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "#{@user} " + 'you can only like/dislike once per item.'
+      flash[:danger] = "#{current_user.username} " + 'you can only like/dislike once per item.'
       redirect_to :back
     end
   end

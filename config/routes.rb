@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
+      get 'like'
       post 'like'
       post 'review'
     end
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
+      get 'like'
       post 'like'
       post 'review'
     end
