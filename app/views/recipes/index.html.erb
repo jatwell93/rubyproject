@@ -25,9 +25,8 @@
         
         <div class="col-md-2">
             <section class="chef_info_center">
-                <%= render partial: 'gravatar_section', locals: {user: @user} %>
-                <!--<%= link_to gravatar_for(@user, size: 100), user_path(@user) %>-->
-                <!--<h5> User name: <%= @user.first_name %></h5>-->
+                <p>Test: <%= @test_pre_partial %></p>
+                <%= render partial: 'gravatar_section', locals: { user: @user } %>
             </section>
         </div>
         
