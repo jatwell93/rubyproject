@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
+    @recipe.user = @user
     if @recipe.save
       flash[:success] = "Your recipe was created successfully!"
       redirect_to recipes_path
@@ -57,16 +57,17 @@ class RecipesController < ApplicationController
   def like 
     like = Like.create(like: params[:like], user: @user, recipe: @recipe)
     if like.valid?
-      flash[:success] = "Your selection was successful"
+      flash[:success] = "Your like/dislike was noted successfully."
       redirect_to :back
     else
-      flash[:danger] = "#{current_user.username} " + 'you can only like/dislike once per item.'
+      flash[:danger] = "#{@user.username.capitalize} " + 'you can only like/dislike once per item.'
       redirect_to :back
     end
   end
   
   def destroy
-    Recipe.find(params[:id]).destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy!
     flash[:success] = "Recipe Deleted"
     redirect_to recipes_path
   end
