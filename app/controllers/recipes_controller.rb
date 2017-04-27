@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Your like/dislike was noted successfully."
       redirect_to :back
     else
-      flash[:danger] = "#{@user.username.capitalize} you can only like/dislike once per item."
+      flash[:danger] = "#{current_user.username.capitalize} you can only like/dislike once per item."
       redirect_to :back
     end
   end
@@ -90,7 +90,8 @@ class RecipesController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
+      # @user = User.find(params[:id])
     end
     
     
