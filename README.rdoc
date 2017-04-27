@@ -42,14 +42,18 @@ Javascript trouble shooting stuff ...
 
 
 to do first:
+
 - fix delete posts 
 - add images parralax image to aws 
 - go through every page and double check and every file 
 - fix facebook login by changing details in facebook app homepage 
 - fix workout show on users homepage
-- fix signout action 
+- fix delete review function
+- fix javascript on login page
+- get rid of inline javascripts 
 
 Beta:
+
 -add percentages to workout plans
 -add way of limiting access to new styles etc
 -work on styling for ipads
@@ -62,7 +66,7 @@ Beta:
 -complete phone notes
 -add dropdown box for workouts
 -refactor and speed up
--add image avatar to mailbox
+-add gravatar to mailbox
 -add font awesomes to icons
 -change to 'birthday' social share icons
 -add measurements again
@@ -70,9 +74,4 @@ Beta:
 -add redcarpet and friendly_id
 -add confirmaions in devise then add promo html markup to the mailer
 
----
-
-sudo service elasticsearch start
-
----
 
