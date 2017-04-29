@@ -19,6 +19,8 @@ def userTester()
     @result = User.first_or_create!(@hold)
 end
 
+
+
 def recipeMaker(counter, maker)
     @hold = Hash.new
     # counter = counter + Recipe.count
@@ -50,7 +52,29 @@ end
 # Run user sign in
 @user = userTester
 
-recipeMaker(20, @user)
+recipeMaker(10, @user)
 
 puts "Table size: #{tableCount(User)}"
 puts "Recipe count: #{tableCount(Recipe)}"
+
+
+
+####### Next step #########
+
+# Grab hash of hashes to feed to next step
+def userData(counter)
+    @hold = Hash.new
+    @holder = Hash.new
+    for x in 1..counter do 
+        @hold = { email: "tester#{x}@test.com", username: "#{x}MTest",
+            first_name: "#{x}SteveBob", last_name: "#{x}Test", password: "tester" }
+        @holder << @hold
+    end
+    return @holder
+end
+
+# Use the hash of hashes to create users
+def userFill(holder)
+    @result = User.first_or_create!(@hold)
+    # call recipeMaker like 3 times here, which will call subcategories
+end
