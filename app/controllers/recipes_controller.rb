@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   include RecipesHelper
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: [:index, :new]
   before_action :set_recipe, only: [:edit, :update, :show, :like, :review]
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
@@ -90,7 +90,8 @@ class RecipesController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:id])
+      # @user = User.find(params[:id])
+      @user = User.find(current_user.id)
     end
     
     
