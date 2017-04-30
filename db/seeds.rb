@@ -70,7 +70,6 @@ def userFill(holder)
     # call recipeMaker like 3 times here, which will call subcategories
 end
 
-
 # Run user sign in
 @user = userTester
 

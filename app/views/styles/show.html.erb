@@ -1,9 +1,10 @@
+<% provide(:title, "Recipes for: #{@style.name.capitalize} food") %>
+
 <div class="containter">
 <nav class="breadcrumb">
   <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
   <span class="breadcrumb-item active">Styles List</span>
 </nav>
-<%= render 'shared/page_title', title: "Recipes for: " + @style.name + " food"%>
 
 <ul class="nav nav-tabs">
     <li class="active">

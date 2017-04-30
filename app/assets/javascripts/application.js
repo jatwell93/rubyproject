@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require cocoon
-//= require recipe.js
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require raphael

@@ -1,3 +1,4 @@
+<% provide(:title, "User: #{@user.username})" %>
 <div class="container">
 <nav class="breadcrumb">
   <a class="breadcrumb-item" <%= link_to 'Home/', root_path%></a>
@@ -5,7 +6,6 @@
   <span class="breadcrumb-item active">User</span>
 </nav>
 </div>
-<%= render 'shared/page_title', title:"User: " + @user.username %>
 
 <div class ="row">
     <div class="col-md-4 col-md-offset-4 center">

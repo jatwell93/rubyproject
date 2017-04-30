@@ -1,5 +1,19 @@
 module ApplicationHelper
   
+  
+    # Returns the full title on a per-page basis.
+  def full_title(page_title = '')
+    base_title = "FitnessLabs (A & K LABS)"
+    if page_title.empty?
+      base_title
+    else
+      page_title + " | " + base_title
+    end
+  end
+
+  
+
+  
   def gravatar_for(user, options = { size: 80})
       gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
       size = options[:size]
@@ -10,7 +24,6 @@ module ApplicationHelper
   def active_page(active_page)
     @active == active_page ? "active" : ""
   end
-
     
   def devise_error_messages!
     return '' if resource.errors.empty?
