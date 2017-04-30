@@ -25,7 +25,7 @@ def recipeMaker(counter, maker)
     @hold = Hash.new
     # counter = counter + Recipe.count
     for x in 0..counter do
-        @hold = { name: "Name#{x}", summary: "Summary ##{x}", description: "Description ##{x}", user_id: maker.id}
+        @hold = { name: "Recipe Name ##{x}", summary: "Summary ##{x}", description: "Description ##{x}", user_id: maker.id}
         @result = Recipe.new(@hold)
         @result.save(validate: false)
         fillRecipeAssoc(@result)
@@ -64,11 +64,11 @@ end
 # Use the hash of hashes to create users
 def userFill(holder)
     holder.each do | x |
-        User.create!(x)
+        a_user = User.create!(x)
+        recipeMaker(3, a_user)
     end
     # call recipeMaker like 3 times here, which will call subcategories
 end
-
 
 # Run user sign in
 @user = userTester
