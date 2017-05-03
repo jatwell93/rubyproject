@@ -72,7 +72,7 @@ end
 
 # Run user sign in
 @user = userTester
-
+recipeMaker(3, @user)
 # recipeMaker(10, @user)
 userFill(userData(3))
 
