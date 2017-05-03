@@ -5,15 +5,6 @@
 </nav>
 <%= render 'shared/page_title', title: 'Search Results'%>
 
-<ul class="nav nav-tabs">
-    <li class="active">
-        <%= link_to "Recipes", recipes_path %>
-    </li>
-    <li>
-        <%= link_to "Users", users_path %>
-    </li>
-</ul>
-
 
 <% @recipes.each do |recipe| %>
 
