@@ -6,15 +6,6 @@
   <span class="breadcrumb-item active">Styles List</span>
 </nav>
 
-<ul class="nav nav-tabs">
-    <li class="active">
-        <%= link_to "Recipes", recipes_path %>
-    </li>
-    <li>
-        <%= link_to "Chefs", chefs_path %>
-    </li>
-</ul>
-
 <%= will_paginate @recipes %>
 <% @style.recipes.each do |recipe| %>
     <div class="row">
