@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @workouts = @user.workouts.paginate(page: params[:page], per_page: 3)
     #@workout = Workout.find(params[:id])
     @random_workout = Workout.where.not(id: @workout).order("RANDOM()").first(3)
-    @exercise = current_user.exercises.find(params[:id])
+    # @exercise = current_user.exercises.find(params[:id])
     @exercises = current_user.exercises.all
     @friends = current_user.friends
   end
