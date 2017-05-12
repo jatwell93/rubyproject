@@ -53,7 +53,7 @@
 					<%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right edit" %>
 				<%end %>
 				<%if logged_in? and (is_owner?) %>
-					<%= link_to "[Delete Recipe]", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
+					<%= link_to "[Delete Recipe]", recipe_path(@recipe.delete), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
 				<%end %>
 			<div class="social-share-button">
 				Share this! <%= social_share_button_tag(@recipe.name) %>

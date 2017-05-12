@@ -14,10 +14,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show, :index]
   end
   
-  # users rotues
-  devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
-  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  
+
   #page routes
   root 'pages#home'
   get 'dashboard/index'
@@ -70,5 +67,9 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
+  # users rotues
+  devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  
 end
 
