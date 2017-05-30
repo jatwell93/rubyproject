@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-    # users rotues
+  # users rotues
   devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   #workout routes
