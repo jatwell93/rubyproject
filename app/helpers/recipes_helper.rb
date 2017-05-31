@@ -1,6 +1,6 @@
 module RecipesHelper
   
-  def owner?
+  def recipe_owner?
     owner_check(@recipe.user_id)
   end
 
