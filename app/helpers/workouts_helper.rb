@@ -1,4 +1,4 @@
-module RecipesHelper
+module WorkoutsHelper
   
   def owner?
     # owner_check(@recipe.user_id)
