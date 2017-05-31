@@ -7,9 +7,8 @@ module RecipesHelper
     end
   end
   
-  def displayGravator?(user)
-    link_to gravatar_for(user, size: 100), user_path(user) unless user.nil?
-    
+  def user?(user)
+    return true unless user.nil? 
   end
   
 end

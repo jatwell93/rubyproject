@@ -11,7 +11,10 @@ module ApplicationHelper
     end
   end
 
-  
+  def user?(user)
+    return true unless user.nil? 
+    return false
+  end
 
   
   def gravatar_for(user, options = { size: 80})
