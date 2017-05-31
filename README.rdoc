@@ -43,14 +43,10 @@ Javascript trouble shooting stuff ...
 
 to do first:
 
-- fix delete posts 
 - add images parralax image to aws 
-- go through every page and double check and every file 
 - fix facebook login by changing details in facebook app homepage 
-- fix workout show on users homepage
-- fix delete review function
-- fix javascript on login page
 - get rid of inline javascripts 
+- fix feeds and preptime 
 
 Beta:
 
@@ -68,9 +64,7 @@ Beta:
 - refactor and speed up
 - add gravatar to mailbox
 - add font awesomes to icons
-- change to 'birthday' social share icons
 - add measurements again
-- change to link back to previous page
 - add redcarpet and friendly_id
 - add confirmaions in devise then add promo html markup to the mailer
 
