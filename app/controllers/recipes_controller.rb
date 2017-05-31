@@ -85,7 +85,7 @@ class RecipesController < ApplicationController
   def deletereview
     Review.find(params[:revid]).destroy
     flash[:success] = "Review deleted"
-    redirect_to :recipes_path
+    redirect_to :back
   end
   
   private

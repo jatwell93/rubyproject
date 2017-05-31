@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get 'like'
       post 'like'
       post 'review'
+      delete 'review', to: "recipes#deletereview"
     end
     resources :reviews, except: [:show, :index]
   end
