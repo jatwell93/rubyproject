@@ -27,7 +27,8 @@
 				<h3>Directions</h3>
 				<ol>
 					<%@recipe.directions.each do |direction| %>
-					<li><%= direction.step %></li><%end %>
+						<li><%= direction.step %></li>
+					<%end %>
 				</ol>
 				<%if @recipe.styles.any? %>
 					<p>Styles: <%= render @recipe.styles %></p>
@@ -65,13 +66,20 @@
 			<%= render partial: 'gravatar_section', locals: {user: @user} %>
 			<p></p><br>
 			<h3><br>
-			Reviews</h3><%if @recipe.reviews.any? %><%@recipe.reviews.each do |c| %>
-			<div class="well">
-				<div class="col-md-2 pull-right">
-					<strong>User: <%= c.user.username.downcase.capitalize %></strong>
-				</div>
-				<p><%= c.body %></p><i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i> <%if c.user == current_user %> <%= link_to "Delete", review_recipe_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %> <%end %>
-			</div><%end %><%else %>
+			Reviews</h3>
+			<%if @recipe.reviews.any? %>
+				<%@recipe.reviews.each do |c| %>
+					<div class="well">
+						<div class="col-md-2 pull-right">
+							<strong>User: <%= c.user.username.downcase.capitalize %></strong>
+						</div>
+						<p><%= c.body %></p><i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i> 
+						<%if c.user == current_user %> 
+							<%= link_to "Delete", review_recipe_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %> 
+						<%end %>
+					</div>
+				<%end %>
+			<%else %>
 			
 			<h5>Be the first to post a review!</h5><%end %>
 			<div class="form-group">
