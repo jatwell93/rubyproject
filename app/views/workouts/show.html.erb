@@ -55,7 +55,7 @@
         <div class="social-share-button">
             Share this workout!<%= social_share_button_tag( "#{@workout.user.username}'s Workout Plan") %>
         </div>
-          <% if logged_in? and (@workout.user == current_user || current_user.admin?) %>
+          <% if logged_in? and (owner? || current_user.admin?) %>
             <%= link_to "Edit this Workout", edit_workout_path(@workout), class: "btn btn-success pull-right edit" %>
            &nbsp&nbsp
             <%= link_to "[Delete Workout]", @workout, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
@@ -81,7 +81,7 @@
                   </div>
                     <p> <%= c.body %> </p>
                     <i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i>
-                    <% if c.user == current_user %>
+                    <% if owner_check(c.user) %>
                       <%= link_to "Delete Review", review_workout_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %>
                     <% end %>
                 </div>

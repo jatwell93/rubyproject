@@ -15,6 +15,10 @@ module ApplicationHelper
     return true unless user.nil? 
     return false
   end
+  
+  def owner_check(owner)
+    current_user.id == owner
+  end
 
   
   def gravatar_for(user, options = { size: 80})

@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="container">
-        <% if @user == current_user %>
+        <% if owner_check(@user.id) %>
         <h3><em><%= "Your Recipes" %></em></h3>
         <% else %>
         <h3><em><%= "Recipes from: " + @user.username %></em></h3>
@@ -48,7 +48,7 @@
 <hr>
 <div class="row">
     <div class="container">
-        <% if @user == current_user %>
+        <% if owner_check(@user.id) %>
         <h3><em><%= "Your Workout plans" %></em></h3>
         <% else %>
         <h3><em><%= "Workouts from: " + @user.username %></em></h3>

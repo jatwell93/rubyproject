@@ -50,12 +50,9 @@
 					<% end %>
 				</div>
 			</div>
-				<% if logged_in? and is_owner? %>
+				<% if logged_in? and owner? %>
 					<%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right edit" %>
-				<% end %>
-
-				<% if logged_in? and (is_owner?) %>
-					 <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
+					<%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right delete"%>
 				<% end %>
 			<div class="social-share-button">
 				Share this! <%= social_share_button_tag(@recipe.name) %>
@@ -76,7 +73,7 @@
 						</div>
 						<p><%= c.body %></p>
 						<i><small><%= c.updated_at.strftime("%m/%d/%Y") %></small></i> 
-						<% if is_owner? %> 
+						<% if owner? %> 
 							<%= link_to "Delete", review_recipe_path(:revid => c.id), class:"btn btn-danger btn-small pull-right", method: :delete, data: { confirm: "Are you sure you want to delete this review?" }  %> 
 						<% end %>
 					</div>
