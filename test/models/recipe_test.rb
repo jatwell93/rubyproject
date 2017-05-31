@@ -1,70 +1,27 @@
-require "test_helper"
+require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 
-    def setup
-        @chef =Chef.create(chefname: "bob", email: "bob@example.com")
-        @recipe = @chef.recipes.build(name: "Chicken Parma", summary: "this is a great dish", description: "get some chicken and cook it the way you like")
-    end
-    
-    test "recipe should be valid" do
-        assert @recipe.valid?
-    end
-    
-    test "chef_id should be present" do
-        @recipe.chef_id = nil
-        assert_not @recipe.valid?
-    end
-    
-    test "name should be present" do
-        @recipe.name = " "
-        assert_not @recipe.valid?
-    end
-    
-    test "name length should not be too long" do
-        @recipe.name = "a" * 101
-        assert_not @recipe.valid?
-    end
-    
-    test "name length should not be too short" do
-        @recipe.name = "aaaa"
-        assert_not @recipe.valid?
-    end
-    
-    test "summary should be present" do
-        @recipe.summary = " "
-        assert_not @recipe.valid?
-    end
-    
-    test "summary length should not be too long" do
-        @recipe.summary = "a" * 151
-        assert_not @recipe.valid?
-    end
-    
-    test "summary length should not be too short" do
-        @recipe.summary = "a" * 9
-        assert_not @recipe.valid?
-    end
-    
-    test "description must be present" do
-        @recipe.description = " "
-        assert_not @recipe.valid?
-    end 
-    
-    test "description should not be too long" do
-        @recipe.description = "a" * 1001
-        assert_not @recipe.valid?
-    end
-    
-    test "description should not be too short" do 
-        @recipe.description = "a" * 19
-        assert_not @recipe.valid?
-    end
-        
-        
-        
-        
-        
-        
-
-end 
+  test "recipe is valid" do
+    recipe = Recipe.new(name: "SOMEONE", summary: "Something Else", description: "Something Else")
+    assert recipe.valid?, 'recipe is not valid'
+  end
+  
+  test "recipe should be invalid without description" do
+    recipe = Recipe.new(name: "Something", summary: "Something Else")
+    assert recipe.invalid?, 'recipe should be invalid, but passed validation'
+  end
+  
+  test "recipe should be invalid without summary" do
+    recipe = Recipe.new(name: "Something", description: "Something Else")
+    assert recipe.invalid?, 'recipe should be invalid, but passed validation'
+  end
+  
+  test "recipe should be invalid without name" do
+    recipe = Recipe.new(summary: "Something Else", description: "Something Else")
+    assert recipe.invalid?, 'recipe should be invalid, but passed validation'
+  end
+end
