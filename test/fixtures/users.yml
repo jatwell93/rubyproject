@@ -6,8 +6,10 @@
 #
 one:
   username: MyString
+  email: MyEmail@email.com
 # column: value
 #
 two:
-  username: MyString
+  username: MyString2
+  email: MyEmail2@email.com
 #  column: value

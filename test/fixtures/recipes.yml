@@ -4,7 +4,9 @@ one:
   name: MyString1
   summary: MyText2
   description: MyText
+  picture:
   user_id: one
+  # ingredients: one
 
 two:
   name: MyString2
