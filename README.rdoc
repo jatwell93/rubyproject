@@ -43,13 +43,10 @@ Javascript trouble shooting stuff ...
 
 to do first:
 
-- fix delete posts 
 - add images parralax image to aws 
-- go through every page and double check and every file 
 - fix facebook login by changing details in facebook app homepage 
-- fix workout show on users homepage
-- fix delete review function
 - get rid of inline javascripts 
+- fix feeds and preptime 
 
 Beta:
 
