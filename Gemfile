@@ -39,20 +39,20 @@ gem 'bootstrap-datepicker-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 
-group :development, :test do
-  gem 'byebug'
-end
-
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring' 
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'pry'
+  gem 'byebug'
 end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
-end
+
 
