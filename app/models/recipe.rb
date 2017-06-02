@@ -15,17 +15,17 @@ class Recipe < ActiveRecord::Base
     has_many    :feeds, through: :recipe_feeds
     # searchkick
     accepts_nested_attributes_for :ingredients,
-  															reject_if: proc { |attributes| attributes['name'].blank? },
-  															allow_destroy: true
+      								reject_if: proc { |attributes| attributes['name'].blank? },
+      								allow_destroy: true
  	accepts_nested_attributes_for :directions,
-  															reject_if: proc { |attributes| attributes['step'].blank? },
-  															allow_destroy: true
+  									reject_if: proc { |attributes| attributes['step'].blank? },
+  									allow_destroy: true
 
     # This one was erroring the system out
     # validates :user_id, presence: true
 
-    validates :directions, presence: true
-    validates :ingredients, presence: true
+    # validates :directions, presence: true
+    # validates :ingredients, presence: true
     validates :name, presence: true, length: { minimum: 5, maximum: 100}
     validates :summary, presence: true, length: { minimum: 10, maximum: 150}
     validates :description, presence: true, length: { minimum: 5, maximum: 1000}
