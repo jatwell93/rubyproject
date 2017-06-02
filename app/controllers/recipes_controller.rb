@@ -103,7 +103,7 @@ class RecipesController < ApplicationController
     end
     
     def require_same_user
-      if not is_owner? then
+      if current_user == @recipe.user_id then
           flash[:danger] = "You can only edit your own recipes"
         redirect_to recipes_path
       end
