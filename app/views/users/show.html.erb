@@ -110,7 +110,9 @@
             No Workouts yet
           </div>
         <%end%>
-        <%= link_to "New Workout", new_user_exercise_path(current_user), class: "btn btn-primary link" %>
+        <% if logged_in? and exercise_owner? %>
+          <%= link_to "New Workout", new_user_exercise_path(current_user), class: "btn btn-primary link" %>
+        <% end %>
         <%= content_tag :div, "", id: 'chart', data: {workouts: @exercises}, class: "chart" %>
     </div>
 <hr>
