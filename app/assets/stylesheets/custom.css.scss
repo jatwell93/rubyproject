@@ -513,3 +513,22 @@ p.workout-summary {
     width: $size;
   }
 }
+//About us page 
+.img-center {
+	margin: 0 auto;
+}
+.about-icons {
+    display: inline-block;
+    width: 235px;
+    height: 235px;
+    cursor: pointer;
+    background-color: #00cc00;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 235px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+    
