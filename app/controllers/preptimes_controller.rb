@@ -1,5 +1,5 @@
 class PreptimesController < ApplicationController
-   
+   before_action :authenticate_user!
    def new
        @preptime = Preptime.new
    end
