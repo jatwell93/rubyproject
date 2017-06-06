@@ -517,18 +517,19 @@ p.workout-summary {
 .img-center {
 	margin: 0 auto;
 }
+.about {
+    margin: 0 auto;
+}
 .about-icons {
-    display: inline-block;
-    width: 235px;
-    height: 235px;
-    cursor: pointer;
-    background-color: #00cc00;
-    border-radius: 2px;
-    font-size: 20px;
-    color: #ffffff;
     text-align: center;
-    line-height: 235px;
-    margin-right: 3px;
-    margin-bottom: 5px;
+vertical-align: middle;
+  display: inline;
+  font-size: 50px;
+  line-height: 100px;
+  color: #7f8c8d;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  vertical-align: bottom;
 }
     
