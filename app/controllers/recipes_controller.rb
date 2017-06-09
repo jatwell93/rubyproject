@@ -5,8 +5,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
-  
-  
+
   def search
     if params[:search].present?
       @recipes = Recipe.search(params[:search])
@@ -93,9 +92,10 @@ class RecipesController < ApplicationController
       @user = User.find(current_user.id)
     end
     
-    
+    # name: , summary: , description: , prep_times: , servings_made:
     def recipe_params
-      params.require(:recipe).permit(:user_id, :chef_id, :name, :summary, :description, :picture, style_ids: [], ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy], feed_ids: [], calorie_ids: [], preptime_ids: [])
+      params.require(:recipe).permit(:id, :user_id, :name, :summary, :description, 
+        :prep_times, :servings_made )
     end
     
     def set_recipe

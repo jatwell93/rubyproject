@@ -4,12 +4,16 @@ one:
   name: MyString1
   summary: MyText2
   description: MyText
-  picture:
+  prep_times: MyTest
+  servings_made: 10
+  # picture:
   user_id: one
-  # ingredients: one
 
 two:
   name: MyString2
   summary: MyText2
   description: MyText
+  prep_times: MyTest
+  servings_made: 10
+  # picture:
   user_id: one

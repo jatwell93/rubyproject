@@ -7,9 +7,11 @@
 one:
   username: MyString
   email: MyEmail@email.com
+  admin: true
 # column: value
 #
 two:
   username: MyString2
   email: MyEmail2@email.com
+  admin: false
 #  column: value
