@@ -94,8 +94,17 @@ class RecipesController < ApplicationController
     
     # name: , summary: , description: , prep_times: , servings_made:
     def recipe_params
-      params.require(:recipe).permit(:id, :user_id, :name, :summary, :description, 
-        :prep_times, :servings_made )
+      params.require(:recipe).permit(:name) 
+
+      # params.require(:recipe).permit(:id, :user_id, :name, :summary, :description, 
+      #   :prep_times, :servings_made,
+      #   :picture, :chef_id,
+      #   style_ids: [], 
+      #   ingredients_attributes: [:id, :name, :_destroy], 
+      #   # directions_attributes: [:id, :name, :step, :_destroy], 
+      #   feed_ids: [], 
+      #   calorie_ids: [], 
+      #   preptime_ids: [])
     end
     
     def set_recipe
