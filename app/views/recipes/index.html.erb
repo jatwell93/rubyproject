@@ -33,11 +33,10 @@
                  <p>Ingredients: <%= render recipe.ingredients %></p>
              <% end %>
 
-                 <p>Feeds: <%= recipe.feeds %></p>
+             <p>Feeds: <%= recipe.feeds %></p>
 
-             <% if recipe.preptimes.any? %>
-                 <p>Preptime: <%= render recipe.preptimes %></p>
-             <% end %>
+             <p>Preptime: <%= recipe.prep_times %></p>
+
              
              <p>
                  <span class='quiet'><small>Created: <%= time_ago_in_words(recipe.created_at)%> ago</small></span><br>

@@ -100,19 +100,22 @@ class RecipesController < ApplicationController
         :name,
         :summary,
         :description, 
-        :prep_times, 
+        :prep_times, # fails assert always valid
         :servings_made,
         :feeds,
         :user_id,
 
-        # :picture, 
-        # :chef_id,
-        # style_ids: [], 
-        # ingredients_attributes: [:id, :name, :_destroy], 
-        # directions_attributes: [:id, :name, :step, :_destroy], 
-        # feed_ids: [], 
-        # calorie_ids: [], 
-        # preptime_ids: []
+      
+        :picture, 
+        style_ids: [], 
+        ingredients_attributes: [:id, :name, :_destroy], 
+        directions_attributes: [:id, :name, :step, :_destroy], 
+        
+        # calorie_ids: [], # Need to replace
+        
+        # preptime_ids: []  # Don't use anymore
+        # feed_ids: [], # Don't use anymore
+        # :chef_id,  # Don't use anymore
         )
     end
     

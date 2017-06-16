@@ -6,14 +6,21 @@ class Recipe < ActiveRecord::Base
     has_many    :ingredients
     has_many    :directions
     has_many    :reviews 
-    has_many    :recipe_calories
     has_many    :comments, as: :commentable
-    has_many    :calories, through: :recipe_calories
-    has_many    :recipe_preptimes
-    has_many    :preptimes, through: :recipe_preptimes
+
     has_many    :recipe_feeds
-    # Going to a integer & no relationship
+    ### Going to a integer & no relationship ####
+    ### Going to a integer & no relationship ####
+    
     # has_many    :feeds, through: :recipe_feeds
+    # has_many    :recipe_preptimes
+    # has_many    :preptimes, through: :recipe_preptimes
+    has_many    :recipe_calories
+    has_many    :calories, through: :recipe_calories
+    
+    ### Going to a integer & no relationship ####
+    ### Going to a integer & no relationship ####
+    
     # searchkick
     accepts_nested_attributes_for :ingredients,
       								reject_if: proc { |attributes| attributes['name'].blank? },

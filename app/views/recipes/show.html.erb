@@ -35,10 +35,8 @@
 				<% end %>
 
 				<p>Feeds: <%= @recipe.feeds %></p>
+				<p>Preptime: <%=  @recipe.prep_times %></p>
 
-				<% if @recipe.preptimes.any? %>
-					<p>Preptime: <%= render @recipe.preptimes %></p>
-				<% end %>
 				<p><strong>Notes:</strong></p><%= simple_format(@recipe.description) %>
 				<div class="pull-right">
 					<%= link_to like_recipe_path(@recipe, like: true), :method => :post do %>
