@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
+  # before_action  :check_params
 
   def search
     if params[:search].present?
@@ -50,6 +51,8 @@ class RecipesController < ApplicationController
       flash[:success] = "Your recipe was update success"
       redirect_to recipe_path(@recipe)
     else
+      puts "\n\n Recipe debug: #{YAML::dump(params)} \n\n"  
+
       render :edit
     end
   end
@@ -66,7 +69,6 @@ class RecipesController < ApplicationController
   end
   
   def destroy
-
     @recipe.destroy!
     flash[:success] = "Recipe Deleted"
     redirect_to recipes_path
@@ -93,19 +95,25 @@ class RecipesController < ApplicationController
       @user = User.find(current_user.id)
     end
     
-    # name: , summary: , description: , prep_times: , servings_made:
     def recipe_params
-          # raise recipe_params.inspect
+        params.require(:recipe).permit(
+        :name,
+        :summary,
+        :description, 
+        :prep_times, 
+        :servings_made,
+        :feeds,
+        :user_id,
 
-      params.require(:recipe).permit(:id, :user_id, :name, :summary, :description, 
-        :prep_times, :servings_made,
-        :picture, :chef_id,
-        style_ids: [], 
-        ingredients_attributes: [:id, :name, :_destroy], 
-        directions_attributes: [:id, :name, :step, :_destroy], 
-        feed_ids: [], 
-        calorie_ids: [], 
-        preptime_ids: [])
+        # :picture, 
+        # :chef_id,
+        # style_ids: [], 
+        # ingredients_attributes: [:id, :name, :_destroy], 
+        # directions_attributes: [:id, :name, :step, :_destroy], 
+        # feed_ids: [], 
+        # calorie_ids: [], 
+        # preptime_ids: []
+        )
     end
     
     def set_recipe
@@ -124,4 +132,42 @@ class RecipesController < ApplicationController
       redirect_to recipes_path unless current_user.admin?
     end
   
+  # def check_params
+  #   required = [
+  #     :id, 
+  #     :user_id, 
+  #     :name,
+  #     :summary, 
+  #     :description, 
+  #     :prep_times, 
+  #     :servings_made
+  #     ]
+  #   if required.all? {|k, m| params.has_key? k}
+  #     # here you know params has all the keys defined in required array
+  #     puts "\n\n\All params set\n\n"
+  #   else
+  #     puts "\n\n\One of params not set\n\n"
+  #   puts YAML::dump(params)
+  #   end  
+  # end
+    # def check_params
+    #   required = [
+    #     :id, 
+    #     :user_id, 
+    #     :name,
+    #     :summary, 
+    #     :description, 
+    #     :prep_times, 
+    #     :servings_made
+    #     ]
+    #     visible_required = []
+    # # puts "----Doing required.each----"
+    #   required.each { |k|  if (params.has_key? k) then visible_required << k else puts "was wrong ... #{k}" end }
+    # # puts "----Doing Passed----" 
+    #   visible_required.each { |k| puts "This is .... #{k}" }
+    # puts "----Doing params.each----"
+    #   params.each { |k, m| puts "Key: #{k} -- value: #{m}" }
+    # # puts "\n\n Recipe debug: #{YAML::dump(params)} \n\n"  
+    # # puts params.inspect
+    # end
 end

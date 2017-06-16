@@ -33,9 +33,9 @@
 				<% if @recipe.styles.any? %>
 					<p>Styles: <%= render @recipe.styles %></p>
 				<% end %>
-				<% if @recipe.feeds.any? %>
-					<p>Feeds: <%= render @recipe.feeds %></p>
-				<% end %>
+
+				<p>Feeds: <%= @recipe.feeds %></p>
+
 				<% if @recipe.preptimes.any? %>
 					<p>Preptime: <%= render @recipe.preptimes %></p>
 				<% end %>

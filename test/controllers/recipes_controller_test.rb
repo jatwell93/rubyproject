@@ -30,22 +30,19 @@ class RecipesControllerTest <   ActionDispatch::IntegrationTest
   end
   
   test "should update recipe" do
-   @recipe = recipes(:one)
+    sign_in @user
+  @recipe = recipes(:one)
 
-    patch recipe_url(@recipe), params: { recipe: {id: @recipe.id,
-      name: @recipe.name, summary: @recipe.summary, 
-      description: @recipe.description, prep_times: @recipe.prep_times, 
-      servings_made: @recipe.servings_made} }
+    patch recipe_url(@recipe), recipe: {
+      name: "This is a name",
+      summary: @recipe.summary, 
+      description: @recipe.description, 
+      prep_times: @recipe.prep_times, 
+      servings_made: @recipe.servings_made,
+      feeds: 3,
+      user_id: 1
+      } 
     assert_redirected_to recipe_url(@recipe)
-  end
-  
-  test "should create recipe" do
-    assert_difference('Recipe.count') do
-# puts "\n\n Body Response #{@body.response} \n\n"
-      post recipes_url, params: { recipe: { name: "SOMEONE", summary: "Something Else", 
-        description: "Something Else", prep_times: "90", servings_made: "3", user_id: "1"} }
-    end
-
-    assert_redirected_to recipe_path(Recipe.last)
+    
   end
 end

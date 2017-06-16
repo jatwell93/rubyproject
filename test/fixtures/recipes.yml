@@ -2,12 +2,13 @@
 
 one:
   name: MyString1
-  summary: MyText2
+  summary: MyText2222222
   description: MyText
   prep_times: MyTest
   servings_made: 10
+  # feeds: 3
   # picture:
-  user_id: one
+  user_id: 1
 
 two:
   name: MyString2
