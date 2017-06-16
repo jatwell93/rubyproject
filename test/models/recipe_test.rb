@@ -1,13 +1,11 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
   setup do
     @recipe = Recipe.new(name: "SOMEONE", summary: "Something Else", 
         description: "Something Else", prep_times: "90", servings_made: "3",
-        feeds: "3", user_id: 1)
+        feeds: "3", user_id: 1, calories: 5)
   end
 
   test "@recipe is valid" do
@@ -44,8 +42,13 @@ class RecipeTest < ActiveSupport::TestCase
     refute @recipe.valid?, '@recipe should be invalid - missing feeds, but passed validation'
   end
     
-    test "@recipe should be invalid without user_id" do
+  test "@recipe should be invalid without user_id" do
     @recipe["user_id"] = ""
     refute @recipe.valid?, '@recipe should be invalid - missing user_id, but passed validation'
+  end
+  
+  test "@recipe should be invalid without calories" do
+    @recipe["calories"] = ""
+    refute @recipe.valid?, '@recipe should be invalid - missing calories, but passed validation'
   end
 end

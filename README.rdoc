@@ -1,45 +1,9 @@
 # Readme
 
-- Mirv's trouble shooting steps
 - To Do Listing
 - Beta Listing
 
 ---
-
-Javascript trouble shooting stuff ...
-
- - First we need to decide if it's a loading issue - Open the web browser console & check `elements` for your js file names
- ... saw the cocoon was loaded under the "elements" section 
- - Opened the /layouts/application.html.erb file & ensured there was only one javascript_include_tag.  
- - Also that the javascript_include_tag was in the <head> tag & that the head tag is properly closed with </head>
- - Look for other non-essential or extra service loading files
- ... Sumo was generating 4 errors in the chrome console, so I commented that out
-  - Checked the /app/assets/javascript folder for the application.js file, also that there's no .coffee files (rails autos them)
- ... for some reason, you have `app/assets/javascript/exercise.coffee` showing up in the directory 
- - Check inside the application.js file ...
- - Check order of your /app/assets/javascript/application.js files being loaded
- ... yours is wrong ... the `//= require_tree .` 
- ... absolutely must be at the bottom or you're going to have issues including all the files.
- - Additionally, you had two files which did not have the required, `//= ` in front of them.  It's required to load them
- - Ensure no extra scripts being loaded in the views, I use `grep -r 'script' /app` & check any spot that shows up
- ... I'm finding scripts in your view files instead of the assets files for javascript ...
- If the asset asset is loading, we know it's either a conflict or poorly written code
- - Insert a piece of test code in the console so when the $.document or the turbolinks finished loading to see if it's poor code
- ... they will report to console a string ("Page -- Loaded") in my case, 
- - If it doesn't load, it's a conflict with other java files, if it loads, it's just your code needs to be fixed
- - I pull all the entries from the application.js except a test.js file (look up how to capture to log js to console)
- - At this point it should work if everything before it passed ... if not you might have corrupt files 
- ... you should go into application.html.erb & use javascript_include_tag to include a CDN version of Jquery (google it)
- - Assuming the test.js works ... 
- ... first, in your `app/assets/javascript/application.js`, at the bottom of the file up the `//= .` & save it ...
- ... now, you should re-add your js files to the app/assets/javascript one at a time, testing each time by refreshing the ...
- ... webpage, possibly restarting the server after copying the file in & doing a rake or rails assets like shown below 
- ... `rails assets:clean` & the `rails assets:precompile` 
-
- 
-
----
-
 
 to do first:
 

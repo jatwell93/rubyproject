@@ -6,9 +6,10 @@ one:
   description: MyText
   prep_times: MyTest
   servings_made: 10
-  # feeds: 3
-  # picture:
+  feeds: 3
   user_id: 1
+  calories: 15
+  # picture:
 
 two:
   name: MyString2

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606044516) do
+ActiveRecord::Schema.define(version: 20170616205910) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20170606044516) do
     t.integer  "feeds"
     t.integer  "prep_times"
     t.integer  "servings_made"
+    t.integer  "calories"
   end
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
