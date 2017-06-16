@@ -8,8 +8,6 @@ class Recipe < ActiveRecord::Base
     has_many    :reviews 
     has_many    :comments, as: :commentable
 
-    # has_many    :recipe_feeds
-
     
     # searchkick
     accepts_nested_attributes_for :ingredients,
