@@ -5,7 +5,7 @@ class RecipeTest < ActiveSupport::TestCase
   setup do
     @recipe = Recipe.new(name: "SOMEONE", summary: "Something Else", 
         description: "Something Else", prep_times: "90", servings_made: "3",
-        feeds: "3", user_id: 1, calories: 5)
+        user_id: 1, calories: 5)
   end
 
   test "@recipe is valid" do
@@ -36,12 +36,7 @@ class RecipeTest < ActiveSupport::TestCase
     @recipe["servings_made"] = ""
     refute @recipe.valid?, '@recipe should be invalid - missing servings_made, but passed validation'
   end
-  
-  test "@recipe should be invalid without feeds" do
-    @recipe["feeds"] = ""
-    refute @recipe.valid?, '@recipe should be invalid - missing feeds, but passed validation'
-  end
-    
+
   test "@recipe should be invalid without user_id" do
     @recipe["user_id"] = ""
     refute @recipe.valid?, '@recipe should be invalid - missing user_id, but passed validation'

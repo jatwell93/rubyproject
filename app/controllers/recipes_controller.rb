@@ -32,8 +32,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     
-    # @recipe.user_id = current_user
-    @recipe[:user_id] = current_user.id
+    @recipe[:user_id] = set_user.id
     if @recipe.save
       flash[:success] = "Your recipe was created successfully!"
       redirect_to recipes_path
@@ -63,7 +62,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Your like/dislike was noted successfully."
       redirect_to :back
     else
-      flash[:danger] = "#{current_user.username.capitalize} you can only like/dislike once per item."
+      flash[:danger] = "#{set_user.username.capitalize} you can only like/dislike once per item."
       redirect_to :back
     end
   end
@@ -109,13 +108,13 @@ class RecipesController < ApplicationController
     end
     
     def require_same_user
-      if current_user == @recipe.user_id then
+      if set_user == @recipe.user_id then
           flash[:danger] = "You can only edit your own recipes"
         redirect_to recipes_path
       end
     end
     
     def admin_user
-      redirect_to recipes_path unless current_user.admin?
+      redirect_to recipes_path unless set_user.admin?
     end
 end
