@@ -247,7 +247,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['SECRET']
+  config.omniauth :twitter, 'TWITTER_KEY', 'TWITTER_SECRET'
   config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["SECRET1"], callback_url: "https://cloned-atwellj.c9users.io/users/auth/facebook/callback"
   # config.omniauth :linked_in, "KEY", "SECRET"
   # ==> Warden configuration
