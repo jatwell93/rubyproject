@@ -34,7 +34,7 @@
 					<p>Styles: <%= render @recipe.styles %></p>
 				<% end %>
 
-				<p>Feeds: <%= @recipe.feeds %></p>
+				<p>Feeds: <%= @recipe.servings_made %></p>
 				<p>Preptime: <%=  @recipe.prep_times %></p>
 
 				<p><strong>Notes:</strong></p><%= simple_format(@recipe.description) %>

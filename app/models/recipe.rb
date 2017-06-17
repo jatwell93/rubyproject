@@ -24,7 +24,7 @@ class Recipe < ActiveRecord::Base
     validates :description, presence: true, length: { minimum: 5, maximum: 1000}
     validates :servings_made, presence: true
     validates :prep_times, presence: true
-    validates :feeds, presence: true
+    # validates :feeds, presence: true
     validates :calories, presence: true
     
     # mount_uploader :picture, PictureUploader
