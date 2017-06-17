@@ -17,13 +17,12 @@ class Recipe < ActiveRecord::Base
   									reject_if: proc { |attributes| attributes['step'].blank? },
   									allow_destroy: true
 
-    validates :user_id, presence: true
-
     validates :name, presence: true, length: { minimum: 5, maximum: 100}
     validates :summary, presence: true, length: { minimum: 10, maximum: 150}
     validates :description, presence: true, length: { minimum: 5, maximum: 1000}
-    validates :servings_made, presence: true
     validates :prep_times, presence: true
+    validates :servings_made, presence: true
+    validates :user_id, presence: true
     validates :calories, presence: true
     
     # mount_uploader :picture, PictureUploader
