@@ -24,17 +24,11 @@ class Recipe < ActiveRecord::Base
     validates :description, presence: true, length: { minimum: 5, maximum: 1000}
     validates :servings_made, presence: true
     validates :prep_times, presence: true
-    # validates :feeds, presence: true
     validates :calories, presence: true
     
     # mount_uploader :picture, PictureUploader
     # validate :picture_size 
-    
-    #### These two really don't belong - should be tested in their model ####
-    # validates :directions, presence: true
-    # validates :ingredients, presence: true
-    ####
-    
+
     def thumbs_up_total
        self.likes.where(like: true).size 
     end
