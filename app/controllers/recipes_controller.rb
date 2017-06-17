@@ -5,8 +5,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
-  
-  
+
   def search
     if params[:search].present?
       @recipes = Recipe.search(params[:search])
@@ -32,7 +31,8 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
+    
+    # @recipe.user_id = current_user
     if @recipe.save
       flash[:success] = "Your recipe was created successfully!"
       redirect_to recipes_path
@@ -50,6 +50,8 @@ class RecipesController < ApplicationController
       flash[:success] = "Your recipe was update success"
       redirect_to recipe_path(@recipe)
     else
+      puts "\n\n Recipe debug: #{YAML::dump(params)} \n\n"  
+
       render :edit
     end
   end
@@ -66,7 +68,6 @@ class RecipesController < ApplicationController
   end
   
   def destroy
-
     @recipe.destroy!
     flash[:success] = "Recipe Deleted"
     redirect_to recipes_path
@@ -93,9 +94,14 @@ class RecipesController < ApplicationController
       @user = User.find(current_user.id)
     end
     
-    
     def recipe_params
-      params.require(:recipe).permit(:user_id, :chef_id, :name, :summary, :description, :picture, style_ids: [], ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy], feed_ids: [], calorie_ids: [], preptime_ids: [])
+        params.require(:recipe).permit(
+        :name, :summary, :description, :prep_times, 
+        :servings_made, :feeds, :user_id, :calories,
+        :picture, 
+        style_ids: [], 
+        ingredients_attributes: [:id, :name, :_destroy], 
+        directions_attributes: [:id, :name, :step, :_destroy])
     end
     
     def set_recipe
@@ -108,10 +114,8 @@ class RecipesController < ApplicationController
         redirect_to recipes_path
       end
     end
-
     
     def admin_user
       redirect_to recipes_path unless current_user.admin?
     end
-  
 end

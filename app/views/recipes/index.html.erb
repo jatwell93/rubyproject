@@ -18,7 +18,7 @@
         <div class="col-md-2">
             <section class="chef_info_center">
 
-                <%= render partial: 'gravatar_section', locals: { user: recipe.user } %>
+               
 
             </section>
         </div>
@@ -32,12 +32,11 @@
              <% if recipe.ingredients.any? %>
                  <p>Ingredients: <%= render recipe.ingredients %></p>
              <% end %>
-             <% if recipe.feeds.any? %>
-                 <p>Feeds: <%= render recipe.feeds %></p>
-             <% end %>
-             <% if recipe.preptimes.any? %>
-                 <p>Preptime: <%= render recipe.preptimes %></p>
-             <% end %>
+
+             <p>Feeds: <%= recipe.feeds %></p>
+
+             <p>Preptime: <%= recipe.prep_times %></p>
+
              
              <p>
                  <span class='quiet'><small>Created: <%= time_ago_in_words(recipe.created_at)%> ago</small></span><br>

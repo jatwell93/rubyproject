@@ -41,13 +41,16 @@ gem 'raphael-rails'
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'spring' 
+  # gem 'spring' 
 end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'byebug'
+  gem 'guard'
+  gem 'guard-minitest'
+
 end
 
 group :production do

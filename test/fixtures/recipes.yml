@@ -2,14 +2,20 @@
 
 one:
   name: MyString1
-  summary: MyText2
+  summary: MyText2222222
   description: MyText
-  picture:
-  user_id: one
-  # ingredients: one
+  prep_times: MyTest
+  servings_made: 10
+  feeds: 3
+  user_id: 1
+  calories: 15
+  # picture:
 
 two:
   name: MyString2
   summary: MyText2
   description: MyText
+  prep_times: MyTest
+  servings_made: 10
+  # picture:
   user_id: one
