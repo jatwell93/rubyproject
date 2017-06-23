@@ -63,10 +63,10 @@
       </div>
     </div>
       <div class="col-md-5 pull-right">
-        <%= link_to gravatar_for(@workout.user, size: 200), user_path(@workout.user) %>
-        <p>
-          <h5>Brought to you by: <%= @workout.user.username %></h5>
-        </p>
+        <% if user?(@workout.user) %>
+        	<%= render partial: 'shared/gravatar_section', locals: {user: @workout.user} %>
+        <% end %>
+
         <hr>
         </br>
       </div>

@@ -59,9 +59,9 @@
 		</div>
 		
 		<div class="col-md-5 pull-right">
-			<% if user?(@user) %>
-				<%= render partial: 'gravatar_section', locals: {user: @user} %>
-			<% end %>
+                <% if user?(@user) %>
+                	<%= render partial: 'shared/gravatar_section', locals: {user:  @user} %>
+                <% end %>
 
 			<h3>Reviews</h3>
 			<% if @recipe.reviews.any? %>

@@ -36,12 +36,7 @@ class RecipeTest < ActiveSupport::TestCase
     @recipe["servings_made"] = ""
     refute @recipe.valid?, '@recipe should be invalid - missing servings_made, but passed validation'
   end
-  
-  test "@recipe should be invalid without feeds" do
-    @recipe["feeds"] = ""
-    refute @recipe.valid?, '@recipe should be invalid - missing feeds, but passed validation'
-  end
-    
+
   test "@recipe should be invalid without user_id" do
     @recipe["user_id"] = ""
     refute @recipe.valid?, '@recipe should be invalid - missing user_id, but passed validation'

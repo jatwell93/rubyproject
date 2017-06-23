@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RecipesControllerTest <   ActionDispatch::IntegrationTest
   setup do
-    @user = User.new(username: "MYSTRING", email: "Myemail@email.com", admin: true)
+    # @user = User.new(username: "MYSTRING", email: "Myemail@email.com", admin: true)
+    @user = users(:one)
     sign_in @user
   end
 

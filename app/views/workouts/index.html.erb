@@ -20,13 +20,10 @@
 <% @workouts.each do |workout| %>
   <div class="row">
         <div class="col-md-2">
-            <section class="chef_info_center">
-                <%= link_to gravatar_for(workout.user, size: 100), user_path(workout.user) %>
-                <h5> User name: <%= workout.user.username %></h5>
-            </section>
+            <%= call_gravatar(workout.user) %>
         </div>
         <div class="col-lg-6 well">
-             <h4><%= link_to workout.name, workout_path(workout) %></h4>
+             
              <p><%= truncate(workout.summary, length: 350) %><%= link_to 'click to see workout', workout_path(workout)%></p>
              <% if workout.attachment? %>
                <p><%= link_to "Download Workout", workout.attachment_url %></p>

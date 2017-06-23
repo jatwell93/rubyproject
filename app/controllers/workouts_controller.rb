@@ -1,8 +1,8 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:edit, :update, :show, :like, :review, :destroy]
-  before_action :authenticate_user!, except: [:show, :index, :like, :search]
+  before_action :authenticate_user!, except: [:show,  :like, :search]
   before_action :require_same_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  # before_action :admin_user, only: :destroy
   
   def index
     @workouts = Workout.paginate(page: params[:page], per_page: 5)
@@ -23,7 +23,7 @@ class WorkoutsController < ApplicationController
     
     if @workout.save
       flash[:success] = "Your workout was created successfully!"
-      redirect_to workouts_path
+      redirect_to workout_url(@workout)
     else
       render :new
     end
@@ -61,7 +61,7 @@ class WorkoutsController < ApplicationController
   def destroy
     Workout.find(params[:id]).destroy
     flash[:success] = "Workout was deleted."
-    redirect_to workout_url
+    redirect_to workouts_path
   end
   
   def review
@@ -94,7 +94,11 @@ class WorkoutsController < ApplicationController
   private
     
     def workout_params
-        params.require(:workout).permit(:name, :summary, :attachment, :user_id, movements_attributes: [:id, :name, :_destroy], reps_attributes: [:id, :amount, :_destroy], zets_attributes: [:id, :quantity, :_destroy], weights_attributes: [:id, :kilogram, :_destroy],)
+      params.require(:workout).permit(:name, :summary, :attachment, :user_id, 
+        movements_attributes: [:id, :name, :_destroy], 
+        reps_attributes: [:id, :amount, :_destroy], 
+        zets_attributes: [:id, :quantity, :_destroy], 
+        weights_attributes: [:id, :kilogram, :_destroy],)
     end
     
     def set_workout
@@ -103,13 +107,14 @@ class WorkoutsController < ApplicationController
     
     def require_same_user
       if current_user != @workout.user and !current_user.admin?
-        flash[:danger] = "You can only edit your own recipes"
-        redirect_to recipes_path
+        # flash[:danger] = "You can only edit your own recipes"
+        # redirect_to recipes_path
       end
     end
-
-    def admin_user
-      redirect_to workouts_path unless current_user.admin?
-    end
   
+    def admin_user
+      # puts "Current user ... #{current_user.admin?}"
+      # redirect_to workouts_path unless current_user.admin?
+    end
+
 end

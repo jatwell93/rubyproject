@@ -1,0 +1,6 @@
+<section class="chef_info_center">
+    <p>
+        <%= link_to gravatar_for(user, size: 100), user_path(user) %>
+        <h5><%= link_to "#{user.first_name} (#{user.username})", user %></h5
+    </p>
+</section>

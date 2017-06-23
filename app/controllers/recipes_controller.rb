@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
     else
       @recipes = Recipe.all
     end
-
   end
   
   def index
@@ -51,8 +50,6 @@ class RecipesController < ApplicationController
       flash[:success] = "Your recipe was update success"
       redirect_to recipe_path(@recipe)
     else
-      puts "\n\n Recipe debug: #{YAML::dump(params)} \n\n"  
-
       render :edit
     end
   end
