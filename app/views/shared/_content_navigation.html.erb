@@ -1,0 +1,10 @@
+  <%= tabs_tag :open_tabs => { :class => "nav nav-tabs" },  :active_class => "active" do |tab| %>
+    <%= tab.dashboard 'Dashboard', dashboard_index_path %>
+    <%= tab.workouts  'Workouts', workouts_path %>
+    <%= tab.recipes   'Recipes', recipes_path %>
+    <%= tab.about     'About', about_path %>
+    <%= tab.faq       'FAQ', faq_url %>
+    <%= tab.users     'Users', users_path %>
+  <% end %>
+
+<%= "Test: #{ensure_user}" %>

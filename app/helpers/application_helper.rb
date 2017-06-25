@@ -1,12 +1,19 @@
 module ApplicationHelper
   
+  def ensure_user(options = {})
+    # There's many unforseeable ways this will cause issues, 
+    # ...there also will be no warning when it does.
+    # @the_user = @recipe.user_id || @workout.user_id || current_user || User.first
+    @the_user = self.class
+    @the_user = controller.controller_name
+  end
   
     # Returns the full title on a per-page basis.
   def full_title(page_title = '')
     base_title = "FitnessLabs (A & K LABS)"
     return page_title.empty? ?  base_title :  page_title + " | " + base_title
   end
-
+  
   def user?(user)
     user.nil? ? false : true
   end

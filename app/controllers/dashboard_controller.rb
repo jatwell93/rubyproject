@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
+  set_tab :dashboard
   def index
     @athletes = User.paginate(:page => params[:page])
   end

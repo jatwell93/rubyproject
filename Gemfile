@@ -39,6 +39,7 @@ gem 'ranked-model'
 gem 'bootstrap-datepicker-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem "tabs_on_rails"
 
 group :development do
   gem 'web-console', '~> 2.0'

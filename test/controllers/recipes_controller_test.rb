@@ -7,6 +7,8 @@ class RecipesControllerTest <   ActionDispatch::IntegrationTest
     sign_in @user
   end
 
+### STANDARD CRUD ###
+
   test "should get index" do
     get '/recipes'
     assert_response :success
@@ -62,4 +64,21 @@ class RecipesControllerTest <   ActionDispatch::IntegrationTest
       end
     assert_redirected_to recipes_path
   end
+  
+  ### CRUD STYLE EXTRAS ###
+  
+  test "like button should create a like entry" do
+    @recipe = recipes(:one)
+    @recipe1 = @recipe.new(@recipe)
+    puts "\n\ndebug#{(@recipe1)}\n\n"
+  end
+  
+  test "like button should not work if not logged in" do
+    # Skipping as this function will be public
+  end
+  
+  test "like button should remove a like if a like entry exists" do
+    # Not implemented yet
+  end
+  
 end

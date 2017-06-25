@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
+  set_tab :recipes
+  # set_tab :posts, :only => %w(index show)
 
   def search
     if params[:search].present?

@@ -3,6 +3,7 @@ class WorkoutsController < ApplicationController
   before_action :authenticate_user!, except: [:show,  :like, :search]
   before_action :require_same_user, only: [:edit, :update]
   # before_action :admin_user, only: :destroy
+  set_tab :workouts
   
   def index
     @workouts = Workout.paginate(page: params[:page], per_page: 5)

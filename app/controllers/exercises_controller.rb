@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_exercise, except: [:index, :new, :create]
+    set_tab :exercises
     
     def index 
       @exercises = current_user.exercises.all
