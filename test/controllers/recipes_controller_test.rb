@@ -62,4 +62,16 @@ class RecipesControllerTest <   ActionDispatch::IntegrationTest
       end
     assert_redirected_to recipes_path
   end
+  
+  test "liking should add db entry" do
+    # we inherit user from the setup at top of the test file
+    # setup recipe to be recipiant of the like
+    @recipe = recipes(:one)
+    # assert that calling the recipe#like action to execute will add 1
+    assert_difference('Like.count') do
+      like_recipe_path(@recipe, like: true)
+      
+    end
+  end
+    
 end
